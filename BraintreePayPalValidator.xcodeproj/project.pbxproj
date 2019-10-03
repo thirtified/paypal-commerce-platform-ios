@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80B36CB723453FF100AD35E8 /* SammyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CB623453FF100AD35E8 /* SammyViewController.swift */; };
+		80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */; };
+		80ADA74F23464A8900579E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ADA74E23464A8900579E7A /* Main.storyboard */; };
+		80B36CB723453FF100AD35E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CB623453FF100AD35E8 /* ViewController.swift */; };
 		80B36CC82345473800AD35E8 /* BTPayPalCheckoutRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 80B36CC62345473800AD35E8 /* BTPayPalCheckoutRequest.h */; };
 		80B36CC92345473800AD35E8 /* BTPayPalCheckoutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CC72345473800AD35E8 /* BTPayPalCheckoutRequest.m */; };
 		80B36CD023454C9E00AD35E8 /* BTPayPalCheckoutResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80B36CCE23454C9E00AD35E8 /* BTPayPalCheckoutResult.h */; };
@@ -32,8 +34,11 @@
 
 /* Begin PBXFileReference section */
 		7B962C63FD9746C3214A4D5D /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMerchantAPI.swift; sourceTree = "<group>"; };
+		80ADA74E23464A8900579E7A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		80ADA75123464D0D00579E7A /* P4PDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = P4PDemo.entitlements; path = "../../../braintree-ios/P4PDemo/P4PDemo.entitlements"; sourceTree = "<group>"; };
 		80B36CB523453FF100AD35E8 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
-		80B36CB623453FF100AD35E8 /* SammyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammyViewController.swift; sourceTree = "<group>"; };
+		80B36CB623453FF100AD35E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		80B36CC62345473800AD35E8 /* BTPayPalCheckoutRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalCheckoutRequest.h; sourceTree = "<group>"; };
 		80B36CC72345473800AD35E8 /* BTPayPalCheckoutRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPayPalCheckoutRequest.m; sourceTree = "<group>"; };
 		80B36CCE23454C9E00AD35E8 /* BTPayPalCheckoutResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalCheckoutResult.h; sourceTree = "<group>"; };
@@ -123,14 +128,17 @@
 		80BAD275234531B30050F86C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				80ADA75123464D0D00579E7A /* P4PDemo.entitlements */,
 				80BAD276234531B30050F86C /* AppDelegate.h */,
 				80BAD277234531B30050F86C /* AppDelegate.m */,
-				80B36CB623453FF100AD35E8 /* SammyViewController.swift */,
+				80B36CB623453FF100AD35E8 /* ViewController.swift */,
 				80BAD282234531B50050F86C /* Assets.xcassets */,
 				80BAD284234531B50050F86C /* LaunchScreen.storyboard */,
 				80BAD287234531B50050F86C /* Info.plist */,
 				80BAD288234531B50050F86C /* main.m */,
 				80B36CB523453FF100AD35E8 /* Demo-Bridging-Header.h */,
+				80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */,
+				80ADA74E23464A8900579E7A /* Main.storyboard */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -266,6 +274,7 @@
 			files = (
 				80BAD286234531B50050F86C /* LaunchScreen.storyboard in Resources */,
 				80BAD283234531B50050F86C /* Assets.xcassets in Resources */,
+				80ADA74F23464A8900579E7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +335,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BAD278234531B30050F86C /* AppDelegate.m in Sources */,
-				80B36CB723453FF100AD35E8 /* SammyViewController.swift in Sources */,
+				80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */,
+				80B36CB723453FF100AD35E8 /* ViewController.swift in Sources */,
 				80BAD289234531B50050F86C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -463,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
