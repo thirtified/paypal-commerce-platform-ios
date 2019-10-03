@@ -1,0 +1,6 @@
+framework module BraintreePayPalValidator {
+  umbrella header "BraintreePayPalValidator-umbrella.h"
+
+  export *
+  module * { export * }
+}

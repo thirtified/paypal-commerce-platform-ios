@@ -1,0 +1,55 @@
+PODS:
+  - Braintree (4.30.0):
+    - Braintree/Card (= 4.30.0)
+    - Braintree/Core (= 4.30.0)
+    - Braintree/PayPal (= 4.30.0)
+    - Braintree/UI (= 4.30.0)
+  - Braintree/Apple-Pay (4.30.0):
+    - Braintree/Core
+  - Braintree/Card (4.30.0):
+    - Braintree/Core
+  - Braintree/Core (4.30.0)
+  - Braintree/PaymentFlow (4.30.0):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.30.0)
+  - Braintree/UI (4.30.0):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreePayPalValidator (0.0.1):
+    - Braintree
+    - Braintree/Apple-Pay
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PaymentFlow
+    - Braintree/PayPal
+
+DEPENDENCIES:
+  - BraintreePayPalValidator (from `./`)
+
+SPEC REPOS:
+  trunk:
+    - Braintree
+
+EXTERNAL SOURCES:
+  BraintreePayPalValidator:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  Braintree: 6c7b531ed255701cc69666a2f02d1324a2d95c41
+  BraintreePayPalValidator: 802fe88c9f9039869e830b9be6737c0e9ddee73f
+
+PODFILE CHECKSUM: afc62882660d5abab894f40398c8f1c3e1019927
+
+COCOAPODS: 1.8.1
