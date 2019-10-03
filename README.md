@@ -5,10 +5,8 @@ BraintreePayPalValidator provides a native SDK offering to current PayPal partne
 
 ## Running the Demo App
 
-- To run the Demo app in this repo, you must have CocoaPods installed. See instructions for installing CocoaPods here https://cocoapods.org/.
-
-- At the root level of this respository, install the dependencies of the project by running `pod install`.
-
 - Make sure to now open the **Xcode workspace** instead of the project file when going to build/run the project. This is called `BraintreePayPalValidator.xcworkspace`.
 
-- Choose the `Demo` app target from the drop-down menu before clicking the run/play button to run the app.
+- Choose the `Demo` app target from the drop-down menu before clicking the run/play button to run the app. Choose the simulator appropriate for your testing needs. See screenshot below.
+
+![Choose Demo target](documentation_image_assets/p4p_demo_target.png)
