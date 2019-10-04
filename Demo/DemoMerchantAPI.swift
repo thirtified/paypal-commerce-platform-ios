@@ -10,6 +10,11 @@ struct OrderCaptureInfo: Codable {
     let status: String
 }
 
+struct OrderParams: Codable {
+    let amount: String
+    let payeeEmail: String
+}
+
 class DemoMerchantAPI {
 
     static let sharedService = DemoMerchantAPI()
@@ -20,8 +25,8 @@ class DemoMerchantAPI {
 
     private init() {}
 
-    func fetchOrderValidationInfo(completion: @escaping ((OrderValidationInfo?, Error?) -> Void)) {
-        let url = URL(string: fetchUrlString)!
+    func fetchOrderValidationInfo(orderParams: OrderParams, completion: @escaping ((OrderValidationInfo?, Error?) -> Void)) {
+        let url = URL(string: fetchUrlString + constructParamsQueryString(orderParams: orderParams))!
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -36,6 +41,20 @@ class DemoMerchantAPI {
                 completion(nil, parseError)
             }
             }.resume()
+    }
+
+    func constructParamsQueryString(orderParams: OrderParams) -> String {
+        var queryString = ""
+
+        if (orderParams.payeeEmail != "") {
+            queryString += "?payeeEmail=" + orderParams.payeeEmail
+        }
+
+        if (orderParams.amount != "") {
+            queryString += (queryString.contains("?") ? "&amount=" : "?amount=") + orderParams.amount
+        }
+
+        return queryString
     }
 
     func captureOrder(orderId: String, completion: @escaping ((OrderCaptureInfo?, Error?) -> Void)) {

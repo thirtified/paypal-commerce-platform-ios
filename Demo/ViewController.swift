@@ -1,15 +1,16 @@
 import BraintreePayPalValidator
-//import BraintreeCard
-//import BraintreePaymentFlow
 
 class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var expirationDateTextField: UITextField!
+    @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var cvvTextField: UITextField!
+    @IBOutlet weak var payeeEmailTextField: UITextField!
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var finalizeButton: UIButton!
 
     private var orderValidationInfo: OrderValidationInfo?
+    private var orderRequestParams: OrderParams?
     private var payPalValidatorClient: BTPayPalValidatorClient?
 
     override func viewDidLoad() {
@@ -18,6 +19,8 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         updateLabel(withText: "Fetching Token and Order ID...")
         fetchOrderValidationInfo()
     }
+
+    // MARK: - IBActions
 
     @IBAction func cardCheckoutTapped(_ sender: UIButton) {
         guard let card = createBTCard() else { return }
@@ -89,6 +92,8 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         fetchOrderValidationInfo()
     }
 
+    // MARK: - Construct order/request helpers
+
     func createBTCard() -> BTCard? {
         let card = BTCard()
 
@@ -107,7 +112,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         // TODO: Apply proper regulations on card info UITextFields.
         // Will not work properly if expiration not in "01/22" format.
         if (cardNumber == "" || expiry == "" || cvv == "" || expiry.count < 5) {
-            showIncompleteFieldsAlert()
+            showAlert(message: "Card entry form incomplete.")
             return nil
         }
 
@@ -118,20 +123,10 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         return card
     }
 
-    func showIncompleteFieldsAlert() {
-        let alert = UIAlertController(title: "Incomplete Fields", message: "Card entry form incomplete.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-
-    private func updateLabel(withText text: String) {
-        DispatchQueue.main.async {
-            self.resultsLabel.text = text
-        }
-    }
-
     func fetchOrderValidationInfo() {
-        DemoMerchantAPI.sharedService.fetchOrderValidationInfo { (orderValidationInfo, error) in
+        setOrderQueryParams()
+
+        DemoMerchantAPI.sharedService.fetchOrderValidationInfo(orderParams: self.orderRequestParams!) { (orderValidationInfo, error) in
             guard let info = orderValidationInfo, error == nil else {
                 self.updateLabel(withText: "Error: \(error!.localizedDescription)")
                 return
@@ -143,7 +138,42 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         }
     }
 
+    func setOrderQueryParams() {
+        var amount = "", payeeEmail = ""
+
+        if let amountField = self.amountTextField.text {
+            amount = amountField
+        }
+
+        if let payeeEmailField = self.payeeEmailTextField.text {
+            payeeEmail = payeeEmailField
+            if (payeeEmail == "") {
+                // TODO: currently we default to this email if none is entered.
+                // We need this email for testing. Do we want to leave this default here
+                // or move it to server?
+                payeeEmail = "rtimoschuk-us-bus-onb-ppcp-approve-seller15@paypal.com"
+            }
+        }
+
+        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail)
+    }
+
+    // MARK: - UI Helpers
+
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Incomplete Fields", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+
+    private func updateLabel(withText text: String) {
+        DispatchQueue.main.async {
+            self.resultsLabel.text = text
+        }
+    }
+
     // MARK: - BTViewControllerPresentingDelegate
+
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
         self.present(viewController, animated: true) { }
     }
