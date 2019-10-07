@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80791C89234B9E2700A93E1B /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80791C88234B9E2700A93E1B /* UnitTests.m */; };
+		80791C92234B9E4D00A93E1B /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80791C91234B9E4D00A93E1B /* BTPayPalAPIClient_Tests.swift */; };
+		80791C94234B9E7000A93E1B /* BTPayPalValidateCardResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80791C93234B9E7000A93E1B /* BTPayPalValidateCardResult_Tests.swift */; };
+		80791C96234B9E8200A93E1B /* BTPayPalValidateResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80791C95234B9E8200A93E1B /* BTPayPalValidateResult_Tests.swift */; };
 		80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */; };
 		80ADA74F23464A8900579E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ADA74E23464A8900579E7A /* Main.storyboard */; };
 		80B36CB723453FF100AD35E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CB623453FF100AD35E8 /* ViewController.swift */; };
@@ -32,8 +36,25 @@
 		A49DF39DA01C763D914B180D /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B962C63FD9746C3214A4D5D /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		80791C8B234B9E2700A93E1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80BAD272234531B30050F86C;
+			remoteInfo = Demo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7B962C63FD9746C3214A4D5D /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80791C86234B9E2700A93E1B /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80791C88234B9E2700A93E1B /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
+		80791C8A234B9E2700A93E1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80791C90234B9E4D00A93E1B /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		80791C91234B9E4D00A93E1B /* BTPayPalAPIClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalAPIClient_Tests.swift; sourceTree = "<group>"; };
+		80791C93234B9E7000A93E1B /* BTPayPalValidateCardResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidateCardResult_Tests.swift; sourceTree = "<group>"; };
+		80791C95234B9E8200A93E1B /* BTPayPalValidateResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidateResult_Tests.swift; sourceTree = "<group>"; };
 		80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMerchantAPI.swift; sourceTree = "<group>"; };
 		80ADA74E23464A8900579E7A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80ADA75123464D0D00579E7A /* P4PDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = P4PDemo.entitlements; path = "../../../braintree-ios/P4PDemo/P4PDemo.entitlements"; sourceTree = "<group>"; };
@@ -68,6 +89,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		80791C83234B9E2700A93E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80BAD270234531B30050F86C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,6 +123,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		80791C87234B9E2700A93E1B /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				80791C88234B9E2700A93E1B /* UnitTests.m */,
+				80791C8A234B9E2700A93E1B /* Info.plist */,
+				80791C91234B9E4D00A93E1B /* BTPayPalAPIClient_Tests.swift */,
+				80791C90234B9E4D00A93E1B /* UnitTests-Bridging-Header.h */,
+				80791C93234B9E7000A93E1B /* BTPayPalValidateCardResult_Tests.swift */,
+				80791C95234B9E8200A93E1B /* BTPayPalValidateResult_Tests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		80B36CB423453DB800AD35E8 /* Public */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +151,7 @@
 			children = (
 				80BAD275234531B30050F86C /* Demo */,
 				80BAD295234532A30050F86C /* BraintreePayPalValidator */,
+				80791C87234B9E2700A93E1B /* UnitTests */,
 				80BAD274234531B30050F86C /* Products */,
 				6D8747EA22F435AE06F0EF97 /* Pods */,
 				C9DB1FDC124257E4D46F6F7B /* Frameworks */,
@@ -121,6 +163,7 @@
 			children = (
 				80BAD273234531B30050F86C /* Demo.app */,
 				80BAD294234532A30050F86C /* BraintreePayPalValidator.framework */,
+				80791C86234B9E2700A93E1B /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,17 +171,17 @@
 		80BAD275234531B30050F86C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				80ADA75123464D0D00579E7A /* P4PDemo.entitlements */,
 				80BAD276234531B30050F86C /* AppDelegate.h */,
 				80BAD277234531B30050F86C /* AppDelegate.m */,
-				80B36CB623453FF100AD35E8 /* ViewController.swift */,
 				80BAD282234531B50050F86C /* Assets.xcassets */,
-				80BAD284234531B50050F86C /* LaunchScreen.storyboard */,
-				80BAD287234531B50050F86C /* Info.plist */,
-				80BAD288234531B50050F86C /* main.m */,
 				80B36CB523453FF100AD35E8 /* Demo-Bridging-Header.h */,
 				80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */,
+				80BAD287234531B50050F86C /* Info.plist */,
+				80BAD284234531B50050F86C /* LaunchScreen.storyboard */,
+				80BAD288234531B50050F86C /* main.m */,
 				80ADA74E23464A8900579E7A /* Main.storyboard */,
+				80ADA75123464D0D00579E7A /* P4PDemo.entitlements */,
+				80B36CB623453FF100AD35E8 /* ViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -193,6 +236,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		80791C85234B9E2700A93E1B /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80791C8D234B9E2700A93E1B /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				80791C82234B9E2700A93E1B /* Sources */,
+				80791C83234B9E2700A93E1B /* Frameworks */,
+				80791C84234B9E2700A93E1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80791C8C234B9E2700A93E1B /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 80791C86234B9E2700A93E1B /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		80BAD272234531B30050F86C /* Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80BAD28C234531B50050F86C /* Build configuration list for PBXNativeTarget "Demo" */;
@@ -236,9 +297,16 @@
 		80BAD26B234531B30050F86C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Braintree Payments";
 				TargetAttributes = {
+					80791C85234B9E2700A93E1B = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+						TestTargetID = 80BAD272234531B30050F86C;
+					};
 					80BAD272234531B30050F86C = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
@@ -263,11 +331,19 @@
 			targets = (
 				80BAD272234531B30050F86C /* Demo */,
 				80BAD293234532A30050F86C /* BraintreePayPalValidator */,
+				80791C85234B9E2700A93E1B /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		80791C84234B9E2700A93E1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80BAD271234531B30050F86C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,6 +406,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		80791C82234B9E2700A93E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80791C92234B9E4D00A93E1B /* BTPayPalAPIClient_Tests.swift in Sources */,
+				80791C96234B9E8200A93E1B /* BTPayPalValidateResult_Tests.swift in Sources */,
+				80791C94234B9E7000A93E1B /* BTPayPalValidateCardResult_Tests.swift in Sources */,
+				80791C89234B9E2700A93E1B /* UnitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80BAD26F234531B30050F86C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,6 +444,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		80791C8C234B9E2700A93E1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80BAD272234531B30050F86C /* Demo */;
+			targetProxy = 80791C8B234B9E2700A93E1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		80BAD284234531B50050F86C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -369,6 +464,55 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		80791C8E234B9E2700A93E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43253H4X22;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UnitTests/UnitTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Debug;
+		};
+		80791C8F234B9E2700A93E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43253H4X22;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UnitTests/UnitTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Release;
+		};
 		80BAD28A234531B50050F86C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -585,6 +729,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		80791C8D234B9E2700A93E1B /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80791C8E234B9E2700A93E1B /* Debug */,
+				80791C8F234B9E2700A93E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		80BAD26E234531B30050F86C /* Build configuration list for PBXProject "BraintreePayPalValidator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

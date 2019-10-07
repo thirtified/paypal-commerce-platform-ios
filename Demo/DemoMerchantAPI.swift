@@ -62,8 +62,8 @@ class DemoMerchantAPI {
         return queryString
     }
 
-    func captureOrder(orderId: String, completion: @escaping ((OrderCaptureInfo?, Error?) -> Void)) {
-        let url = URL(string: captureUrlString + "/" + orderId)!
+    func finalizeOrder(orderId: String, intent: String, completion: @escaping ((OrderCaptureInfo?, Error?) -> Void)) {
+        let url = URL(string: captureUrlString + "/" + orderId + "?intent=" + intent)!
 
 //        let request = URLRequest.init(url: url)
         //request.httpMethod = "PUT"
@@ -74,6 +74,7 @@ class DemoMerchantAPI {
             }
 
             do {
+                // TODO: - rename captureInfo if it will also represent the authorizationInfo
                 let orderCaptureInfo = try JSONDecoder().decode(OrderCaptureInfo.self, from: data)
                 completion(orderCaptureInfo, nil)
             } catch (let parseError) {

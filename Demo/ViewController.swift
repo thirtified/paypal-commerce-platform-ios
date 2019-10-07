@@ -75,15 +75,17 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func finalizeOrderTapped(_ sender: Any) {
-        updateLabel(withText: "Finalizing/Capturing order...")
+        updateLabel(withText: "Finalizing order...")
 
-        DemoMerchantAPI.sharedService.captureOrder(orderId: self.orderValidationInfo!.orderId) { (captureResult, error) in
+        DemoMerchantAPI.sharedService.finalizeOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent) { (captureResult, error) in
             guard let captureResult = captureResult else {
-                self.updateLabel(withText: "Order Capture Failed: \(error?.localizedDescription ?? "error")")
+                self.updateLabel(withText: "Finalize failed: \(error?.localizedDescription ?? "error")")
                 return
             }
 
-            self.updateLabel(withText: "Order Capture Status: \(captureResult.status)")
+            if let orderIntentType = self.orderRequestParams?.intent {
+                self.updateLabel(withText: "\(orderIntentType) Order Status: \(captureResult.status)")
+            }
         }
     }
 
@@ -155,7 +157,10 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
             }
         }
 
-        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail, intent: "AUTHORIZE")
+        // TODO: - make a toggle to get a value for this
+        let authorizationIntent = "AUTHORIZE"
+
+        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail, intent: authorizationIntent)
     }
 
     // MARK: - UI Helpers
