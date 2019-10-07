@@ -13,6 +13,7 @@ struct OrderCaptureInfo: Codable {
 struct OrderParams: Codable {
     let amount: String
     let payeeEmail: String
+    let intent: String
 }
 
 class DemoMerchantAPI {
@@ -52,6 +53,10 @@ class DemoMerchantAPI {
 
         if (orderParams.amount != "") {
             queryString += (queryString.contains("?") ? "&amount=" : "?amount=") + orderParams.amount
+        }
+
+        if (orderParams.intent != "") {
+            queryString += (queryString.contains("?") ? "&intent=" : "?intent=") + orderParams.intent
         }
 
         return queryString

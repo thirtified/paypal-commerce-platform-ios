@@ -155,7 +155,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
             }
         }
 
-        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail)
+        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail, intent: "AUTHORIZE")
     }
 
     // MARK: - UI Helpers
