@@ -5,7 +5,7 @@ struct OrderValidationInfo: Codable {
     let universalAccessToken: String
 }
 
-struct OrderCaptureInfo: Codable {
+struct OrderTransactionInfo: Codable {
     let orderId: String
     let status: String
 }
@@ -22,7 +22,7 @@ class DemoMerchantAPI {
 
     //    private let urlString = "https://braintree-p4p-sample-merchant.herokuapp.com/order-validation-info"
     private let fetchUrlString = "http://localhost:5000/order-validation-info"
-    private let captureUrlString = "http://localhost:5000/capture-order"
+    private let transactionUrlString = "http://localhost:5000/process-order"
 
     private init() {}
 
@@ -56,14 +56,14 @@ class DemoMerchantAPI {
         }
 
         if (orderParams.intent != "") {
-            queryString += (queryString.contains("?") ? "&intent=" : "?intent=") + orderParams.intent
+            queryString += (queryString.contains("?") ? "&intent=" : "?intent=") + orderParams.intent.uppercased()
         }
 
         return queryString
     }
 
-    func finalizeOrder(orderId: String, intent: String, completion: @escaping ((OrderCaptureInfo?, Error?) -> Void)) {
-        let url = URL(string: captureUrlString + "/" + orderId + "?intent=" + intent)!
+    func processOrder(orderId: String, intent: String, completion: @escaping ((OrderTransactionInfo?, Error?) -> Void)) {
+        let url = URL(string: transactionUrlString + "/" + orderId + "?intent=" + intent)!
 
 //        let request = URLRequest.init(url: url)
         //request.httpMethod = "PUT"
@@ -74,9 +74,8 @@ class DemoMerchantAPI {
             }
 
             do {
-                // TODO: - rename captureInfo if it will also represent the authorizationInfo
-                let orderCaptureInfo = try JSONDecoder().decode(OrderCaptureInfo.self, from: data)
-                completion(orderCaptureInfo, nil)
+                let orderTransactionInfo = try JSONDecoder().decode(OrderTransactionInfo.self, from: data)
+                completion(orderTransactionInfo, nil)
             } catch (let parseError) {
                 completion(nil, parseError)
             }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="djI-UJ-em7">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -13,80 +13,89 @@
             <objects>
                 <viewController id="L6e-1X-5Nd" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zwt-O3-0C0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-Va-vG3">
-                                <rect key="frame" x="20" y="227" width="130" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-DW-X2O">
-                                <rect key="frame" x="170" y="227" width="130" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKP-Fi-CDA">
-                                <rect key="frame" x="108.5" y="303" width="103" height="30"/>
+                                <rect key="frame" x="136" y="417" width="103" height="30"/>
                                 <state key="normal" title="Card Checkout"/>
                                 <connections>
                                     <action selector="cardCheckoutTapped:" destination="L6e-1X-5Nd" eventType="touchUpInside" id="EZv-6A-a5d"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ob-jm-rEF">
-                                <rect key="frame" x="20" y="488" width="280" height="65"/>
+                                <rect key="frame" x="20" y="602" width="335" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="osD-AV-OlJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="osD-AV-OlJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZa-dg-Qwf">
-                                <rect key="frame" x="102.5" y="348" width="115" height="30"/>
+                                <rect key="frame" x="130" y="462" width="115" height="30"/>
                                 <state key="normal" title="PayPal Checkout"/>
                                 <connections>
                                     <action selector="payPalCheckoutTapped:" destination="L6e-1X-5Nd" eventType="touchUpInside" id="Vft-3d-Gd8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U69-E4-10n">
-                                <rect key="frame" x="93" y="393" width="134" height="30"/>
+                                <rect key="frame" x="120.5" y="507" width="134" height="30"/>
                                 <state key="normal" title="ApplePay Checkout"/>
                                 <connections>
                                     <action selector="applePayCheckoutTapped:" destination="L6e-1X-5Nd" eventType="touchUpInside" id="izu-a4-Uvd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhR-ne-NpM">
-                                <rect key="frame" x="112.5" y="438" width="95" height="30"/>
-                                <state key="normal" title="Finalize Order"/>
+                                <rect key="frame" x="138" y="552" width="99" height="30"/>
+                                <state key="normal" title="Process Order"/>
                                 <connections>
-                                    <action selector="finalizeOrderTapped:" destination="L6e-1X-5Nd" eventType="touchUpInside" id="Z6r-Gp-22U"/>
+                                    <action selector="processOrderTapped:" destination="L6e-1X-5Nd" eventType="touchUpInside" id="Bez-nS-sDE"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-Va-vG3">
+                                <rect key="frame" x="20" y="268" width="157.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-DW-X2O">
+                                <rect key="frame" x="197.5" y="268" width="157.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jcc-jt-gWt">
-                                <rect key="frame" x="20" y="64" width="280" height="34"/>
+                                <rect key="frame" x="20" y="105" width="335" height="34"/>
                                 <string key="placeholder">seller15@paypal.com
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xv6-IJ-Gw6">
-                                <rect key="frame" x="20" y="173" width="280" height="34"/>
+                                <rect key="frame" x="20" y="214" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYt-ah-G37">
-                                <rect key="frame" x="20" y="118" width="130" height="34"/>
+                                <rect key="frame" x="20" y="159" width="157.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mnM-lO-pnD">
+                                <rect key="frame" x="20" y="54" width="335" height="32"/>
+                                <segments>
+                                    <segment title="Capture"/>
+                                    <segment title="Authorize"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jcc-jt-gWt" firstAttribute="leading" secondItem="nVF-97-K7U" secondAttribute="leading" constant="20" id="1fV-fh-1gi"/>
                             <constraint firstItem="kYt-ah-G37" firstAttribute="top" secondItem="Jcc-jt-gWt" secondAttribute="bottom" constant="20" id="6Hg-1X-fOF"/>
                             <constraint firstItem="pCv-Va-vG3" firstAttribute="top" secondItem="Xv6-IJ-Gw6" secondAttribute="bottom" constant="20" id="6eY-B8-8qa"/>
+                            <constraint firstItem="Jcc-jt-gWt" firstAttribute="top" secondItem="mnM-lO-pnD" secondAttribute="bottom" constant="20" id="7Gu-Y2-jp3"/>
                             <constraint firstItem="A4I-DW-X2O" firstAttribute="width" secondItem="pCv-Va-vG3" secondAttribute="width" id="7Vi-KZ-9BX"/>
+                            <constraint firstItem="mnM-lO-pnD" firstAttribute="top" secondItem="nVF-97-K7U" secondAttribute="top" constant="10" id="DHF-Vj-YF1"/>
                             <constraint firstItem="nVF-97-K7U" firstAttribute="trailing" secondItem="Jcc-jt-gWt" secondAttribute="trailing" constant="20" id="DYj-z2-7UN"/>
                             <constraint firstItem="pCv-Va-vG3" firstAttribute="leading" secondItem="nVF-97-K7U" secondAttribute="leading" constant="20" id="Dok-J0-boH"/>
                             <constraint firstItem="U69-E4-10n" firstAttribute="centerX" secondItem="zwt-O3-0C0" secondAttribute="centerX" id="EAz-ZF-44S"/>
@@ -101,8 +110,8 @@
                             <constraint firstItem="A4I-DW-X2O" firstAttribute="leading" secondItem="pCv-Va-vG3" secondAttribute="trailing" constant="20" id="VTQ-8d-IyN"/>
                             <constraint firstItem="yZa-dg-Qwf" firstAttribute="centerX" secondItem="zwt-O3-0C0" secondAttribute="centerX" id="Ylv-Ua-BQp"/>
                             <constraint firstItem="U69-E4-10n" firstAttribute="top" secondItem="yZa-dg-Qwf" secondAttribute="bottom" constant="15" id="dKj-f3-MDk"/>
+                            <constraint firstItem="mnM-lO-pnD" firstAttribute="leading" secondItem="nVF-97-K7U" secondAttribute="leading" constant="20" id="drH-yc-bJa"/>
                             <constraint firstItem="kYt-ah-G37" firstAttribute="leading" secondItem="Xv6-IJ-Gw6" secondAttribute="leading" id="ekR-zC-nbn"/>
-                            <constraint firstItem="Jcc-jt-gWt" firstAttribute="top" secondItem="nVF-97-K7U" secondAttribute="top" constant="20" id="g5O-pm-SXN"/>
                             <constraint firstItem="fhR-ne-NpM" firstAttribute="top" secondItem="U69-E4-10n" secondAttribute="bottom" constant="15" id="hAU-Qs-lPC"/>
                             <constraint firstItem="kYt-ah-G37" firstAttribute="leading" secondItem="nVF-97-K7U" secondAttribute="leading" constant="20" id="hzk-Uk-JHe"/>
                             <constraint firstItem="nVF-97-K7U" firstAttribute="trailing" secondItem="Jcc-jt-gWt" secondAttribute="trailing" constant="20" id="ifk-e2-e4r"/>
@@ -111,6 +120,7 @@
                             <constraint firstItem="nVF-97-K7U" firstAttribute="trailing" secondItem="Xv6-IJ-Gw6" secondAttribute="trailing" constant="20" id="qvQ-7J-xxA"/>
                             <constraint firstItem="nVF-97-K7U" firstAttribute="trailing" secondItem="A4I-DW-X2O" secondAttribute="trailing" constant="20" id="r4J-Te-kCN"/>
                             <constraint firstItem="A4I-DW-X2O" firstAttribute="top" secondItem="Xv6-IJ-Gw6" secondAttribute="bottom" constant="20" id="vc9-Bq-hzG"/>
+                            <constraint firstItem="nVF-97-K7U" firstAttribute="trailing" secondItem="mnM-lO-pnD" secondAttribute="trailing" constant="20" id="x1L-Ww-ZcX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nVF-97-K7U"/>
                     </view>
@@ -126,14 +136,15 @@
                         <outlet property="cardNumberTextField" destination="Xv6-IJ-Gw6" id="bil-gg-hWh"/>
                         <outlet property="cvvTextField" destination="A4I-DW-X2O" id="0IQ-5c-88F"/>
                         <outlet property="expirationDateTextField" destination="pCv-Va-vG3" id="iHz-sG-gY9"/>
-                        <outlet property="finalizeButton" destination="fhR-ne-NpM" id="NIk-Vs-As1"/>
+                        <outlet property="orderIntentSegmentedControl" destination="mnM-lO-pnD" id="c2U-oF-TFo"/>
                         <outlet property="payeeEmailTextField" destination="Jcc-jt-gWt" id="Pe6-Jo-UZ3"/>
+                        <outlet property="processOrderButton" destination="fhR-ne-NpM" id="0Fo-hu-ElR"/>
                         <outlet property="resultsLabel" destination="1Ob-jm-rEF" id="ttE-b6-bH5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulk-qH-5CT" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328.75" y="105.63380281690141"/>
+            <point key="canvasLocation" x="2327.1999999999998" y="104.7976011994003"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hjW-Zw-AuJ">
@@ -141,7 +152,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djI-UJ-em7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P1g-ac-3qv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>

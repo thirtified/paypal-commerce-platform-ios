@@ -7,7 +7,8 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var cvvTextField: UITextField!
     @IBOutlet weak var payeeEmailTextField: UITextField!
     @IBOutlet weak var resultsLabel: UILabel!
-    @IBOutlet weak var finalizeButton: UIButton!
+    @IBOutlet weak var processOrderButton: UIButton!
+    @IBOutlet weak var orderIntentSegmentedControl: UISegmentedControl!
 
     private var orderValidationInfo: OrderValidationInfo?
     private var orderRequestParams: OrderParams?
@@ -34,7 +35,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
 
             guard let cardNonce = tokenizedCard?.nonce else { return }
             self.updateLabel(withText: "Validate card success: \(cardNonce)")
-            self.finalizeButton.isEnabled = true
+            self.processOrderButton.isEnabled = true
         })
     }
 
@@ -68,23 +69,23 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
 
             self.updateLabel(withText: "ApplePay Nonce: \(applePayCardNonce.nonce)")
             print("ApplePay nonce = \(applePayCardNonce.nonce)")
-            self.finalizeButton.isEnabled = true
+            self.processOrderButton.isEnabled = true
 
             applePayResultHandler(true)
         })
     }
 
-    @IBAction func finalizeOrderTapped(_ sender: Any) {
-        updateLabel(withText: "Finalizing order...")
+    @IBAction func processOrderTapped(_ sender: Any) {
+        updateLabel(withText: "Processing order...")
 
-        DemoMerchantAPI.sharedService.finalizeOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent) { (captureResult, error) in
-            guard let captureResult = captureResult else {
-                self.updateLabel(withText: "Finalize failed: \(error?.localizedDescription ?? "error")")
+        DemoMerchantAPI.sharedService.processOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent) { (transactionResult, error) in
+            guard let transactionResult = transactionResult else {
+                self.updateLabel(withText: "Transaction failed: \(error?.localizedDescription ?? "error")")
                 return
             }
 
             if let orderIntentType = self.orderRequestParams?.intent {
-                self.updateLabel(withText: "\(orderIntentType) Order Status: \(captureResult.status)")
+                self.updateLabel(withText: "\(orderIntentType) Order status: \(transactionResult.status)")
             }
         }
     }
@@ -157,10 +158,9 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
             }
         }
 
-        // TODO: - make a toggle to get a value for this
-        let authorizationIntent = "AUTHORIZE"
+        let orderIntent = orderIntentSegmentedControl.titleForSegment(at: orderIntentSegmentedControl.selectedSegmentIndex)
 
-        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail, intent: authorizationIntent)
+        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail, intent: orderIntent!)
     }
 
     // MARK: - UI Helpers
