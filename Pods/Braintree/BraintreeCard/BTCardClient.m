@@ -79,7 +79,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
         // Union Pay tokenization requests should not go through the GraphQL API
         // TODO DO NOT MERGE, remove conditional !self.apiClient.payPalUAT
         if ([self isGraphQLEnabledForCardTokenization:configuration] && !request.enrollmentID && !self.apiClient.payPalUAT) {
-
+            
             if (request.card.authenticationInsightRequested && !request.card.merchantAccountId) {
                 NSError *error = [NSError errorWithDomain:BTCardClientErrorDomain
                                                      code:BTCardClientErrorTypeIntegration
@@ -87,7 +87,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                 completionBlock(nil, error);
                 return;
             }
-
+            
             NSDictionary *parameters = [request.card graphQLParameters];
             [self.apiClient POST:@""
                       parameters:parameters
@@ -192,7 +192,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     BTJSON *jsonResponse = userInfo[BTHTTPJSONResponseBodyKey];
     if ([jsonResponse asDictionary]) {
         mutableUserInfo[BTCustomerInputBraintreeValidationErrorsKey] = [jsonResponse asDictionary];
-
+        
         BTJSON *fieldError = [[jsonResponse[@"fieldErrors"] asArray] firstObject];
         NSString *errorMessage = [jsonResponse[@"error"][@"message"] asString];
         if (errorMessage) {
@@ -232,7 +232,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     if (options) {
         parameters[@"options"] = options;
     }
-
+    
     if (request.card.authenticationInsightRequested) {
         parameters[@"authenticationInsight"] = @YES;
         parameters[@"merchantAccountId"] = request.card.merchantAccountId;

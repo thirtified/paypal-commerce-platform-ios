@@ -36,20 +36,30 @@ PODS:
     - Braintree/PayPal
 
 DEPENDENCIES:
+  - Braintree (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/Apple-Pay (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/Card (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/Core (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/PaymentFlow (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/PayPal (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
   - BraintreePayPalValidator (from `./`)
 
-SPEC REPOS:
-  trunk:
-    - Braintree
-
 EXTERNAL SOURCES:
+  Braintree:
+    :branch: pp-uat-support
+    :git: https://github.com/braintree/braintree_ios.git
   BraintreePayPalValidator:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  Braintree:
+    :commit: 86248097cf8992d15ef4ff4b316b2af1e0badc23
+    :git: https://github.com/braintree/braintree_ios.git
 
 SPEC CHECKSUMS:
   Braintree: 6c7b531ed255701cc69666a2f02d1324a2d95c41
   BraintreePayPalValidator: 802fe88c9f9039869e830b9be6737c0e9ddee73f
 
-PODFILE CHECKSUM: afc62882660d5abab894f40398c8f1c3e1019927
+PODFILE CHECKSUM: 5ec93eb3403ee4fa29d2094531d8c4223a7a2c85
 
 COCOAPODS: 1.8.1
