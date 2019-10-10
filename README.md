@@ -10,8 +10,6 @@ BraintreePayPalValidator provides a native SDK offering to current PayPal partne
 
 - Make sure to now open the **Xcode workspace** instead of the project file when going to build/run the project. This is called `BraintreePayPalValidator.xcworkspace`.
 
-- Currently, do **not** run `pod install` to run this app. The project includes the Podfiles needed to run. This project relies on changes to Braintree pods that are not released on CocoaPods, etc.
-
 - Choose the `Demo` app target from the drop-down menu before clicking the run/play button to run the app. Choose the simulator appropriate for your testing needs. See screenshot below.
 
 ![Choose Demo target](documentation_image_assets/p4p_demo_target.png)
