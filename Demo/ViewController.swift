@@ -6,10 +6,11 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var cvvTextField: UITextField!
     @IBOutlet weak var payeeEmailTextField: UITextField!
-    @IBOutlet weak var resultsLabel: UILabel!
+    @IBOutlet weak var orderResultLabel: UILabel!
     @IBOutlet weak var processOrderButton: UIButton!
     @IBOutlet weak var orderIntentSegmentedControl: UISegmentedControl!
-
+    @IBOutlet weak var checkoutResultLabel: UILabel!
+    
     private var orderValidationInfo: OrderValidationInfo?
     private var orderRequestParams: OrderParams?
     private var payPalValidatorClient: BTPayPalValidatorClient?
@@ -17,8 +18,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateLabel(withText: "Fetching Token and Order ID...")
-        fetchOrderValidationInfo()
+        updateOrderLabel(withText: "Generate an order id.")
     }
 
     // MARK: - IBActions
@@ -26,24 +26,24 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBAction func cardCheckoutTapped(_ sender: UIButton) {
         guard let card = createBTCard() else { return }
 
-        updateLabel(withText: "Validating card...")
+        updateCheckoutLabel(withText: "Validating card...")
         payPalValidatorClient?.checkoutWithCard(card, presentingDelegate: self, completion: { (tokenizedCard, error) in
             if ((error) != nil) {
-                self.updateLabel(withText: "\(error?.localizedDescription ?? "Tokenization Error")")
+                self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Tokenization Error")")
                 return
             }
 
             guard let cardNonce = tokenizedCard?.nonce else { return }
-            self.updateLabel(withText: "Validate card success: \(cardNonce)")
+            self.updateCheckoutLabel(withText: "Validate card success: \(cardNonce)")
             self.processOrderButton.isEnabled = true
         })
     }
 
     @IBAction func payPalCheckoutTapped(_ sender: UIButton) {
 
-        updateLabel(withText: "Checking out with PayPal...")
+        updateCheckoutLabel(withText: "Checking out with PayPal...")
         payPalValidatorClient?.checkoutWithPayPal(presentingDelegate: self, completion: { (error) in
-            self.updateLabel(withText: "PayPal checkout complete")
+            self.updateCheckoutLabel(withText: "PayPal checkout complete")
         })
     }
 
@@ -58,16 +58,16 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
                 PKPaymentSummaryItem(label: "P4PDemo", amount: NSDecimalNumber(string: "10")),
         ]
 
-        self.updateLabel(withText: "Presenting ApplePay Sheet ...")
+        self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
         payPalValidatorClient?.checkoutWithApplePay(paymentRequest, presentingDelegate: self, completion: { (applePayCardNonce, error, applePayResultHandler) in
             guard let applePayCardNonce = applePayCardNonce else {
-                self.updateLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
+                self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
 
                 applePayResultHandler(false)
                 return
             }
 
-            self.updateLabel(withText: "ApplePay Nonce: \(applePayCardNonce.nonce)")
+            self.updateCheckoutLabel(withText: "ApplePay Nonce: \(applePayCardNonce.nonce)")
             print("ApplePay nonce = \(applePayCardNonce.nonce)")
             self.processOrderButton.isEnabled = true
 
@@ -76,22 +76,25 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func processOrderTapped(_ sender: Any) {
-        updateLabel(withText: "Processing order...")
+        updateCheckoutLabel(withText: "Processing order...")
 
         DemoMerchantAPI.sharedService.processOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent) { (transactionResult, error) in
             guard let transactionResult = transactionResult else {
-                self.updateLabel(withText: "Transaction failed: \(error?.localizedDescription ?? "error")")
+                self.updateCheckoutLabel(withText: "Transaction failed: \(error?.localizedDescription ?? "error")")
                 return
             }
 
             if let orderIntentType = self.orderRequestParams?.intent {
-                self.updateLabel(withText: "\(orderIntentType) Order status: \(transactionResult.status)")
+                self.updateCheckoutLabel(withText: "\(orderIntentType) Order status: \(transactionResult.status)")
             }
         }
     }
 
-    @IBAction func refreshTapped(_ sender: Any) {
-        updateLabel(withText: "Fetching new Token and Order ID...")
+    @IBAction func generateOrderTapped(_ sender: Any) {
+        updateOrderLabel(withText: "Fetching new Token and Order ID...")
+        updateCheckoutLabel(withText: "Checkout results")
+        self.processOrderButton.isEnabled = false
+
         fetchOrderValidationInfo()
     }
 
@@ -131,13 +134,13 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         DemoMerchantAPI.sharedService.fetchOrderValidationInfo(orderParams: self.orderRequestParams!) { (orderValidationInfo, error) in
             guard let info = orderValidationInfo, error == nil else {
-                self.updateLabel(withText: "Error: \(error!.localizedDescription)")
+                self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)")
                 return
             }
 
             self.orderValidationInfo = info
             self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: info.universalAccessToken, orderId: info.orderId)
-            self.updateLabel(withText: "Order ID: \(info.orderId)\nToken: \(info.universalAccessToken)")
+            self.updateOrderLabel(withText: "Order ID: \(info.orderId)\nToken: \(info.universalAccessToken)")
         }
     }
 
@@ -171,9 +174,15 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         self.present(alert, animated: true)
     }
 
-    private func updateLabel(withText text: String) {
+    private func updateOrderLabel(withText text: String) {
         DispatchQueue.main.async {
-            self.resultsLabel.text = text
+            self.orderResultLabel.text = text
+        }
+    }
+
+    private func updateCheckoutLabel(withText text: String) {
+        DispatchQueue.main.async {
+            self.checkoutResultLabel.text = text
         }
     }
 
