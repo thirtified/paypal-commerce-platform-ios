@@ -31,10 +31,9 @@
 
          _payPalAPIClient = [[BTPayPalAPIClient alloc] initWithAccessToken:accessToken];
 
-         NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
+         // NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
 
-         // TO DO: Waiting for tokenize to accept PP access tokens
-         _btAPIClient = [[BTAPIClient alloc] initWithAuthorization:tokenizationKey];
+         _btAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
          _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:_btAPIClient];
      }
 
