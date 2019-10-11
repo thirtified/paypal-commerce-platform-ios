@@ -154,7 +154,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
                 // TODO: currently we default to this email if none is entered.
                 // We need this email for testing. Do we want to leave this default here
                 // or move it to server?
-                payeeEmail = "rtimoschuk-us-bus-onb-ppcp-approve-seller15@paypal.com"
+                payeeEmail = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
             }
         }
 
