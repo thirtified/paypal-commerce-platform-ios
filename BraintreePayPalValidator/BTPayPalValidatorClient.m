@@ -97,7 +97,9 @@
      // TODO: Use hardcode URL (https://api.paypal.com/checkoutnow?token=) with orderId to complete PayPal flow until orders v2 accepts universal JWT
 
      BTPayPalCheckoutRequest *request = [BTPayPalCheckoutRequest new];
-     request.checkoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.te-ppcp-nativesdk.qa.paypal.com/checkoutnow?token=%@", self.orderId]];
+     request.checkoutURL = [NSURL URLWithString:[NSString
+                                                 stringWithFormat:@"https://www.ppcpn.stage.paypal.com/checkoutnow?token=%@", self.orderId]];
+                                                 // stringWithFormat:@"https://www.google.com"]];
 
      self.paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:self.btAPIClient];
      self.paymentFlowDriver.viewControllerPresentingDelegate = viewControllerPresentingDelegate;
