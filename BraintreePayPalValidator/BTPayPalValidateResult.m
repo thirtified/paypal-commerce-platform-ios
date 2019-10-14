@@ -12,6 +12,8 @@
                 break;
             }
         }
+        _issueType = [json[@"details"][0][@"issue"] asString];
+        _message = [json[@"message"] asString];
     }
     return self;
 }

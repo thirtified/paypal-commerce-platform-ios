@@ -1,4 +1,5 @@
 #import "BTPayPalAPIClient.h"
+#import "BTPayPalValidatorClient.h"
 
 @interface BTPayPalAPIClient()
 
@@ -31,7 +32,7 @@
     }
 
     NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable __unused response, NSError * _Nullable error) {
+    [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 completion(nil, error);
@@ -39,8 +40,23 @@
             }
 
             BTJSON *json = [[BTJSON alloc] initWithData:data];
-
             BTPayPalValidateResult *result = [[BTPayPalValidateResult alloc] initWithJSON:json];
+
+            NSInteger statusCode = ((NSHTTPURLResponse *) response).statusCode;
+            if (statusCode >= 400) {
+                if ([result.issueType isEqualToString:@"CONTINGENCY"]) {
+                    completion(result, nil);
+                    return;
+                } else {
+                    NSError *validateError = [[NSError alloc] initWithDomain:BTPayPalValidatorErrorDomain
+                        code:0
+                    userInfo:@{NSLocalizedDescriptionKey: result.message}];
+
+                    completion(nil, validateError);
+                    return;
+                }
+            }
+
             completion(result, nil);
         });
     }] resume];
