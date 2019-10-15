@@ -7,4 +7,4 @@ FOUNDATION_EXPORT double BraintreePayPalValidatorVersionNumber;
 FOUNDATION_EXPORT const unsigned char BraintreePayPalValidatorVersionString[];
 
 #import "BTPayPalValidatorClient.h"
-#import "BTPayPalValidateResult.h"
+#import "BTPayPalValidatorResult.h"

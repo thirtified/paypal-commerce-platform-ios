@@ -1,10 +1,8 @@
 #import <PassKit/PassKit.h>
 
-//TODO: What is the proper import syntax here?
-
-//#if __has_include(<Braintree/BraintreeCard.h>)
+#if __has_include(<Braintree/BraintreeCard.h>)
 #import <Braintree/BraintreeCard.h>
-//#endif
+#endif
 
 #if __has_include("BraintreeApplePay.h")
 #import "BraintreeApplePay.h"
@@ -17,8 +15,6 @@
 #else
 #import <BraintreePaymentFlow/BraintreePaymentFlow.h>
 #endif
-
-#import "BTPayPalValidateResult.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
