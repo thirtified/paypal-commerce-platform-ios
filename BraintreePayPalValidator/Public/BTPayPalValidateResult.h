@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly, nullable) NSURL *contingencyURL;
 
+@property (nonatomic, copy) NSString *issueType;
+
+@property (nonatomic, copy) NSString *message;
+
 - (instancetype)initWithJSON:(BTJSON *)JSON;
 
 @end
