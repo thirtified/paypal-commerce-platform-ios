@@ -11,6 +11,7 @@
 #endif
 
 #import "BraintreePayPalValidator.h"
+#import "BTPayPalValidateResult.h"
 #import "BTPayPalValidatorClient.h"
 #import "BTPayPalValidatorResult.h"
 
