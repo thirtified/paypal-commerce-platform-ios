@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		033CC72323579B990022FCC0 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CC72223579B990022FCC0 /* UnitTests.swift */; };
 		353D5CB1FE30315F75949D46 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF758E234DC47251207827 /* Pods_Tests_UnitTests.framework */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* BTPayPalValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */; };
+		8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */; };
+		8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */; };
+		8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */; };
 		80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */; };
 		80ADA74F23464A8900579E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ADA74E23464A8900579E7A /* Main.storyboard */; };
 		80B36CB723453FF100AD35E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CB623453FF100AD35E8 /* ViewController.swift */; };
@@ -47,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		033CC72023579B990022FCC0 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		033CC72223579B990022FCC0 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		033CC72423579B990022FCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		033CC72A23579C450022FCC0 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidatorResult.h; sourceTree = "<group>"; };
 		80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPayPalValidatorResult.m; sourceTree = "<group>"; };
 		8026243823578F75005EA84A /* BTPayPalValidateResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidateResult.h; sourceTree = "<group>"; };
+		802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalAPIClient_Tests.swift; sourceTree = "<group>"; };
+		8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidateResult_Tests.swift; sourceTree = "<group>"; };
+		8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalCardContingencyResult_Tests.swift; sourceTree = "<group>"; };
 		80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMerchantAPI.swift; sourceTree = "<group>"; };
 		80ADA74E23464A8900579E7A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80ADA75123464D0D00579E7A /* P4PDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = P4PDemo.entitlements; path = "../../../braintree-ios/P4PDemo/P4PDemo.entitlements"; sourceTree = "<group>"; };
@@ -119,7 +123,9 @@
 		033CC72123579B990022FCC0 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				033CC72223579B990022FCC0 /* UnitTests.swift */,
+				802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */,
+				8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */,
+				8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */,
 				033CC72A23579C450022FCC0 /* UnitTests-Bridging-Header.h */,
 				033CC72423579B990022FCC0 /* Info.plist */,
 			);
@@ -470,7 +476,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				033CC72323579B990022FCC0 /* UnitTests.swift in Sources */,
+				8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */,
+				8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */,
+				8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43253H4X22;
 				INFOPLIST_FILE = UnitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,7 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43253H4X22;
 				INFOPLIST_FILE = UnitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
