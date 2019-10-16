@@ -2,6 +2,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+@interface BTPayPalValidatorResult : NSObject
+
 /**
 Result type
 */
@@ -16,10 +19,14 @@ typedef NS_ENUM(NSInteger, BTPayPalValidatorResultType) {
     BTPayPalValidatorResultTypeApplePay,
 };
 
-@interface BTPayPalValidatorResult : NSObject
-
+/**
+Order ID associated with the checkout
+*/
 @property (nonatomic, copy) NSString *orderID;
 
+/**
+Payment method type of the checkout
+*/
 @property (nonatomic, assign) BTPayPalValidatorResultType type;
 
 @end

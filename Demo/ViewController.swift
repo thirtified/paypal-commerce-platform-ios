@@ -27,14 +27,14 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         guard let card = createBTCard() else { return }
 
         updateCheckoutLabel(withText: "Validating card...")
-        payPalValidatorClient?.checkoutWithCard(card, presentingDelegate: self, completion: { (tokenizedCard, error) in
+        payPalValidatorClient?.checkoutWithCard(card, presentingDelegate: self, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Tokenization Error")")
                 return
             }
 
-            guard let cardNonce = tokenizedCard?.nonce else { return }
-            self.updateCheckoutLabel(withText: "Validate card success: \(cardNonce)")
+            guard let orderID = validatorResult?.orderID else { return }
+            self.updateCheckoutLabel(withText: "Validate card success: \(orderID)")
             self.processOrderButton.isEnabled = true
         })
     }
@@ -42,8 +42,9 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBAction func payPalCheckoutTapped(_ sender: UIButton) {
 
         updateCheckoutLabel(withText: "Checking out with PayPal...")
-        payPalValidatorClient?.checkoutWithPayPal(presentingDelegate: self, completion: { (error) in
-            self.updateCheckoutLabel(withText: "PayPal checkout complete")
+        payPalValidatorClient?.checkoutWithPayPal(presentingDelegate: self, completion: { (validatorResult, error) in
+            guard let orderID = validatorResult?.orderID else { return }
+            self.updateCheckoutLabel(withText: "PayPal checkout complete: \(orderID)")
         })
     }
 
@@ -59,16 +60,15 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
-        payPalValidatorClient?.checkoutWithApplePay(paymentRequest, presentingDelegate: self, completion: { (applePayCardNonce, error, applePayResultHandler) in
-            guard let applePayCardNonce = applePayCardNonce else {
+        payPalValidatorClient?.checkoutWithApplePay(paymentRequest, presentingDelegate: self, completion: { (validatorResult, error, applePayResultHandler) in
+            guard let validatorResult = validatorResult else {
                 self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
 
                 applePayResultHandler(false)
                 return
             }
 
-            self.updateCheckoutLabel(withText: "ApplePay Nonce: \(applePayCardNonce.nonce)")
-            print("ApplePay nonce = \(applePayCardNonce.nonce)")
+            self.updateCheckoutLabel(withText: "ApplePay successful: \(validatorResult.orderID)")
             self.processOrderButton.isEnabled = true
 
             applePayResultHandler(true)
