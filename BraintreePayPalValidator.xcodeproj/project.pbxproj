@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		353D5CB1FE30315F75949D46 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF758E234DC47251207827 /* Pods_Tests_UnitTests.framework */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* BTPayPalValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */; };
 		8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */; };
 		8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */; };
 		8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */; };
+		802624402357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */; };
+		802624482357C031005EA84A /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624472357C031005EA84A /* UITests.swift */; };
+		802624502357C04A005EA84A /* UITests-Bridging-Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026244F2357C04A005EA84A /* UITests-Bridging-Header.swift */; };
 		80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */; };
 		80ADA74F23464A8900579E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ADA74E23464A8900579E7A /* Main.storyboard */; };
 		80B36CB723453FF100AD35E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CB623453FF100AD35E8 /* ViewController.swift */; };
@@ -34,11 +36,20 @@
 		80BAD286234531B50050F86C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BAD284234531B50050F86C /* LaunchScreen.storyboard */; };
 		80BAD289234531B50050F86C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BAD288234531B50050F86C /* main.m */; };
 		80BAD298234532A30050F86C /* BraintreePayPalValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BAD296234532A30050F86C /* BraintreePayPalValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A49DF39DA01C763D914B180D /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B962C63FD9746C3214A4D5D /* Pods_Demo.framework */; };
+		B29A87C074A0246E5024BFD0 /* Pods_SDK_Dependencies_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41913D470E0BA32697BF5B8E /* Pods_SDK_Dependencies_UnitTests.framework */; };
+		B7D46BE5B062901A782CA678 /* Pods_SDK_Dependencies_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDBCFF7334CB252348E649E /* Pods_SDK_Dependencies_Demo.framework */; };
+		DB7DC0A06916FDE446746674 /* Pods_SDK_Dependencies_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FAC092BBF21EDACE0EF9FC6 /* Pods_SDK_Dependencies_UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		033CC72523579B990022FCC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80BAD272234531B30050F86C;
+			remoteInfo = Demo;
+		};
+		8026244A2357C031005EA84A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
 			proxyType = 1;
@@ -51,15 +62,25 @@
 		033CC72023579B990022FCC0 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		033CC72423579B990022FCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		033CC72A23579C450022FCC0 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A1FED01792AB461F59E03CA /* Pods-SDK_Dependencies-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UITests.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UITests/Pods-SDK_Dependencies-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4EDF758E234DC47251207827 /* Pods_Tests_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B962C63FD9746C3214A4D5D /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DDBCFF7334CB252348E649E /* Pods_SDK_Dependencies_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDK_Dependencies_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41913D470E0BA32697BF5B8E /* Pods_SDK_Dependencies_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDK_Dependencies_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C9FB6FE6A756F055860B023 /* Pods-SDK_Dependencies-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UITests.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UITests/Pods-SDK_Dependencies-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		6FAC092BBF21EDACE0EF9FC6 /* Pods_SDK_Dependencies_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDK_Dependencies_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidatorResult.h; sourceTree = "<group>"; };
 		80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPayPalValidatorResult.m; sourceTree = "<group>"; };
 		8026243823578F75005EA84A /* BTPayPalValidateResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidateResult.h; sourceTree = "<group>"; };
 		802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalAPIClient_Tests.swift; sourceTree = "<group>"; };
 		8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidateResult_Tests.swift; sourceTree = "<group>"; };
 		8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalCardContingencyResult_Tests.swift; sourceTree = "<group>"; };
+		8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidatorClient_Tests.swift; sourceTree = "<group>"; };
+		802624452357C031005EA84A /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		802624472357C031005EA84A /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		802624492357C031005EA84A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8026244F2357C04A005EA84A /* UITests-Bridging-Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITests-Bridging-Header.swift"; sourceTree = "<group>"; };
 		80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMerchantAPI.swift; sourceTree = "<group>"; };
 		80ADA74E23464A8900579E7A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80ADA75123464D0D00579E7A /* P4PDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = P4PDemo.entitlements; path = "../../../braintree-ios/P4PDemo/P4PDemo.entitlements"; sourceTree = "<group>"; };
@@ -88,8 +109,10 @@
 		80BAD294234532A30050F86C /* BraintreePayPalValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BraintreePayPalValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BAD296234532A30050F86C /* BraintreePayPalValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BraintreePayPalValidator.h; sourceTree = "<group>"; };
 		80BAD297234532A30050F86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1785D517CDA33B044846BD6 /* Pods-SDK_Dependencies-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		DCAF94628777451761C6A589 /* Pods-Tests-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED84DAD419A329693D68814B /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		EDDCB2D6713F5F54C5AE06CC /* Pods-SDK_Dependencies-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		F59EB3EE67E3571324C49915 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +121,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				353D5CB1FE30315F75949D46 /* Pods_Tests_UnitTests.framework in Frameworks */,
+				B29A87C074A0246E5024BFD0 /* Pods_SDK_Dependencies_UnitTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802624422357C031005EA84A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB7DC0A06916FDE446746674 /* Pods_SDK_Dependencies_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A49DF39DA01C763D914B180D /* Pods_Demo.framework in Frameworks */,
+				B7D46BE5B062901A782CA678 /* Pods_SDK_Dependencies_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +154,7 @@
 		033CC72123579B990022FCC0 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */,
 				802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */,
 				8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */,
 				8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */,
@@ -139,6 +171,12 @@
 				F59EB3EE67E3571324C49915 /* Pods-Demo.release.xcconfig */,
 				23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */,
 				DCAF94628777451761C6A589 /* Pods-Tests-UnitTests.release.xcconfig */,
+				C1785D517CDA33B044846BD6 /* Pods-SDK_Dependencies-Demo.debug.xcconfig */,
+				2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */,
+				0A1FED01792AB461F59E03CA /* Pods-SDK_Dependencies-UITests.debug.xcconfig */,
+				5C9FB6FE6A756F055860B023 /* Pods-SDK_Dependencies-UITests.release.xcconfig */,
+				0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */,
+				EDDCB2D6713F5F54C5AE06CC /* Pods-SDK_Dependencies-UnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -165,6 +203,16 @@
 			path = PayPalCheckout;
 			sourceTree = "<group>";
 		};
+		802624462357C031005EA84A /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				802624472357C031005EA84A /* UITests.swift */,
+				802624492357C031005EA84A /* Info.plist */,
+				8026244F2357C04A005EA84A /* UITests-Bridging-Header.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
 		80B36CB423453DB800AD35E8 /* Public */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +229,7 @@
 				80BAD275234531B30050F86C /* Demo */,
 				80BAD295234532A30050F86C /* BraintreePayPalValidator */,
 				033CC72123579B990022FCC0 /* UnitTests */,
+				802624462357C031005EA84A /* UITests */,
 				80BAD274234531B30050F86C /* Products */,
 				6D8747EA22F435AE06F0EF97 /* Pods */,
 				C9DB1FDC124257E4D46F6F7B /* Frameworks */,
@@ -193,6 +242,7 @@
 				80BAD273234531B30050F86C /* Demo.app */,
 				80BAD294234532A30050F86C /* BraintreePayPalValidator.framework */,
 				033CC72023579B990022FCC0 /* UnitTests.xctest */,
+				802624452357C031005EA84A /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,8 +285,9 @@
 		C9DB1FDC124257E4D46F6F7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7B962C63FD9746C3214A4D5D /* Pods_Demo.framework */,
-				4EDF758E234DC47251207827 /* Pods_Tests_UnitTests.framework */,
+				2DDBCFF7334CB252348E649E /* Pods_SDK_Dependencies_Demo.framework */,
+				6FAC092BBF21EDACE0EF9FC6 /* Pods_SDK_Dependencies_UITests.framework */,
+				41913D470E0BA32697BF5B8E /* Pods_SDK_Dependencies_UnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -282,6 +333,26 @@
 			productReference = 033CC72023579B990022FCC0 /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		802624442357C031005EA84A /* UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8026244C2357C031005EA84A /* Build configuration list for PBXNativeTarget "UITests" */;
+			buildPhases = (
+				F82D62AE7F726CD6F739B108 /* [CP] Check Pods Manifest.lock */,
+				802624412357C031005EA84A /* Sources */,
+				802624422357C031005EA84A /* Frameworks */,
+				802624432357C031005EA84A /* Resources */,
+				809CB5F92BDE84CA8C4377F7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8026244B2357C031005EA84A /* PBXTargetDependency */,
+			);
+			name = UITests;
+			productName = UITests;
+			productReference = 802624452357C031005EA84A /* UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		80BAD272234531B30050F86C /* Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80BAD28C234531B50050F86C /* Build configuration list for PBXNativeTarget "Demo" */;
@@ -326,12 +397,16 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
-				LastSwiftUpdateCheck = 1110;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Braintree Payments";
 				TargetAttributes = {
 					033CC71F23579B990022FCC0 = {
 						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 80BAD272234531B30050F86C;
+					};
+					802624442357C031005EA84A = {
+						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 80BAD272234531B30050F86C;
 					};
 					80BAD272234531B30050F86C = {
@@ -359,12 +434,20 @@
 				80BAD272234531B30050F86C /* Demo */,
 				80BAD293234532A30050F86C /* BraintreePayPalValidator */,
 				033CC71F23579B990022FCC0 /* UnitTests */,
+				802624442357C031005EA84A /* UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		033CC71E23579B990022FCC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802624432357C031005EA84A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,7 +489,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Demo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SDK_Dependencies-Demo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,15 +502,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		49144A52479816E8D71A9F4D /* [CP] Check Pods Manifest.lock */ = {
@@ -445,7 +528,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tests-UnitTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SDK_Dependencies-UnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -458,15 +541,54 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		809CB5F92BDE84CA8C4377F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-UITests/Pods-SDK_Dependencies-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-UITests/Pods-SDK_Dependencies-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SDK_Dependencies-UITests/Pods-SDK_Dependencies-UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F82D62AE7F726CD6F739B108 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SDK_Dependencies-UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -478,7 +600,17 @@
 			files = (
 				8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */,
 				8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */,
+				802624402357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift in Sources */,
 				8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802624412357C031005EA84A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802624502357C04A005EA84A /* UITests-Bridging-Header.swift in Sources */,
+				802624482357C031005EA84A /* UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +648,11 @@
 			target = 80BAD272234531B30050F86C /* Demo */;
 			targetProxy = 033CC72523579B990022FCC0 /* PBXContainerItemProxy */;
 		};
+		8026244B2357C031005EA84A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80BAD272234531B30050F86C /* Demo */;
+			targetProxy = 8026244A2357C031005EA84A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -532,7 +669,7 @@
 /* Begin XCBuildConfiguration section */
 		033CC72823579B990022FCC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */;
+			baseConfigurationReference = 0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -557,7 +694,7 @@
 		};
 		033CC72923579B990022FCC0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCAF94628777451761C6A589 /* Pods-Tests-UnitTests.release.xcconfig */;
+			baseConfigurationReference = EDDCB2D6713F5F54C5AE06CC /* Pods-SDK_Dependencies-UnitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -577,6 +714,54 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Release;
+		};
+		8026244D2357C031005EA84A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A1FED01792AB461F59E03CA /* Pods-SDK_Dependencies-UITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43253H4X22;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "UITests-Bridging-Header.swift";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Demo;
+			};
+			name = Debug;
+		};
+		8026244E2357C031005EA84A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C9FB6FE6A756F055860B023 /* Pods-SDK_Dependencies-UITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43253H4X22;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "UITests-Bridging-Header.swift";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Demo;
 			};
 			name = Release;
 		};
@@ -694,7 +879,7 @@
 		};
 		80BAD28D234531B50050F86C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED84DAD419A329693D68814B /* Pods-Demo.debug.xcconfig */;
+			baseConfigurationReference = C1785D517CDA33B044846BD6 /* Pods-SDK_Dependencies-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -717,7 +902,7 @@
 		};
 		80BAD28E234531B50050F86C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F59EB3EE67E3571324C49915 /* Pods-Demo.release.xcconfig */;
+			baseConfigurationReference = 2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -801,6 +986,15 @@
 			buildConfigurations = (
 				033CC72823579B990022FCC0 /* Debug */,
 				033CC72923579B990022FCC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8026244C2357C031005EA84A /* Build configuration list for PBXNativeTarget "UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8026244D2357C031005EA84A /* Debug */,
+				8026244E2357C031005EA84A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -2,7 +2,7 @@ import XCTest
 
 class BTPayPalValidateResult_Tests: XCTestCase {
 
-    func testPayPalValidateResult_initializesAllProperties_withoutContingencyURL() {
+    func testPayPalValidateResult_initializes_withoutContingencyURL() {
         let resultBody = [
             "payment_source": [
                 "card": [
@@ -58,6 +58,9 @@ class BTPayPalValidateResult_Tests: XCTestCase {
         let result = BTPayPalValidateResult(json: BTJSON(value: resultBody))
 
         XCTAssertEqual(result.contingencyURL, URL.init(string: "www.contingency.com"))
+        XCTAssertEqual(result.issueType, "CONTINGENCY")
+        XCTAssertEqual(result.message, "The requested action could not be performed, semantically incorrect, or failed business validation.")
     }
+
 
 }

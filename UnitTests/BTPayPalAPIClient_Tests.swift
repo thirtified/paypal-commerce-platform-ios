@@ -2,10 +2,25 @@ import XCTest
 
 class BTPayPalAPIClient_Tests: XCTestCase {
 
+    // MARK: - BTPayPalAPIClient initialization
+
     func testAPIClientInitialization_withValidUAT_returnsClientWithTokenizationKey() {
-        let apiClient = BTPayPalAPIClient.init(accessToken: "123.123.123")
-        XCTAssertEqual(apiClient.accessToken, "123.123.123")
+        let apiClient = BTPayPalAPIClient.init(accessToken: "header.payload.verify_signature")
+        XCTAssertEqual(apiClient.accessToken, "header.payload.verify_signature")
     }
+
+    func testAPIClientInitialization_withInvalidAuthorization_returnsNil() {
+        XCTAssertNil(BTPayPalAPIClient(accessToken: "invalid."))
+    }
+
+    func testAPIClientInitialization_withEmptyAuthorization_returnsNil() {
+        XCTAssertNil(BTPayPalAPIClient(accessToken: ""))
+    }
+
+    // MARK: - validatePaymentMethod
+
+
+    // MARK: -  validatePaymentMethod helpers
 
     func testAPIClient_constructTokenizePayload() {
         let apiClient = BTPayPalAPIClient.init(accessToken: "123.123.123")
@@ -45,5 +60,4 @@ class BTPayPalAPIClient_Tests: XCTestCase {
         }
         XCTAssertGreaterThan(httpBody.count, 0)
     }
-
 }
