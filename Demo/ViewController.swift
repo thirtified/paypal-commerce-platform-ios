@@ -45,6 +45,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         payPalValidatorClient?.checkoutWithPayPal(presentingDelegate: self, completion: { (validatorResult, error) in
             guard let orderID = validatorResult?.orderID else { return }
             self.updateCheckoutLabel(withText: "PayPal checkout complete: \(orderID)")
+            self.processOrderButton.isEnabled = true
         })
     }
 
@@ -56,7 +57,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         paymentRequest.paymentSummaryItems =
             [
                 PKPaymentSummaryItem(label: "Sock", amount: NSDecimalNumber(string: "10")),
-                PKPaymentSummaryItem(label: "P4PDemo", amount: NSDecimalNumber(string: "10")),
+                PKPaymentSummaryItem(label: "Demo", amount: NSDecimalNumber(string: "10")),
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")

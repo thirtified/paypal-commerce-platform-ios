@@ -48,7 +48,7 @@
                     completion(result, nil);
                     return;
                 } else {
-                    NSString *errorDescription = result.issueType ?: @"Validation Error";
+                    NSString *errorDescription = result.message ?: @"Validation Error";
                     NSError *validateError = [[NSError alloc] initWithDomain:BTPayPalValidatorErrorDomain
                         code:0
                     userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
