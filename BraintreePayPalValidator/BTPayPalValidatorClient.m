@@ -162,8 +162,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
                                              completion:^(BTPayPalValidateResult * _Nullable __unused result, NSError * _Nullable error) {
                 completion(tokenizedApplePayPayment, error);
             }];
-        }
-        else {
+        } else {
             completion(nil, error);
         }
     }];
@@ -185,8 +184,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
         self.applePayCompletionBlock(self.validatorResult, error, ^(BOOL success) {
             if (success) {
                 completion([[PKPaymentAuthorizationResult alloc] initWithStatus:PKPaymentAuthorizationStatusSuccess errors:nil]);
-            }
-            else {
+            } else {
                 completion([[PKPaymentAuthorizationResult alloc] initWithStatus:PKPaymentAuthorizationStatusFailure errors:nil]);
             }
         });
@@ -202,8 +200,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
         self.applePayCompletionBlock(self.validatorResult, error, ^(BOOL success) {
             if (success) {
                 completion(PKPaymentAuthorizationStatusSuccess);
-            }
-            else {
+            } else {
                 completion(PKPaymentAuthorizationStatusFailure);
             }
         });
