@@ -36,4 +36,23 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
+    func testCheckoutWithApplePay_whenDefaultPaymentRequestIsNotAvailable_returnsError() {
+        let mockApplePayClient = MockApplePayClient(apiClient: BTAPIClient(authorization: "development_testing_integration_merchant_id")!)
+        mockApplePayClient.error = NSError(domain: "error", code: 0, userInfo: [NSLocalizedDescriptionKey: "error message"])
+        
+        let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature", orderId: "order123")
+        let expectation = self.expectation(description: "returns Apple Pay error to merchant")
+        
+        let mockViewControllerPresentingDelegate = MockViewControllerPresentingDelegate()
+
+        validatorClient.checkoutWithApplePay(PKPaymentRequest(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+            XCTAssertEqual(error?.localizedDescription, "error message")
+            XCTAssertNil(validatorResult)
+            XCTAssertNil(handler)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
 }
