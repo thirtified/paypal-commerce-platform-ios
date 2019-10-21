@@ -6,3 +6,4 @@
 #import "BTPayPalValidateResult.h"
 #import "BTPayPalAPIClient.h"
 #import "BTPayPalCardContingencyResult.h"
+#import "BTPayPalValidatorClient_Internal.h"

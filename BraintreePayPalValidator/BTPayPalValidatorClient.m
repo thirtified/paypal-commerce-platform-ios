@@ -1,4 +1,4 @@
-#import "BTPayPalValidatorClient.h"
+#import "BTPayPalValidatorClient_Internal.h"
 #import "BTPayPalAPIClient.h"
 #import "BTPayPalCardContingencyRequest.h"
 #import "BTPayPalCheckoutRequest.h"
@@ -16,7 +16,6 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
 @property (strong, nonatomic) BTPayPalAPIClient *payPalAPIClient;
 @property (nonatomic, strong) BTAPIClient *btAPIClient;
-@property (nonatomic, strong) BTApplePayClient *applePayClient;
 @property (nonatomic, strong) BTPaymentFlowDriver *paymentFlowDriver;
 
 @property (nonatomic, strong) BTPayPalValidatorResult *validatorResult;

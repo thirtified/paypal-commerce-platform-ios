@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		12BEADF0564F9BD925CB484E /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */; };
+		42986C06235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */; };
+		42D352F5235E49BF006A9DD1 /* MockApplePayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
+		42FF386C235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */; };
 		6D60CD5AA3BAE9E097278984 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A19364E404CB9CC3B8456AD /* Pods_Tests_UnitTests.framework */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* BTPayPalValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */; };
@@ -63,7 +66,10 @@
 		0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewControllerPresentingDelegate.swift; sourceTree = "<group>"; };
+		42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplePayClient.swift; sourceTree = "<group>"; };
 		42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidatorClient_Internal.h; sourceTree = "<group>"; };
 		80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidatorResult.h; sourceTree = "<group>"; };
 		80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPayPalValidatorResult.m; sourceTree = "<group>"; };
 		8026243823578F75005EA84A /* BTPayPalValidateResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidateResult.h; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 		033CC72123579B990022FCC0 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				42D352F3235E49AC006A9DD1 /* Helpers */,
 				8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */,
 				802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */,
 				8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */,
@@ -154,6 +161,15 @@
 				033CC72423579B990022FCC0 /* Info.plist */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		42D352F3235E49AC006A9DD1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */,
+				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		6D8747EA22F435AE06F0EF97 /* Pods */ = {
@@ -261,6 +277,7 @@
 				8026243823578F75005EA84A /* BTPayPalValidateResult.h */,
 				80B36CD723454D9000AD35E8 /* BTPayPalValidateResult.m */,
 				80B36CE323454EC000AD35E8 /* BTPayPalValidatorClient.m */,
+				42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */,
 				80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */,
 				80015A3123567399002825E1 /* CardCheckout */,
 				80BAD297234532A30050F86C /* Info.plist */,
@@ -294,6 +311,7 @@
 				80B36CC82345473800AD35E8 /* BTPayPalCheckoutRequest.h in Headers */,
 				80B36CDC23454E3700AD35E8 /* BTPayPalCardContingencyRequest.h in Headers */,
 				80B36CE023454E8700AD35E8 /* BTPayPalAPIClient.h in Headers */,
+				42FF386C235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +562,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42D352F5235E49BF006A9DD1 /* MockApplePayClient.swift in Sources */,
 				8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */,
+				42986C06235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift in Sources */,
 				8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */,
 				802624402357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift in Sources */,
 				8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */,
