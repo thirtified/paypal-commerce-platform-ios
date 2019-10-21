@@ -3,12 +3,12 @@ import XCTest
 class BTPayPalValidatorClient_Tests: XCTestCase {
 
     func testValidatorClientInitialization_withUAT_withOrderId_initializes() {
-        let validatorClient = BTPayPalValidatorClient.init(accessToken: "header.payload.signature", orderId: "order123")
+        let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature")
         XCTAssertNotNil(validatorClient)
     }
 
     func testValidatorClientInitialization_withInvalidUAT_returnsNil() {
-        let validatorClient = BTPayPalValidatorClient.init(accessToken: "invalidUAT", orderId: "order123")
+        let validatorClient = BTPayPalValidatorClient(accessToken: "invalidUAT")
         XCTAssertNotNil(validatorClient.applePayClient)
         XCTAssertNil(validatorClient)
     }
@@ -19,7 +19,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         let mockApplePayClient = MockApplePayClient(apiClient: BTAPIClient(authorization: "development_testing_integration_merchant_id")!)
         mockApplePayClient.paymentRequest = PKPaymentRequest()
         
-        let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature", orderId: "order123")
+        let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature")
         let expectation = self.expectation(description: "passes Apple Pay view controller to merchant")
         
         let mockViewControllerPresentingDelegate = MockViewControllerPresentingDelegate()
@@ -30,7 +30,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             expectation.fulfill()
         }
         
-        validatorClient.checkoutWithApplePay(PKPaymentRequest(), presentingDelegate: mockViewControllerPresentingDelegate) { (_, _, _) in
+        validatorClient.checkoutWithApplePay("my-order-id", paymentRequest: PKPaymentRequest(), presentingDelegate: mockViewControllerPresentingDelegate) { (_, _, _) in
             // not called
         }
         
@@ -41,12 +41,12 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         let mockApplePayClient = MockApplePayClient(apiClient: BTAPIClient(authorization: "development_testing_integration_merchant_id")!)
         mockApplePayClient.error = NSError(domain: "error", code: 0, userInfo: [NSLocalizedDescriptionKey: "error message"])
         
-        let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature", orderId: "order123")
+        let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature")
         let expectation = self.expectation(description: "returns Apple Pay error to merchant")
         
         let mockViewControllerPresentingDelegate = MockViewControllerPresentingDelegate()
 
-        validatorClient.checkoutWithApplePay(PKPaymentRequest(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+        validatorClient.checkoutWithApplePay("my-order-id", paymentRequest: PKPaymentRequest(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertEqual(error?.localizedDescription, "error message")
             XCTAssertNil(validatorResult)
             XCTAssertNil(handler)

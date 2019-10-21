@@ -27,7 +27,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         guard let card = createBTCard() else { return }
 
         updateCheckoutLabel(withText: "Validating card...")
-        payPalValidatorClient?.checkoutWithCard(card, presentingDelegate: self, completion: { (validatorResult, error) in
+        payPalValidatorClient?.checkoutWithCard(self.orderValidationInfo!.orderId, card: card, presentingDelegate: self, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Tokenization Error")")
                 return
@@ -41,7 +41,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     @IBAction func payPalCheckoutTapped(_ sender: BTUIPayPalButton) {
         updateCheckoutLabel(withText: "Checking out with PayPal...")
-        payPalValidatorClient?.checkoutWithPayPal(presentingDelegate: self, completion: { (validatorResult, error) in
+        payPalValidatorClient?.checkoutWithPayPal(self.orderValidationInfo!.orderId, presentingDelegate: self, completion: { (validatorResult, error) in
             guard let orderID = validatorResult?.orderID else { return }
             self.updateCheckoutLabel(withText: "PayPal checkout complete: \(orderID)")
             self.processOrderButton.isEnabled = true
@@ -59,7 +59,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
-        payPalValidatorClient?.checkoutWithApplePay(paymentRequest, presentingDelegate: self, completion: { (validatorResult, error, applePayResultHandler) in
+        payPalValidatorClient?.checkoutWithApplePay(self.orderValidationInfo!.orderId, paymentRequest: paymentRequest, presentingDelegate: self, completion: { (validatorResult, error, applePayResultHandler) in
             guard let validatorResult = validatorResult else {
                 self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
                 applePayResultHandler(false)
@@ -137,7 +137,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
             }
 
             self.orderValidationInfo = info
-            self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: info.universalAccessToken, orderId: info.orderId)
+            self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: info.universalAccessToken)
             self.updateOrderLabel(withText: "Order ID: \(info.orderId)\nToken: \(info.universalAccessToken)")
         }
     }
