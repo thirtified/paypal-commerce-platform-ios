@@ -1,6 +1,7 @@
 import BraintreePayPalValidator
 
-class ViewController: UIViewController, BTViewControllerPresentingDelegate {
+class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
+    
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var expirationDateTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
@@ -17,7 +18,6 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateOrderLabel(withText: "Generate an order id.")
     }
 
@@ -49,21 +49,19 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func applePayCheckoutTapped(_ sender: Any) {
-        let paymentRequest = PKPaymentRequest.init()
+        let paymentRequest = PKPaymentRequest()
 
         // Set other PKPaymentRequest properties here
         paymentRequest.merchantCapabilities = .capability3DS
-        paymentRequest.paymentSummaryItems =
-            [
-                PKPaymentSummaryItem(label: "Sock", amount: NSDecimalNumber(string: "10")),
-                PKPaymentSummaryItem(label: "Demo", amount: NSDecimalNumber(string: "10")),
+        paymentRequest.paymentSummaryItems = [
+            PKPaymentSummaryItem(label: "Sock", amount: NSDecimalNumber(string: "10")),
+            PKPaymentSummaryItem(label: "Demo", amount: NSDecimalNumber(string: "10")),
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
         payPalValidatorClient?.checkoutWithApplePay(paymentRequest, presentingDelegate: self, completion: { (validatorResult, error, applePayResultHandler) in
             guard let validatorResult = validatorResult else {
                 self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
-
                 applePayResultHandler(false)
                 return
             }
@@ -189,10 +187,10 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
     // MARK: - BTViewControllerPresentingDelegate
 
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
-        self.present(viewController, animated: true) { }
+        self.present(viewController, animated: true)
     }
 
     func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
-        self.dismiss(animated: true) { }
+        self.dismiss(animated: true)
     }
 }

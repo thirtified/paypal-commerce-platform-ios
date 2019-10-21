@@ -11,7 +11,7 @@
         <!--BTPayPalValidator-->
         <scene sceneID="99L-Ia-vFh">
             <objects>
-                <viewController id="hwA-5J-peJ" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hwA-5J-peJ" customClass="DemoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vjX-aj-d6M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
