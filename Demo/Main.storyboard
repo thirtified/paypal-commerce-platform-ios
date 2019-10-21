@@ -89,7 +89,7 @@
                                         <rect key="frame" x="0.0" y="264.5" width="320" height="259.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taM-KG-Cud">
-                                                <rect key="frame" x="20" y="38.5" width="280" height="34"/>
+                                                <rect key="frame" x="21" y="38.5" width="278" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="igs-wr-4lh"/>
                                                 </constraints>
@@ -97,7 +97,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dmL-Wk-arq">
-                                                <rect key="frame" x="20" y="83.5" width="103" height="34"/>
+                                                <rect key="frame" x="21" y="83.5" width="101" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="hkX-JI-P7B"/>
                                                 </constraints>
@@ -105,32 +105,15 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MIx-XZ-NNk">
-                                                <rect key="frame" x="148" y="83.5" width="152" height="34"/>
+                                                <rect key="frame" x="147" y="83.5" width="152" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="152" id="EGS-8i-O79"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRJ-0N-Bog">
-                                                <rect key="frame" x="21" y="160.5" width="48" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="6PN-eI-Opn"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <state key="normal" title="PayPal"/>
-                                                <connections>
-                                                    <action selector="payPalCheckoutTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="n1I-mp-nVK"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkout With" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0M7-Hm-VJJ">
-                                                <rect key="frame" x="20" y="145" width="83.5" height="12"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Form" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL2-uu-YWa">
-                                                <rect key="frame" x="20" y="18" width="59.5" height="14.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Checkout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL2-uu-YWa">
+                                                <rect key="frame" x="21" y="18" width="84.5" height="14.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14.5" id="bTr-cx-q8C"/>
                                                 </constraints>
@@ -138,63 +121,85 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAE-dz-J7J">
-                                                <rect key="frame" x="108.5" y="200.5" width="103" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <state key="normal" title="Process Order"/>
-                                                <connections>
-                                                    <action selector="processOrderTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="tgp-qg-0pD"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkout results" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OO-cT-lB4">
-                                                <rect key="frame" x="20" y="234.5" width="280" height="17"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6A5-Lb-RfQ">
+                                                <rect key="frame" x="253" y="117.5" width="46" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMn-O3-U3J">
-                                                <rect key="frame" x="227" y="160.5" width="73" height="32"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <state key="normal" title="Apple Pay"/>
-                                                <connections>
-                                                    <action selector="applePayCheckoutTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="pyn-Wc-U7W"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6A5-Lb-RfQ">
-                                                <rect key="frame" x="142.5" y="160.5" width="35" height="32"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <state key="normal" title="Card"/>
+                                                <state key="normal" title="Submit"/>
                                                 <connections>
                                                     <action selector="cardCheckoutTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="PHb-Ff-xWa"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Checkout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0M7-Hm-VJJ">
+                                                <rect key="frame" x="21" y="137.5" width="90" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Wi-4s-VPG">
+                                                <rect key="frame" x="21" y="161" width="278" height="87"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="9c1-Mm-TSU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="278" height="30"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="32" translatesAutoresizingMaskIntoConstraints="NO" id="Qkm-86-uaH" customClass="BTUIPayPalButton">
+                                                                <rect key="frame" x="0.0" y="0.0" width="124" height="30"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="UuD-iX-hih"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="payPalCheckoutTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="a7n-cp-z5a"/>
+                                                                </connections>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMn-O3-U3J" customClass="PKPaymentButton">
+                                                                <rect key="frame" x="154" y="0.0" width="124" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <connections>
+                                                                    <action selector="applePayCheckoutTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="pyn-Wc-U7W"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAE-dz-J7J">
+                                                        <rect key="frame" x="87.5" y="35" width="103" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <state key="normal" title="Process Order"/>
+                                                        <connections>
+                                                            <action selector="processOrderTapped:" destination="hwA-5J-peJ" eventType="touchUpInside" id="tgp-qg-0pD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkout results" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OO-cT-lB4">
+                                                        <rect key="frame" x="84.5" y="70" width="109" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="9c1-Mm-TSU" firstAttribute="leading" secondItem="7Wi-4s-VPG" secondAttribute="leading" id="Ze6-fD-Vbu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9c1-Mm-TSU" secondAttribute="trailing" id="h1T-Nm-rhh"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="dmL-Wk-arq" firstAttribute="leading" secondItem="0M7-Hm-VJJ" secondAttribute="leading" id="003-og-eMH"/>
-                                            <constraint firstItem="6A5-Lb-RfQ" firstAttribute="centerX" secondItem="sqS-Cc-qWq" secondAttribute="centerX" id="0yM-Pg-cJ4"/>
                                             <constraint firstItem="dmL-Wk-arq" firstAttribute="top" secondItem="taM-KG-Cud" secondAttribute="bottom" constant="11" id="2Db-KO-W6x"/>
-                                            <constraint firstItem="1OO-cT-lB4" firstAttribute="bottom" secondItem="sqS-Cc-qWq" secondAttribute="bottomMargin" id="6mx-cC-Edr"/>
                                             <constraint firstItem="taM-KG-Cud" firstAttribute="trailing" secondItem="MIx-XZ-NNk" secondAttribute="trailing" id="8td-EH-o70"/>
-                                            <constraint firstItem="cMn-O3-U3J" firstAttribute="trailing" secondItem="1OO-cT-lB4" secondAttribute="trailing" id="8wy-kS-BH7"/>
                                             <constraint firstItem="GL2-uu-YWa" firstAttribute="leading" secondItem="taM-KG-Cud" secondAttribute="leading" id="A13-SS-xKJ"/>
                                             <constraint firstItem="GL2-uu-YWa" firstAttribute="top" secondItem="sqS-Cc-qWq" secondAttribute="top" constant="18" id="AV7-xu-vou"/>
-                                            <constraint firstItem="0M7-Hm-VJJ" firstAttribute="leading" secondItem="1OO-cT-lB4" secondAttribute="leading" id="F1h-Mw-tIq"/>
-                                            <constraint firstAttribute="trailing" secondItem="1OO-cT-lB4" secondAttribute="trailing" constant="20" id="KR0-qt-l7o"/>
-                                            <constraint firstItem="FRJ-0N-Bog" firstAttribute="top" secondItem="cMn-O3-U3J" secondAttribute="top" id="ORc-46-VgU"/>
-                                            <constraint firstItem="1OO-cT-lB4" firstAttribute="leading" secondItem="sqS-Cc-qWq" secondAttribute="leading" constant="20" id="OiG-KG-Azu"/>
+                                            <constraint firstItem="7Wi-4s-VPG" firstAttribute="top" secondItem="0M7-Hm-VJJ" secondAttribute="bottom" constant="9" id="Bna-Ki-b08"/>
+                                            <constraint firstItem="0M7-Hm-VJJ" firstAttribute="top" secondItem="dmL-Wk-arq" secondAttribute="bottom" constant="20" id="C8D-P0-eZ7"/>
+                                            <constraint firstItem="MIx-XZ-NNk" firstAttribute="height" secondItem="dmL-Wk-arq" secondAttribute="height" id="O44-bB-nxO"/>
                                             <constraint firstItem="MIx-XZ-NNk" firstAttribute="leading" secondItem="dmL-Wk-arq" secondAttribute="trailing" constant="25" id="SbV-5E-uKx"/>
-                                            <constraint firstItem="fAE-dz-J7J" firstAttribute="top" secondItem="6A5-Lb-RfQ" secondAttribute="bottom" constant="8" id="ZHN-Lo-yRy"/>
-                                            <constraint firstItem="cMn-O3-U3J" firstAttribute="top" secondItem="MIx-XZ-NNk" secondAttribute="bottom" constant="43" id="a5p-nv-MSb"/>
-                                            <constraint firstItem="fAE-dz-J7J" firstAttribute="centerX" secondItem="sqS-Cc-qWq" secondAttribute="centerX" id="dE7-K6-IkG"/>
-                                            <constraint firstItem="MIx-XZ-NNk" firstAttribute="trailing" secondItem="cMn-O3-U3J" secondAttribute="trailing" id="hLh-II-nbr"/>
-                                            <constraint firstItem="0M7-Hm-VJJ" firstAttribute="top" secondItem="dmL-Wk-arq" secondAttribute="bottom" constant="27.5" id="iF9-74-L7o"/>
+                                            <constraint firstItem="7Wi-4s-VPG" firstAttribute="trailing" secondItem="taM-KG-Cud" secondAttribute="trailing" id="Zak-bt-mWp"/>
+                                            <constraint firstItem="7Wi-4s-VPG" firstAttribute="leading" secondItem="taM-KG-Cud" secondAttribute="leading" id="cGi-Jh-16G"/>
+                                            <constraint firstItem="6A5-Lb-RfQ" firstAttribute="top" secondItem="MIx-XZ-NNk" secondAttribute="bottom" id="eZi-xn-c6h"/>
                                             <constraint firstItem="taM-KG-Cud" firstAttribute="leading" secondItem="dmL-Wk-arq" secondAttribute="leading" id="iPC-1z-Cta"/>
-                                            <constraint firstItem="FRJ-0N-Bog" firstAttribute="leading" secondItem="sqS-Cc-qWq" secondAttribute="leading" constant="21" id="jIa-sV-JgX"/>
+                                            <constraint firstItem="6A5-Lb-RfQ" firstAttribute="trailing" secondItem="MIx-XZ-NNk" secondAttribute="trailing" id="ojP-zp-BBU"/>
                                             <constraint firstItem="taM-KG-Cud" firstAttribute="centerX" secondItem="sqS-Cc-qWq" secondAttribute="centerX" id="qes-Q8-eat"/>
+                                            <constraint firstItem="GL2-uu-YWa" firstAttribute="leading" secondItem="sqS-Cc-qWq" secondAttribute="leading" constant="21" id="rgO-oE-j0A"/>
                                             <constraint firstItem="dmL-Wk-arq" firstAttribute="bottom" secondItem="MIx-XZ-NNk" secondAttribute="bottom" id="u9n-Xm-aRu"/>
-                                            <constraint firstItem="FRJ-0N-Bog" firstAttribute="top" secondItem="0M7-Hm-VJJ" secondAttribute="bottom" constant="3.5" id="wDk-4H-qSX"/>
-                                            <constraint firstItem="6A5-Lb-RfQ" firstAttribute="centerY" secondItem="FRJ-0N-Bog" secondAttribute="centerY" id="wki-Xx-G0i"/>
                                             <constraint firstItem="taM-KG-Cud" firstAttribute="top" secondItem="GL2-uu-YWa" secondAttribute="bottom" constant="6" id="yGM-Am-zXS"/>
                                         </constraints>
                                     </view>
@@ -203,9 +208,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Drg-do-UZ8" firstAttribute="bottom" secondItem="7Wi-4s-VPG" secondAttribute="bottom" constant="11.5" id="1cO-89-7cn"/>
                             <constraint firstItem="Drg-do-UZ8" firstAttribute="trailing" secondItem="sIK-X0-WOP" secondAttribute="trailing" id="CTz-im-hWe"/>
                             <constraint firstItem="sIK-X0-WOP" firstAttribute="top" secondItem="Drg-do-UZ8" secondAttribute="top" id="fpd-T5-jQ2"/>
-                            <constraint firstItem="Drg-do-UZ8" firstAttribute="bottom" secondItem="sIK-X0-WOP" secondAttribute="bottom" id="uqJ-2n-VLt"/>
+                            <constraint firstAttribute="bottom" secondItem="sIK-X0-WOP" secondAttribute="bottom" id="uqJ-2n-VLt"/>
                             <constraint firstItem="sIK-X0-WOP" firstAttribute="leading" secondItem="Drg-do-UZ8" secondAttribute="leading" id="xtW-bP-JPG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Drg-do-UZ8"/>
@@ -225,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjN-SI-v5p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="172.26386806596702"/>
+            <point key="canvasLocation" x="1610.625" y="172.18309859154931"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vyI-Po-hT7">

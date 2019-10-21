@@ -39,8 +39,7 @@ class ViewController: UIViewController, BTViewControllerPresentingDelegate {
         })
     }
 
-    @IBAction func payPalCheckoutTapped(_ sender: UIButton) {
-
+    @IBAction func payPalCheckoutTapped(_ sender: BTUIPayPalButton) {
         updateCheckoutLabel(withText: "Checking out with PayPal...")
         payPalValidatorClient?.checkoutWithPayPal(presentingDelegate: self, completion: { (validatorResult, error) in
             guard let orderID = validatorResult?.orderID else { return }
