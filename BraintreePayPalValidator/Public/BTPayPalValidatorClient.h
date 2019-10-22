@@ -40,7 +40,7 @@ typedef void (^BTApplePayResultHandler)(BOOL success);
 - (void)checkoutWithApplePay:(NSString *)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
           presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler _Nullable resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:));
+                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:));
 
 @end
 

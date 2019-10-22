@@ -65,7 +65,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         validatorClient.checkoutWithApplePay("my-order-id", paymentRequest: PKPaymentRequest(), presentingDelegate: self.mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertEqual(error?.localizedDescription, "error message")
             XCTAssertNil(validatorResult)
-            XCTAssertNil(handler)
             expectation.fulfill()
         }
         
@@ -84,7 +83,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             XCTAssertEqual(validatorResult?.type, .applePay)
             XCTAssertNil(error)
             // TODO - test that handler is called correctly
-            XCTAssertNotNil(handler)
             expectation.fulfill()
         }
 
@@ -103,7 +101,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
-            XCTAssertNotNil(handler)
             expectation.fulfill()
         }
 
@@ -122,7 +119,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
-            XCTAssertNotNil(handler)
             expectation.fulfill()
         }
 
@@ -144,7 +140,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             XCTAssertEqual(validatorResult?.type, .applePay)
             XCTAssertNil(error)
             // TODO - test that handler is called correctly
-            XCTAssertNotNil(handler)
             expectation.fulfill()
         }
 
@@ -163,7 +158,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
-            XCTAssertNotNil(handler)
             expectation.fulfill()
         }
 
@@ -182,7 +176,6 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
-            XCTAssertNotNil(handler)
             expectation.fulfill()
         }
 

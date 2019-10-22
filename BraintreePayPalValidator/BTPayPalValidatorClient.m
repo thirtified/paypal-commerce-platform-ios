@@ -129,7 +129,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 - (void)checkoutWithApplePay:(NSString * __unused)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
           presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler _Nullable resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:)) {
+                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:)) {
     self.orderId = orderId;
 
     self.presentingDelegate = viewControllerPresentingDelegate;
