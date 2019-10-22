@@ -8,19 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		12BEADF0564F9BD925CB484E /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */; };
-		42986C06235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */; };
-		42D352F5235E49BF006A9DD1 /* MockApplePayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
 		42FF386C235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */; };
-		6D60CD5AA3BAE9E097278984 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A19364E404CB9CC3B8456AD /* Pods_Tests_UnitTests.framework */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* BTPayPalValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */; };
-		8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */; };
-		8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */; };
-		8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */; };
-		802624402357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */; };
-		802624482357C031005EA84A /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624472357C031005EA84A /* UITests.swift */; };
-		802624502357C04A005EA84A /* UITests-Bridging-Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026244F2357C04A005EA84A /* UITests-Bridging-Header.swift */; };
+		8066A056235F506F007ACC28 /* BTPayPalValidatorClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */; };
+		8066A057235F506F007ACC28 /* BTPayPalCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */; };
+		8066A058235F506F007ACC28 /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */; };
+		8066A059235F506F007ACC28 /* BTPayPalValidateResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */; };
+		8066A05B235F51EF007ACC28 /* MockApplePayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */; };
+		8066A05C235F51F2007ACC28 /* MockViewControllerPresentingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */; };
+		8066A05E235F5E9C007ACC28 /* MockPayPalAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066A05D235F5E9C007ACC28 /* MockPayPalAPIClient.swift */; };
 		80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */; };
 		80ADA74F23464A8900579E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ADA74E23464A8900579E7A /* Main.storyboard */; };
 		80B36CB723453FF100AD35E8 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CB623453FF100AD35E8 /* DemoViewController.swift */; };
@@ -40,17 +38,11 @@
 		80BAD283234531B50050F86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BAD282234531B50050F86C /* Assets.xcassets */; };
 		80BAD286234531B50050F86C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BAD284234531B50050F86C /* LaunchScreen.storyboard */; };
 		80BAD298234532A30050F86C /* BraintreePayPalValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BAD296234532A30050F86C /* BraintreePayPalValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9D1B37D8886F13A07F10A80 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A19364E404CB9CC3B8456AD /* Pods_Tests_UnitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		033CC72523579B990022FCC0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 80BAD272234531B30050F86C;
-			remoteInfo = Demo;
-		};
-		8026244A2357C031005EA84A /* PBXContainerItemProxy */ = {
+		8066A051235F5026007ACC28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
 			proxyType = 1;
@@ -60,9 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		033CC72023579B990022FCC0 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		033CC72423579B990022FCC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		033CC72A23579C450022FCC0 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +59,7 @@
 		42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplePayClient.swift; sourceTree = "<group>"; };
 		42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidatorClient_Internal.h; sourceTree = "<group>"; };
+		7C967B76CFBAE0107281E01B /* Pods-Tests-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidatorResult.h; sourceTree = "<group>"; };
 		80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTPayPalValidatorResult.m; sourceTree = "<group>"; };
 		8026243823578F75005EA84A /* BTPayPalValidateResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTPayPalValidateResult.h; sourceTree = "<group>"; };
@@ -77,10 +67,10 @@
 		8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidateResult_Tests.swift; sourceTree = "<group>"; };
 		8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalCardContingencyResult_Tests.swift; sourceTree = "<group>"; };
 		8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidatorClient_Tests.swift; sourceTree = "<group>"; };
-		802624452357C031005EA84A /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		802624472357C031005EA84A /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
-		802624492357C031005EA84A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8026244F2357C04A005EA84A /* UITests-Bridging-Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITests-Bridging-Header.swift"; sourceTree = "<group>"; };
+		8066A04C235F5026007ACC28 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8066A050235F5026007ACC28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8066A05A235F50D7007ACC28 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		8066A05D235F5E9C007ACC28 /* MockPayPalAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPayPalAPIClient.swift; sourceTree = "<group>"; };
 		80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMerchantAPI.swift; sourceTree = "<group>"; };
 		80ADA74E23464A8900579E7A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		80ADA75123464D0D00579E7A /* P4PDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = P4PDemo.entitlements; path = "../../../braintree-ios/P4PDemo/P4PDemo.entitlements"; sourceTree = "<group>"; };
@@ -109,25 +99,17 @@
 		9A19364E404CB9CC3B8456AD /* Pods_Tests_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1785D517CDA33B044846BD6 /* Pods-SDK_Dependencies-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		DCAF94628777451761C6A589 /* Pods-Tests-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED84DAD419A329693D68814B /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		EDDCB2D6713F5F54C5AE06CC /* Pods-SDK_Dependencies-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-UnitTests/Pods-SDK_Dependencies-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		F59EB3EE67E3571324C49915 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		033CC71D23579B990022FCC0 /* Frameworks */ = {
+		8066A049235F5026007ACC28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D60CD5AA3BAE9E097278984 /* Pods_Tests_UnitTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		802624422357C031005EA84A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				B9D1B37D8886F13A07F10A80 /* Pods_Tests_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,25 +131,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		033CC72123579B990022FCC0 /* UnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				42D352F3235E49AC006A9DD1 /* Helpers */,
-				8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */,
-				802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */,
-				8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */,
-				8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */,
-				033CC72A23579C450022FCC0 /* UnitTests-Bridging-Header.h */,
-				033CC72423579B990022FCC0 /* Info.plist */,
-			);
-			path = UnitTests;
-			sourceTree = "<group>";
-		};
 		42D352F3235E49AC006A9DD1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */,
 				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
+				8066A05D235F5E9C007ACC28 /* MockPayPalAPIClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -178,11 +147,11 @@
 				ED84DAD419A329693D68814B /* Pods-Demo.debug.xcconfig */,
 				F59EB3EE67E3571324C49915 /* Pods-Demo.release.xcconfig */,
 				23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */,
-				DCAF94628777451761C6A589 /* Pods-Tests-UnitTests.release.xcconfig */,
 				C1785D517CDA33B044846BD6 /* Pods-SDK_Dependencies-Demo.debug.xcconfig */,
 				2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */,
 				0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */,
 				EDDCB2D6713F5F54C5AE06CC /* Pods-SDK_Dependencies-UnitTests.release.xcconfig */,
+				7C967B76CFBAE0107281E01B /* Pods-Tests-UnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -209,14 +178,18 @@
 			path = PayPalCheckout;
 			sourceTree = "<group>";
 		};
-		802624462357C031005EA84A /* UITests */ = {
+		8066A04D235F5026007ACC28 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				802624472357C031005EA84A /* UITests.swift */,
-				802624492357C031005EA84A /* Info.plist */,
-				8026244F2357C04A005EA84A /* UITests-Bridging-Header.swift */,
+				802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */,
+				8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */,
+				8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */,
+				8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */,
+				42D352F3235E49AC006A9DD1 /* Helpers */,
+				8066A050235F5026007ACC28 /* Info.plist */,
+				8066A05A235F50D7007ACC28 /* UnitTests-Bridging-Header.h */,
 			);
-			path = UITests;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		80B36CB423453DB800AD35E8 /* Public */ = {
@@ -234,8 +207,7 @@
 			children = (
 				80BAD275234531B30050F86C /* Demo */,
 				80BAD295234532A30050F86C /* BraintreePayPalValidator */,
-				033CC72123579B990022FCC0 /* UnitTests */,
-				802624462357C031005EA84A /* UITests */,
+				8066A04D235F5026007ACC28 /* UnitTests */,
 				80BAD274234531B30050F86C /* Products */,
 				6D8747EA22F435AE06F0EF97 /* Pods */,
 				C9DB1FDC124257E4D46F6F7B /* Frameworks */,
@@ -247,8 +219,7 @@
 			children = (
 				80BAD273234531B30050F86C /* Demo.app */,
 				80BAD294234532A30050F86C /* BraintreePayPalValidator.framework */,
-				033CC72023579B990022FCC0 /* UnitTests.xctest */,
-				802624452357C031005EA84A /* UITests.xctest */,
+				8066A04C235F5026007ACC28 /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,43 +289,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		033CC71F23579B990022FCC0 /* UnitTests */ = {
+		8066A04B235F5026007ACC28 /* UnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 033CC72723579B990022FCC0 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildConfigurationList = 8066A053235F5026007ACC28 /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
-				49144A52479816E8D71A9F4D /* [CP] Check Pods Manifest.lock */,
-				033CC71C23579B990022FCC0 /* Sources */,
-				033CC71D23579B990022FCC0 /* Frameworks */,
-				033CC71E23579B990022FCC0 /* Resources */,
-				15CD0FC9EEDE50BD0A122803 /* [CP] Embed Pods Frameworks */,
+				AA9FF6CA277D0D5AA74EB846 /* [CP] Check Pods Manifest.lock */,
+				8066A048235F5026007ACC28 /* Sources */,
+				8066A049235F5026007ACC28 /* Frameworks */,
+				8066A04A235F5026007ACC28 /* Resources */,
+				F2908C2C78EBC09CCD265BCE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				033CC72623579B990022FCC0 /* PBXTargetDependency */,
+				8066A052235F5026007ACC28 /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
-			productReference = 033CC72023579B990022FCC0 /* UnitTests.xctest */;
+			productReference = 8066A04C235F5026007ACC28 /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		802624442357C031005EA84A /* UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8026244C2357C031005EA84A /* Build configuration list for PBXNativeTarget "UITests" */;
-			buildPhases = (
-				802624412357C031005EA84A /* Sources */,
-				802624422357C031005EA84A /* Frameworks */,
-				802624432357C031005EA84A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8026244B2357C031005EA84A /* PBXTargetDependency */,
-			);
-			name = UITests;
-			productName = UITests;
-			productReference = 802624452357C031005EA84A /* UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		80BAD272234531B30050F86C /* Demo */ = {
 			isa = PBXNativeTarget;
@@ -400,16 +353,12 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Braintree Payments";
 				TargetAttributes = {
-					033CC71F23579B990022FCC0 = {
+					8066A04B235F5026007ACC28 = {
 						CreatedOnToolsVersion = 11.1;
-						TestTargetID = 80BAD272234531B30050F86C;
-					};
-					802624442357C031005EA84A = {
-						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 80BAD272234531B30050F86C;
 					};
 					80BAD272234531B30050F86C = {
@@ -436,21 +385,13 @@
 			targets = (
 				80BAD272234531B30050F86C /* Demo */,
 				80BAD293234532A30050F86C /* BraintreePayPalValidator */,
-				033CC71F23579B990022FCC0 /* UnitTests */,
-				802624442357C031005EA84A /* UITests */,
+				8066A04B235F5026007ACC28 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		033CC71E23579B990022FCC0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		802624432357C031005EA84A /* Resources */ = {
+		8066A04A235F5026007ACC28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -499,24 +440,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		15CD0FC9EEDE50BD0A122803 /* [CP] Embed Pods Frameworks */ = {
+		799409B98C1F65E4EA2DC20A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		49144A52479816E8D71A9F4D /* [CP] Check Pods Manifest.lock */ = {
+		AA9FF6CA277D0D5AA74EB846 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -538,45 +479,37 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		799409B98C1F65E4EA2DC20A /* [CP] Embed Pods Frameworks */ = {
+		F2908C2C78EBC09CCD265BCE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		033CC71C23579B990022FCC0 /* Sources */ = {
+		8066A048235F5026007ACC28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42D352F5235E49BF006A9DD1 /* MockApplePayClient.swift in Sources */,
-				8026243A2357A469005EA84A /* BTPayPalAPIClient_Tests.swift in Sources */,
-				42986C06235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift in Sources */,
-				8026243E2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift in Sources */,
-				802624402357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift in Sources */,
-				8026243C2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		802624412357C031005EA84A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				802624502357C04A005EA84A /* UITests-Bridging-Header.swift in Sources */,
-				802624482357C031005EA84A /* UITests.swift in Sources */,
+				8066A058235F506F007ACC28 /* BTPayPalAPIClient_Tests.swift in Sources */,
+				8066A056235F506F007ACC28 /* BTPayPalValidatorClient_Tests.swift in Sources */,
+				8066A057235F506F007ACC28 /* BTPayPalCardContingencyResult_Tests.swift in Sources */,
+				8066A05C235F51F2007ACC28 /* MockViewControllerPresentingDelegate.swift in Sources */,
+				8066A05B235F51EF007ACC28 /* MockApplePayClient.swift in Sources */,
+				8066A05E235F5E9C007ACC28 /* MockPayPalAPIClient.swift in Sources */,
+				8066A059235F506F007ACC28 /* BTPayPalValidateResult_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,15 +541,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		033CC72623579B990022FCC0 /* PBXTargetDependency */ = {
+		8066A052235F5026007ACC28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 80BAD272234531B30050F86C /* Demo */;
-			targetProxy = 033CC72523579B990022FCC0 /* PBXContainerItemProxy */;
-		};
-		8026244B2357C031005EA84A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 80BAD272234531B30050F86C /* Demo */;
-			targetProxy = 8026244A2357C031005EA84A /* PBXContainerItemProxy */;
+			targetProxy = 8066A051235F5026007ACC28 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -632,7 +560,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		033CC72823579B990022FCC0 /* Debug */ = {
+		8066A054235F5026007ACC28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */;
 			buildSettings = {
@@ -640,7 +568,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43253H4X22;
 				INFOPLIST_FILE = UnitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -657,15 +585,15 @@
 			};
 			name = Debug;
 		};
-		033CC72923579B990022FCC0 /* Release */ = {
+		8066A055235F5026007ACC28 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCAF94628777451761C6A589 /* Pods-Tests-UnitTests.release.xcconfig */;
+			baseConfigurationReference = 7C967B76CFBAE0107281E01B /* Pods-Tests-UnitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43253H4X22;
 				INFOPLIST_FILE = UnitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -679,52 +607,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-			};
-			name = Release;
-		};
-		8026244D2357C031005EA84A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 43253H4X22;
-				INFOPLIST_FILE = UITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "UITests-Bridging-Header.swift";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Demo;
-			};
-			name = Debug;
-		};
-		8026244E2357C031005EA84A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 43253H4X22;
-				INFOPLIST_FILE = UITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "UITests-Bridging-Header.swift";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Demo;
 			};
 			name = Release;
 		};
@@ -944,20 +826,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		033CC72723579B990022FCC0 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+		8066A053235F5026007ACC28 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				033CC72823579B990022FCC0 /* Debug */,
-				033CC72923579B990022FCC0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8026244C2357C031005EA84A /* Build configuration list for PBXNativeTarget "UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8026244D2357C031005EA84A /* Debug */,
-				8026244E2357C031005EA84A /* Release */,
+				8066A054235F5026007ACC28 /* Debug */,
+				8066A055235F5026007ACC28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

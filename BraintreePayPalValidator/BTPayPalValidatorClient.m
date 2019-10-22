@@ -1,5 +1,4 @@
 #import "BTPayPalValidatorClient_Internal.h"
-#import "BTPayPalAPIClient.h"
 #import "BTPayPalCardContingencyRequest.h"
 #import "BTPayPalCheckoutRequest.h"
 #import "BTPayPalValidatorResult.h"
@@ -14,7 +13,6 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 @property (weak, nonatomic) id<BTViewControllerPresentingDelegate> presentingDelegate;
 @property (nonatomic, copy) void (^applePayCompletionBlock)(BTPayPalValidatorResult * _Nullable validatorResult, NSError * _Nullable, BTApplePayResultHandler successHandler);
 
-@property (strong, nonatomic) BTPayPalAPIClient *payPalAPIClient;
 @property (nonatomic, strong) BTAPIClient *btAPIClient;
 @property (nonatomic, strong) BTPaymentFlowDriver *paymentFlowDriver;
 
@@ -22,6 +20,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
 @end
 
+// TODO - add delegate as a property instead of parameter to the checkout methods
 @implementation BTPayPalValidatorClient
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
@@ -37,7 +36,6 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
         _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:_btAPIClient];
 
         _validatorResult = [BTPayPalValidatorResult new];
-        // _validatorResult.orderID = _orderId;
     }
 
     return self;
@@ -47,14 +45,15 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
                     card:(BTCard *)card
       presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
               completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion {
+    self.orderId = orderID;
 
     [self tokenizeCard:card completion:^(BTCardNonce * _Nullable tokenizedCard, NSError * _Nullable error) {
         if (tokenizedCard) {
             [self validateTokenizedCard:tokenizedCard
-                                orderId:orderID
                  withPresentingDelegate:viewControllerPresentingDelegate
                              completion:^(BOOL success, NSError * _Nullable error) {
                 if (success) {
+                    // TODO: - create a new validatorResult & set orderId and type
                     self.validatorResult.type = BTPayPalValidatorResultTypeCard;
                     completion(self.validatorResult, nil);
                 } else {
@@ -76,11 +75,10 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 }
 
 - (void)validateTokenizedCard:(BTCardNonce *)tokenizedCard
-                      orderId:(NSString *)orderId
        withPresentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
                    completion:(void (^)(BOOL success, NSError * _Nullable error))completion {
     [self.payPalAPIClient validatePaymentMethod:tokenizedCard
-                                     forOrderId:orderId
+                                     forOrderId:self.orderId
                                      completion:^(BTPayPalValidateResult * _Nullable result, NSError __unused * _Nullable error) {
                                             if (error) {
                                                 completion(NO, error);
@@ -106,11 +104,13 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 - (void)checkoutWithPayPal:(NSString *)orderId
         presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
                 completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion {
+    self.orderId = orderId;
+
     // TODO: Use hardcode URL (https://api.paypal.com/checkoutnow?token=) with orderId to complete PayPal flow until orders v2 accepts universal JWT
 
     BTPayPalCheckoutRequest *request = [BTPayPalCheckoutRequest new];
     request.checkoutURL = [NSURL URLWithString:[NSString
-                                                stringWithFormat:@"https://www.ppcpn.stage.paypal.com/checkoutnow?token=%@", orderId]];
+                                                stringWithFormat:@"https://www.ppcpn.stage.paypal.com/checkoutnow?token=%@", self.orderId]];
 
     self.paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:self.btAPIClient];
     self.paymentFlowDriver.viewControllerPresentingDelegate = viewControllerPresentingDelegate;
@@ -120,6 +120,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
         }
         
         NSLog(@"%@", result);
+        // TODO: - create a new validatorResult & set orderId and type
         self.validatorResult.type = BTPayPalValidatorResultTypePayPal;
         completion(self.validatorResult, nil);
     }];
@@ -128,7 +129,8 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 - (void)checkoutWithApplePay:(NSString * __unused)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
           presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:)) {
+                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler _Nullable resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:)) {
+    self.orderId = orderId;
 
     self.presentingDelegate = viewControllerPresentingDelegate;
     self.applePayCompletionBlock = completion;
@@ -145,7 +147,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
             [viewControllerPresentingDelegate paymentDriver:self
                        requestsPresentationOfViewController:authorizationViewController];
         } else {
-            completion(nil, error, nil);
+            self.applePayCompletionBlock(nil, error, nil);
         }
     }];
 }
@@ -156,20 +158,26 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
     }];
 }
 
-- (void)tokenizeApplePayPayment:(PKPayment *)payment
-                     completion:(void (^)(BTApplePayCardNonce * _Nullable tokenizedApplePayPayment, NSError * _Nullable error))completion {
-    [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce * _Nullable tokenizedApplePayPayment, NSError * _Nullable error) {
-        if (tokenizedApplePayPayment) {
-            // TODO: remove this reference to self.orderId
-            // TODO: Is there a way to use the orderID passed to checkoutWithApplePay?
-            [self.payPalAPIClient validatePaymentMethod:tokenizedApplePayPayment
-                                             forOrderId:self.orderId
-                                             completion:^(BTPayPalValidateResult * _Nullable __unused result, NSError * _Nullable error) {
-                completion(tokenizedApplePayPayment, error);
-            }];
-        } else {
+- (void)tokenizeAndValidateApplePayPayment:(PKPayment *)payment completion:(void (^)(BTPayPalValidatorResult * _Nullable result, NSError * _Nullable error))completion {
+    [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce *tokenizedApplePayPayment, NSError *error) {
+        if (!tokenizedApplePayPayment || error) {
             completion(nil, error);
+            return;
         }
+
+        [self.payPalAPIClient validatePaymentMethod:tokenizedApplePayPayment
+                                         forOrderId:self.orderId
+                                         completion:^(BTPayPalValidateResult * __unused result, NSError *error) {
+            if (!result || error) {
+                completion(nil, error);
+                return;
+            }
+
+            BTPayPalValidatorResult *validatorResult = [BTPayPalValidatorResult new];
+            validatorResult.orderID = self.orderId;
+            validatorResult.type = BTPayPalValidatorResultTypeApplePay;
+            completion(validatorResult, error);
+        }];
     }];
 }
 
@@ -183,10 +191,8 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController * __unused)controller
                        didAuthorizePayment:(PKPayment *)payment
                                    handler:(void (^)(PKPaymentAuthorizationResult * _Nonnull))completion API_AVAILABLE(ios(11.0)) {
-    [self tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce * _Nullable __unused tokenizedApplePayPayment, NSError * _Nullable error) {
-        self.validatorResult.type = BTPayPalValidatorResultTypeApplePay;
-
-        self.applePayCompletionBlock(self.validatorResult, error, ^(BOOL success) {
+    [self tokenizeAndValidateApplePayPayment:payment completion:^(BTPayPalValidatorResult *result, NSError *error) {
+        self.applePayCompletionBlock(result, error, ^(BOOL success) {
             if (success) {
                 completion([[PKPaymentAuthorizationResult alloc] initWithStatus:PKPaymentAuthorizationStatusSuccess errors:nil]);
             } else {
@@ -199,10 +205,8 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 - (void)paymentAuthorizationViewController:(__unused PKPaymentAuthorizationViewController *)controller
                        didAuthorizePayment:(PKPayment *)payment
                                 completion:(void (^)(PKPaymentAuthorizationStatus status))completion {
-    [self tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce * _Nullable __unused tokenizedApplePayPayment, NSError * _Nullable error) {
-        self.validatorResult.type = BTPayPalValidatorResultTypeApplePay;
-
-        self.applePayCompletionBlock(self.validatorResult, error, ^(BOOL success) {
+    [self tokenizeAndValidateApplePayPayment:payment completion:^(BTPayPalValidatorResult *result, NSError *error) {
+        self.applePayCompletionBlock(result, error, ^(BOOL success) {
             if (success) {
                 completion(PKPaymentAuthorizationStatusSuccess);
             } else {

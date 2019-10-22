@@ -17,7 +17,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "033CC71F23579B990022FCC0"
+               BlueprintIdentifier = "8066A04B235F5026007ACC28"
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
                ReferencedContainer = "container:BraintreePayPalValidator.xcodeproj">
@@ -30,6 +30,16 @@
                BlueprintIdentifier = "802624442357C031005EA84A"
                BuildableName = "UITests.xctest"
                BlueprintName = "UITests"
+               ReferencedContainer = "container:BraintreePayPalValidator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8066A04B235F5026007ACC28"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
                ReferencedContainer = "container:BraintreePayPalValidator.xcodeproj">
             </BuildableReference>
          </TestableReference>
