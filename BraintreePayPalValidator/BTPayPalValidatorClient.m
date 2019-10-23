@@ -144,8 +144,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
             PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
             authorizationViewController.delegate = self;
-            [viewControllerPresentingDelegate paymentDriver:self
-                       requestsPresentationOfViewController:authorizationViewController];
+            [viewControllerPresentingDelegate paymentDriver:self requestsPresentationOfViewController:authorizationViewController];
         } else {
             self.applePayCompletionBlock(nil, error, nil);
         }
