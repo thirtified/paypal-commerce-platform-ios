@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		12BEADF0564F9BD925CB484E /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */; };
+		4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306C2360E91B00A8734E /* MockCardClient.swift */; };
+		4276306F2360F05A00A8734E /* MockPaymentFlowDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
 		42FF386C235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
@@ -56,6 +58,8 @@
 		2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4276306B2360DF4F00A8734E /* Demo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
+		4276306C2360E91B00A8734E /* MockCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardClient.swift; sourceTree = "<group>"; };
+		4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentFlowDriver.swift; sourceTree = "<group>"; };
 		42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewControllerPresentingDelegate.swift; sourceTree = "<group>"; };
 		42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplePayClient.swift; sourceTree = "<group>"; };
 		42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,8 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */,
-				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
+				4276306C2360E91B00A8734E /* MockCardClient.swift */,
+				4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */,
 				8066A05D235F5E9C007ACC28 /* MockPayPalAPIClient.swift */,
+				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -506,8 +512,10 @@
 				8066A058235F506F007ACC28 /* BTPayPalAPIClient_Tests.swift in Sources */,
 				8066A056235F506F007ACC28 /* BTPayPalValidatorClient_Tests.swift in Sources */,
 				8066A057235F506F007ACC28 /* BTPayPalCardContingencyResult_Tests.swift in Sources */,
+				4276306F2360F05A00A8734E /* MockPaymentFlowDriver.swift in Sources */,
 				8066A05C235F51F2007ACC28 /* MockViewControllerPresentingDelegate.swift in Sources */,
 				8066A05B235F51EF007ACC28 /* MockApplePayClient.swift in Sources */,
+				4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */,
 				8066A05E235F5E9C007ACC28 /* MockPayPalAPIClient.swift in Sources */,
 				8066A059235F506F007ACC28 /* BTPayPalValidateResult_Tests.swift in Sources */,
 			);
