@@ -74,58 +74,64 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
     // MARK: - paymentAuthorizationViewControllerDidAuthorizePayment (iOS 11+)
 
     func testPaymentAuthorizationViewControllerDidAuthorizePayment_callsCompletionWithValidatorResult() {
-        let expectation = self.expectation(description: "payment authorization delegate calls completion with validator result")
-
-        mockPayPalAPIClient.validateResult = BTPayPalValidateResult()
-
-        validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
-            XCTAssertEqual(validatorResult?.orderID, "fake-order")
-            XCTAssertEqual(validatorResult?.type, .applePay)
-            XCTAssertNil(error)
-            // TODO - test that handler is called correctly
-            expectation.fulfill()
+        if #available(iOS 11.0, *) {
+            let expectation = self.expectation(description: "payment authorization delegate calls completion with validator result")
+            
+            mockPayPalAPIClient.validateResult = BTPayPalValidateResult()
+            
+            validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+                XCTAssertEqual(validatorResult?.orderID, "fake-order")
+                XCTAssertEqual(validatorResult?.type, .applePay)
+                XCTAssertNil(error)
+                // TODO - test that handler is called correctly
+                expectation.fulfill()
+            }
+            
+            let delegate = validatorClient as? PKPaymentAuthorizationViewControllerDelegate
+            delegate?.paymentAuthorizationViewController?(PKPaymentAuthorizationViewController(), didAuthorizePayment: PKPayment(), handler: { _ in })
+            
+            waitForExpectations(timeout: 1.0, handler: nil)
         }
-
-        let delegate = validatorClient as? PKPaymentAuthorizationViewControllerDelegate
-        delegate?.paymentAuthorizationViewController?(PKPaymentAuthorizationViewController(), didAuthorizePayment: PKPayment(), handler: { _ in })
-
-        waitForExpectations(timeout: 1.0, handler: nil)
     }
 
     func testPaymentAuthorizationViewControllerDidAuthorizePayment_whenApplePayTokenizationFails_callsCompletionWithError() {
-        let expectation = self.expectation(description: "payment authorization delegate calls completion with error")
-
-        mockApplePayClient.applePayCardNonce = nil
-        mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
-
-        validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
-            XCTAssertNil(validatorResult)
-            XCTAssertEqual(error?.localizedDescription, "error message")
-            expectation.fulfill()
+        if #available(iOS 11.0, *) {
+            let expectation = self.expectation(description: "payment authorization delegate calls completion with error")
+            
+            mockApplePayClient.applePayCardNonce = nil
+            mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
+            
+            validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+                XCTAssertNil(validatorResult)
+                XCTAssertEqual(error?.localizedDescription, "error message")
+                expectation.fulfill()
+            }
+            
+            let delegate = validatorClient as? PKPaymentAuthorizationViewControllerDelegate
+            delegate?.paymentAuthorizationViewController?(PKPaymentAuthorizationViewController(), didAuthorizePayment: PKPayment(), handler: { _ in })
+            
+            waitForExpectations(timeout: 1.0, handler: nil)
         }
-
-        let delegate = validatorClient as? PKPaymentAuthorizationViewControllerDelegate
-        delegate?.paymentAuthorizationViewController?(PKPaymentAuthorizationViewController(), didAuthorizePayment: PKPayment(), handler: { _ in })
-
-        waitForExpectations(timeout: 1.0, handler: nil)
     }
 
     func testPaymentAuthorizationViewControllerDidAuthorizePayment_whenApplePayValidationFails_callsCompletionWithError() {
-        let expectation = self.expectation(description: "payment authorization delegate calls completion with error")
-
-        mockPayPalAPIClient.validateError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
-        mockPayPalAPIClient.validateResult = nil
-
-        validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
-            XCTAssertNil(validatorResult)
-            XCTAssertEqual(error?.localizedDescription, "error message")
-            expectation.fulfill()
+        if #available(iOS 11.0, *) {
+            let expectation = self.expectation(description: "payment authorization delegate calls completion with error")
+            
+            mockPayPalAPIClient.validateError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
+            mockPayPalAPIClient.validateResult = nil
+            
+            validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+                XCTAssertNil(validatorResult)
+                XCTAssertEqual(error?.localizedDescription, "error message")
+                expectation.fulfill()
+            }
+            
+            let delegate = validatorClient as? PKPaymentAuthorizationViewControllerDelegate
+            delegate?.paymentAuthorizationViewController?(PKPaymentAuthorizationViewController(), didAuthorizePayment: PKPayment(), handler: { _ in })
+            
+            waitForExpectations(timeout: 1.0, handler: nil)
         }
-
-        let delegate = validatorClient as? PKPaymentAuthorizationViewControllerDelegate
-        delegate?.paymentAuthorizationViewController?(PKPaymentAuthorizationViewController(), didAuthorizePayment: PKPayment(), handler: { _ in })
-
-        waitForExpectations(timeout: 1.0, handler: nil)
     }
 
     // MARK: - paymentAuthorizationViewControllerDidAuthorizePayment (pre iOS 11)
