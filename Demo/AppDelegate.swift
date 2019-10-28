@@ -10,6 +10,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         BTAppSwitch.setReturnURLScheme(urlScheme)
+        
+        let settingsPlist = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
+        let settingsDictionary = NSDictionary(contentsOf: settingsPlist)!
+        let preferences = settingsDictionary["PreferenceSpecifiers"] as! [[String : Any]]
+        
+        var defaults: [String : Any] = [:]
+        
+        for preference in preferences {
+            guard let key = preference["Key"] as? String else { continue }
+            defaults[key] = preference["DefaultValue"]
+        }
+        UserDefaults.standard.register(defaults: defaults)
+        
         return true
     }
     

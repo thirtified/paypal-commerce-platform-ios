@@ -40,6 +40,7 @@
             }
 
             BTJSON *json = [[BTJSON alloc] initWithData:data];
+            NSLog(@"Validate result: %@", json);
             BTPayPalValidateResult *result = [[BTPayPalValidateResult alloc] initWithJSON:json];
 
             NSInteger statusCode = ((NSHTTPURLResponse *) response).statusCode;

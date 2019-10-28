@@ -26,7 +26,7 @@ FOUNDATION_EXPORT NSString * const BTPayPalValidatorErrorDomain;
 
 typedef void (^BTApplePayResultHandler)(BOOL success);
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken;
+- (nullable instancetype)initWithAccessToken:(NSString *)accessToken;
 
 - (void)checkoutWithCard:(NSString *)orderId
                     card:(BTCard *)card

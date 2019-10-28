@@ -1,4 +1,5 @@
 import BraintreePayPalValidator
+import InAppSettingsKit
 
 class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     
@@ -76,7 +77,8 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBAction func processOrderTapped(_ sender: Any) {
         updateCheckoutLabel(withText: "Processing order...")
 
-        DemoMerchantAPI.sharedService.processOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent) { (transactionResult, error) in
+        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "GERMANY"
+        DemoMerchantAPI.sharedService.processOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent, partnerCountry: partnerCountry) { (transactionResult, error) in
             guard let transactionResult = transactionResult else {
                 self.updateCheckoutLabel(withText: "Transaction failed: \(error?.localizedDescription ?? "error")")
                 return
@@ -96,6 +98,14 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         fetchOrderValidationInfo()
     }
 
+    @IBAction func settingsTapped(_ sender: Any) {
+        let settingsViewController = IASKAppSettingsViewController()
+        settingsViewController.delegate = self
+        
+        let navigationController = UINavigationController(rootViewController: settingsViewController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     // MARK: - Construct order/request helpers
 
     func createBTCard() -> BTCard? {
@@ -160,8 +170,9 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         }
 
         let orderIntent = orderIntentSegmentedControl.titleForSegment(at: orderIntentSegmentedControl.selectedSegmentIndex)
-
-        self.orderRequestParams = OrderParams.init(amount: amount, payeeEmail: payeeEmail, intent: orderIntent!)
+        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "CANADA"
+        
+        self.orderRequestParams = OrderParams(amount: amount, payeeEmail: payeeEmail, intent: orderIntent!, partnerCountry: partnerCountry)
     }
 
     // MARK: - UI Helpers
@@ -192,5 +203,13 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
         self.dismiss(animated: true)
+    }
+}
+
+// MARK: - IASKSettingsDelegate
+extension DemoViewController: IASKSettingsDelegate {
+    func settingsViewControllerDidEnd(_ sender: IASKAppSettingsViewController!) {
+        sender.dismiss(animated: true)
+        // TODO - reload
     }
 }

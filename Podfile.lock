@@ -34,6 +34,7 @@ PODS:
     - Braintree/Core
     - Braintree/PaymentFlow
     - Braintree/PayPal
+  - InAppSettingsKit (2.14)
 
 DEPENDENCIES:
   - Braintree (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
@@ -43,6 +44,11 @@ DEPENDENCIES:
   - Braintree/PaymentFlow (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
   - Braintree/PayPal (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
   - BraintreePayPalValidator (from `./`)
+  - InAppSettingsKit
+
+SPEC REPOS:
+  trunk:
+    - InAppSettingsKit
 
 EXTERNAL SOURCES:
   Braintree:
@@ -59,7 +65,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Braintree: 6c7b531ed255701cc69666a2f02d1324a2d95c41
   BraintreePayPalValidator: 802fe88c9f9039869e830b9be6737c0e9ddee73f
+  InAppSettingsKit: 800853da39388780c15191846688c0974c5b13b5
 
-PODFILE CHECKSUM: fc567835e1d6cc76e31860f6547dd5aa361953ff
+PODFILE CHECKSUM: f32a05ab6194c60a1eba9bba4eb9f579b43eee89
 
 COCOAPODS: 1.8.1

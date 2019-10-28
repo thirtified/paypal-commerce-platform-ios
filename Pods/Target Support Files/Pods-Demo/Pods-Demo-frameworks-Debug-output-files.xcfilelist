@@ -1,3 +1,4 @@
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CardinalMobile.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BraintreePayPalValidator.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InAppSettingsKit.framework

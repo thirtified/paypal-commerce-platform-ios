@@ -4,21 +4,10 @@ class BTPayPalAPIClient_Tests: XCTestCase {
 
     // MARK: - BTPayPalAPIClient initialization
 
-    func testAPIClientInitialization_withValidUAT_returnsClientWithTokenizationKey() {
+    func testAPIClientInitialization_withUAT_returnsClient() {
         let apiClient = BTPayPalAPIClient.init(accessToken: "header.payload.verify_signature")
         XCTAssertEqual(apiClient.accessToken, "header.payload.verify_signature")
     }
-
-    func testAPIClientInitialization_withInvalidAuthorization_returnsNil() {
-        XCTAssertNil(BTPayPalAPIClient(accessToken: "invalid."))
-    }
-
-    func testAPIClientInitialization_withEmptyAuthorization_returnsNil() {
-        XCTAssertNil(BTPayPalAPIClient(accessToken: ""))
-    }
-
-    // MARK: - validatePaymentMethod
-
 
     // MARK: -  validatePaymentMethod helpers
 

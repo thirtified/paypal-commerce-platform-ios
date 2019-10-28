@@ -14,6 +14,7 @@ struct OrderParams: Codable {
     let amount: String
     let payeeEmail: String
     let intent: String
+    let partnerCountry: String
 }
 
 class DemoMerchantAPI {
@@ -59,11 +60,15 @@ class DemoMerchantAPI {
             queryString += (queryString.contains("?") ? "&intent=" : "?intent=") + orderParams.intent.uppercased()
         }
 
+        if (orderParams.partnerCountry != "") {
+            queryString += (queryString.contains("?") ? "&partnerCountry=" : "?partnerCountry=") + orderParams.partnerCountry
+        }
+        
         return queryString
     }
 
-    func processOrder(orderId: String, intent: String, completion: @escaping ((OrderTransactionInfo?, Error?) -> Void)) {
-        let url = URL(string: transactionUrlString + "/" + orderId + "?intent=" + intent)!
+    func processOrder(orderId: String, intent: String, partnerCountry: String, completion: @escaping ((OrderTransactionInfo?, Error?) -> Void)) {
+        let url = URL(string: transactionUrlString + "/" + orderId + "?intent=" + intent + "&partnerCountry=" + partnerCountry)!
 
 //        let request = URLRequest.init(url: url)
         //request.httpMethod = "PUT"

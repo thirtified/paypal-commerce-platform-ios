@@ -7,36 +7,29 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
 @interface BTPayPalValidatorClient() <PKPaymentAuthorizationViewControllerDelegate>
 
-@property (copy, nonatomic) NSString *accessToken;
-@property (copy, nonatomic) NSString *orderId;
+@property (nonatomic, copy) NSString *orderId;
 
-@property (weak, nonatomic) id<BTViewControllerPresentingDelegate> presentingDelegate;
+@property (nonatomic, weak) id<BTViewControllerPresentingDelegate> presentingDelegate;
 @property (nonatomic, copy) void (^applePayCompletionBlock)(BTPayPalValidatorResult * _Nullable validatorResult, NSError * _Nullable, BTApplePayResultHandler successHandler);
-
-@property (nonatomic, strong) BTAPIClient *btAPIClient;
-
-@property (nonatomic, strong) BTPayPalValidatorResult *validatorResult;
 
 @end
 
 // TODO: - add delegate as a property instead of parameter to the checkout methods
 @implementation BTPayPalValidatorClient
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken {
+- (nullable instancetype)initWithAccessToken:(NSString *)accessToken {
     self = [super init];
     if (self) {
-        _accessToken = accessToken;
-
-        _payPalAPIClient = [[BTPayPalAPIClient alloc] initWithAccessToken:accessToken];
-
         // NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
 
-        _btAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
-        _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:_btAPIClient];
-        _cardClient = [[BTCardClient alloc] initWithAPIClient:_btAPIClient];
-        _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:_btAPIClient];
-
-        _validatorResult = [BTPayPalValidatorResult new];
+        BTAPIClient *braintreeAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
+        if (!braintreeAPIClient) {
+            return nil;
+        }
+        _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:braintreeAPIClient];
+        _cardClient = [[BTCardClient alloc] initWithAPIClient:braintreeAPIClient];
+        _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:braintreeAPIClient];
+        _payPalAPIClient = [[BTPayPalAPIClient alloc] initWithAccessToken:accessToken];
     }
 
     return self;

@@ -2,8 +2,8 @@ import XCTest
 
 class BTPayPalValidatorClient_Tests: XCTestCase {
 
-    let validatorClient = BTPayPalValidatorClient(accessToken: "header.payload.signature")
-    let apiClient = BTAPIClient(authorization: "development_testing_integration_merchant_id")!
+    let validatorClient = BTPayPalValidatorClient(accessToken: "123.ewogICJleHRlcm5hbF9pZHMiOiBbCiAgICAiQnJhaW50cmVlOm1lcmNoYW50LWlkIgogIF0KfQ.456")
+    let apiClient = BTAPIClient(authorization: "123.ewogICJleHRlcm5hbF9pZHMiOiBbCiAgICAiQnJhaW50cmVlOm1lcmNoYW50LWlkIgogIF0KfQ.456")
     let paymentRequest = PKPaymentRequest()
     
     let mockPayPalAPIClient = MockPayPalAPIClient()
@@ -13,6 +13,11 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
     let mockViewControllerPresentingDelegate = MockViewControllerPresentingDelegate()
 
     override func setUp() {
+        guard let apiClient = apiClient else {
+            XCTFail()
+            return
+        }
+        
         let defaultPaymentRequest = PKPaymentRequest()
         defaultPaymentRequest.countryCode = "US"
         defaultPaymentRequest.currencyCode = "USD"
@@ -30,23 +35,23 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
 
         mockPaymentFlowDriver = MockPaymentFlowDriver(apiClient: apiClient)
         
-        validatorClient.applePayClient = mockApplePayClient
-        validatorClient.payPalAPIClient = mockPayPalAPIClient
-        validatorClient.cardClient = mockCardClient
-        validatorClient.paymentFlowDriver = mockPaymentFlowDriver
+        validatorClient?.applePayClient = mockApplePayClient
+        validatorClient?.payPalAPIClient = mockPayPalAPIClient
+        validatorClient?.cardClient = mockCardClient
+        validatorClient?.paymentFlowDriver = mockPaymentFlowDriver
         
         paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "item", amount: 1.00)]
         paymentRequest.merchantCapabilities = PKMerchantCapability.capabilityCredit
     }
 
-    // MARK: - validatorClient init
+    // MARK: - initWithAccessToken
 
-    func testValidatorClientInitialization_withUAT_withOrderId_initializes() {
+    func testValidatorClientInitialization_withUAT_initializes() {
         XCTAssertNotNil(validatorClient)
     }
 
     func testValidatorClientInitialization_withInvalidUAT_returnsNil() {
-        let validatorClient = BTPayPalValidatorClient(accessToken: "invalidUAT")
+        let validatorClient = BTPayPalValidatorClient(accessToken: "header.invalid_paypal_uat_body.signature")
         XCTAssertNil(validatorClient)
     }
     
@@ -62,7 +67,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             expectation.fulfill()
         }
 
-        validatorClient.checkoutWithApplePay("my-order-id", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (_, _, _) in
+        validatorClient?.checkoutWithApplePay("my-order-id", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (_, _, _) in
             // not called
         }
         
@@ -75,7 +80,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
 
         let expectation = self.expectation(description: "returns Apple Pay error to merchant")
 
-        validatorClient.checkoutWithApplePay("my-order-id", paymentRequest: PKPaymentRequest(), presentingDelegate: self.mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay("my-order-id", paymentRequest: PKPaymentRequest(), presentingDelegate: self.mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertEqual(error?.localizedDescription, "error message")
             XCTAssertNil(validatorResult)
             expectation.fulfill()
@@ -92,7 +97,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             
             mockPayPalAPIClient.validateResult = BTPayPalValidateResult()
             
-            validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+            validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
                 XCTAssertEqual(validatorResult?.orderID, "fake-order")
                 XCTAssertEqual(validatorResult?.type, .applePay)
                 XCTAssertNil(error)
@@ -114,7 +119,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             mockApplePayClient.applePayCardNonce = nil
             mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
             
-            validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+            validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
                 XCTAssertNil(validatorResult)
                 XCTAssertEqual(error?.localizedDescription, "error message")
                 expectation.fulfill()
@@ -134,7 +139,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
             mockPayPalAPIClient.validateError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
             mockPayPalAPIClient.validateResult = nil
             
-            validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+            validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
                 XCTAssertNil(validatorResult)
                 XCTAssertEqual(error?.localizedDescription, "error message")
                 expectation.fulfill()
@@ -154,7 +159,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
 
         mockPayPalAPIClient.validateResult = BTPayPalValidateResult()
 
-        validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .applePay)
             XCTAssertNil(error)
@@ -174,7 +179,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         mockApplePayClient.applePayCardNonce = nil
         mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
 
-        validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -192,7 +197,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         mockPayPalAPIClient.validateError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockPayPalAPIClient.validateResult = nil
 
-        validatorClient.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest, presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -211,7 +216,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         
         mockPayPalAPIClient.validateResult = BTPayPalValidateResult()
         
-        validatorClient.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .card)
             XCTAssertNil(error)
@@ -239,7 +244,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         
         mockPaymentFlowDriver.paymentFlowResult = BTPaymentFlowResult()
         
-        validatorClient.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .card)
             XCTAssertNil(error)
@@ -268,7 +273,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         mockPaymentFlowDriver.paymentFlowResult = nil
         mockPaymentFlowDriver.paymentFlowError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         
-        validatorClient.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -283,7 +288,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         mockCardClient.tokenizeCardError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockCardClient.cardNonce = nil
         
-        validatorClient.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -298,7 +303,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         mockPayPalAPIClient.validateError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockPayPalAPIClient.validateResult = nil
         
-        validatorClient.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard("fake-order", card: BTCard(), presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -312,7 +317,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
     func testCheckoutWithPayPal_callsCompletionWithValidatorResult() {
         let expectation = self.expectation(description: "calls completion with validator result")
         
-        validatorClient.checkoutWithPayPal("fake-order", presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithPayPal("fake-order", presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .payPal)
             XCTAssertNil(error)
@@ -328,7 +333,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
         mockPaymentFlowDriver.paymentFlowError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockPaymentFlowDriver.paymentFlowResult = nil
         
-        validatorClient.checkoutWithPayPal("fake-order", presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
+        validatorClient?.checkoutWithPayPal("fake-order", presentingDelegate: mockViewControllerPresentingDelegate) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
