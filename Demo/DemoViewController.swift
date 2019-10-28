@@ -22,6 +22,16 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         updateOrderLabel(withText: "Generate an order id.")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "US"
+
+        if partnerCountry == "UK" {
+            self.payeeEmailTextField.placeholder = "native-sdk-gb-merchant-111@paypal.com"
+        } else {
+            self.payeeEmailTextField.placeholder = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
+        }
+    }
+
     // MARK: - IBActions
 
     @IBAction func cardCheckoutTapped(_ sender: UIButton) {
@@ -155,6 +165,9 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     func setOrderQueryParams() {
         var amount = "", payeeEmail = ""
 
+        let orderIntent = orderIntentSegmentedControl.titleForSegment(at: orderIntentSegmentedControl.selectedSegmentIndex)
+        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "US"
+
         if let amountField = self.amountTextField.text {
             amount = amountField
         }
@@ -162,15 +175,9 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         if let payeeEmailField = self.payeeEmailTextField.text {
             payeeEmail = payeeEmailField
             if (payeeEmail == "") {
-                // TODO: currently we default to this email if none is entered.
-                // We need this email for testing. Do we want to leave this default here
-                // or move it to server?
-                payeeEmail = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
+                payeeEmail = self.payeeEmailTextField.placeholder!
             }
         }
-
-        let orderIntent = orderIntentSegmentedControl.titleForSegment(at: orderIntentSegmentedControl.selectedSegmentIndex)
-        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "CANADA"
         
         self.orderRequestParams = OrderParams(amount: amount, payeeEmail: payeeEmail, intent: orderIntent!, partnerCountry: partnerCountry)
     }
