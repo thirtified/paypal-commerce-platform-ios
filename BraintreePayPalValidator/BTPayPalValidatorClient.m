@@ -29,9 +29,9 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
         _payPalAPIClient = [[BTPayPalAPIClient alloc] initWithAccessToken:accessToken];
 
-        NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
+        // NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
 
-        _btAPIClient = [[BTAPIClient alloc] initWithAuthorization:tokenizationKey];
+        _btAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
         _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:_btAPIClient];
         _cardClient = [[BTCardClient alloc] initWithAPIClient:_btAPIClient];
         _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:_btAPIClient];

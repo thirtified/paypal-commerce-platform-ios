@@ -53,7 +53,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Braintree:
-    :commit: 86248097cf8992d15ef4ff4b316b2af1e0badc23
+    :commit: 723c6c5fcfe4c9802f27bf620d648d5b2c6bdd8a
     :git: https://github.com/braintree/braintree_ios.git
 
 SPEC CHECKSUMS:

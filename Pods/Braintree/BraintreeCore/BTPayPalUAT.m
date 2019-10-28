@@ -5,8 +5,8 @@ NSString * const BTPayPalUATErrorDomain = @"com.braintreepayments.BTPayPalUATErr
 
 @interface BTPayPalUAT()
 
-@property (nonatomic, readwrite, strong) BTJSON *json;
-@property (nonatomic, readwrite, copy) NSString *authorizationFingerprint;
+@property (nonatomic, readwrite, strong) NSURL *configURL;
+@property (nonatomic, readwrite, copy) NSString *token;
 
 @end
 
@@ -16,42 +16,73 @@ NSString * const BTPayPalUATErrorDomain = @"com.braintreepayments.BTPayPalUATErr
     return nil;
 }
 
-- (nullable instancetype)initWithPayPalUAT:(NSString *)payPalUAT error:(NSError **)error {
+- (nullable instancetype)initWithUATString:(NSString *)uatString error:(NSError **)error {
     self = [super init];
     if (self) {
-        _authorizationFingerprint = payPalUAT;
-        _json = [self decodePayPalUAT:payPalUAT error:error];
+        BTJSON *json = [self decodeUATString:uatString error:error];
+        
+        if (error && *error) {
+            return nil;
+        }
+        
+        NSArray *externalIds = [json[@"external_ids"] asArray];
+        NSString *braintreeMerchantID;
+        for (NSString *externalId in externalIds) {
+            if ([externalId hasPrefix:@"Braintree:"]) {
+                braintreeMerchantID = [externalId componentsSeparatedByString:@":"][1];
+                break;
+            }
+        }
+        
+        if (!braintreeMerchantID) {
+            if (error) {
+                *error = [NSError errorWithDomain:BTPayPalUATErrorDomain
+                                             code:0
+                                         userInfo:@{NSLocalizedDescriptionKey:@"Invalid PayPal UAT: Braintree merchant id not found."}];
+            }
+            return nil;
+        }
+                
+        _configURL = [NSURL URLWithString:[NSString stringWithFormat:@"/merchants/%@/client_api/v1/configuration", braintreeMerchantID]];
+        _token = uatString;
     }
 
     return self;
 }
 
-- (BTJSON *)decodePayPalUAT:(NSString *)payPalUAT error:(NSError * __autoreleasing *)error {
-    //TODO: Add error handling for misformed payPalUAT strings
-    NSArray *payPalUATComponents = [payPalUAT componentsSeparatedByString:@"."];
-    NSString *base64EncodedBody = [NSString stringWithFormat:@"%@==", payPalUATComponents[1]];
-
-    NSError *JSONError = nil;
-    NSData *base64DecodedPayPalUAT = [[NSData alloc] initWithBase64EncodedString:base64EncodedBody
-                                                                           options:0];
-
-    NSDictionary *rawPayPalUAT;
-    if (base64DecodedPayPalUAT) {
-        rawPayPalUAT = [NSJSONSerialization JSONObjectWithData:base64DecodedPayPalUAT options:0 error:&JSONError];
-    }
-
-    if (!rawPayPalUAT) {
+- (BTJSON *)decodeUATString:(NSString *)uatString error:(NSError * __autoreleasing *)error {
+    NSArray *payPalUATComponents = [uatString componentsSeparatedByString:@"."];
+    
+    if (payPalUATComponents.count != 3) {
         if (error) {
-            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithDictionary:@{
-                                                                                              NSLocalizedDescriptionKey: @"Invalid PayPal UAT.",
-                                                                                              NSLocalizedFailureReasonErrorKey: @"Invalid JSON"
-                                                                                              }];
-            if (JSONError) {
-                userInfo[NSUnderlyingErrorKey] = JSONError;
-            }
             *error = [NSError errorWithDomain:BTPayPalUATErrorDomain
                                          code:0
-                                     userInfo:userInfo];
+                                     userInfo:@{NSLocalizedDescriptionKey:@"Invalid PayPal UAT: Missing payload."}];
+        }
+        return nil;
+    }
+    
+    NSString *base64EncodedBody = [self base64EncodedStringWithPadding:payPalUATComponents[1]];
+
+    NSData *base64DecodedPayPalUAT = [[NSData alloc] initWithBase64EncodedString:base64EncodedBody options:0];
+    if (!base64DecodedPayPalUAT) {
+        if (error) {
+            *error = [NSError errorWithDomain:BTPayPalUATErrorDomain
+                                         code:0
+                                     userInfo:@{NSLocalizedDescriptionKey:@"Invalid PayPal UAT: Unable to base-64 decode payload."}];
+        }
+        return nil;
+    }
+    
+    NSDictionary *rawPayPalUAT;
+    NSError *JSONError = nil;
+    rawPayPalUAT = [NSJSONSerialization JSONObjectWithData:base64DecodedPayPalUAT options:0 error:&JSONError];
+
+    if (JSONError) {
+        if (error) {
+            *error = [NSError errorWithDomain:BTPayPalUATErrorDomain
+                                         code:0
+                                     userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Invalid PayPal UAT: %@", JSONError.localizedDescription]}];
         }
         return nil;
     }
@@ -60,10 +91,7 @@ NSString * const BTPayPalUATErrorDomain = @"com.braintreepayments.BTPayPalUATErr
         if (error) {
             *error = [NSError errorWithDomain:BTPayPalUATErrorDomain
                                          code:0
-                                     userInfo:@{
-                                                NSLocalizedDescriptionKey: @"Invalid PayPal UAT.",
-                                                NSLocalizedFailureReasonErrorKey: @"Invalid JSON. Expected to find an object at JSON root."
-                                                }];
+                                     userInfo:@{NSLocalizedDescriptionKey: @"Invalid PayPal UAT: Expected to find an object at JSON root."}];
         }
         return nil;
     }
@@ -71,17 +99,14 @@ NSString * const BTPayPalUATErrorDomain = @"com.braintreepayments.BTPayPalUATErr
     return [[BTJSON alloc] initWithValue:rawPayPalUAT];
 }
 
-- (NSURL *)configURL {
-    NSArray *externalIds = [self.json[@"external_ids"] asArray];
-    NSString *braintreeMerchantID;
-    for (NSString *externalId in externalIds) {
-        if ([externalId hasPrefix:@"Braintree:"]) {
-            braintreeMerchantID = [externalId componentsSeparatedByString:@":"][1];
-            break;
-        }
+- (NSString *)base64EncodedStringWithPadding:(NSString *)base64EncodedString {
+    if (base64EncodedString.length % 4 == 2) {
+        return [NSString stringWithFormat:@"%@==", base64EncodedString];
+    } else if (base64EncodedString.length % 4 == 3) {
+        return [NSString stringWithFormat:@"%@=", base64EncodedString];
+    } else {
+        return base64EncodedString;
     }
-    NSString *configString = [NSString stringWithFormat:@"/merchants/%@/client_api/v1/configuration", braintreeMerchantID];
-    return [NSURL URLWithString:configString];
 }
 
 @end

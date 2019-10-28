@@ -53,8 +53,7 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
                 _clientToken = [[BTClientToken alloc] initWithClientToken:authorization error:&error];
                 if (error) { [[BTLogger sharedLogger] error:[error localizedDescription]]; }
                 if (!_clientToken) {
-                    NSString *reason = @"BTClient could not initialize because the provided clientToken was invalid";
-                    [[BTLogger sharedLogger] error:reason];
+                    [[BTLogger sharedLogger] error:@"BTClient could not initialize because the provided clientToken was invalid"];
                     return nil;
                 }
 
@@ -67,10 +66,17 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
             }
 
             case BTAPIClientAuthorizationTypePayPalUAT: {
-                _payPalUAT = [[BTPayPalUAT alloc] initWithPayPalUAT:authorization error:nil];
+                NSError *error;
+                _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:authorization error:&error];
+                if (!_payPalUAT || error) {
+                    [[BTLogger sharedLogger] error:@"BTClient could not initialize because the provided PayPal UAT was invalid"];
+                    [[BTLogger sharedLogger] error:[error localizedDescription]];
+                    return nil;
+                }
+                
                 _configurationHTTP = [[BTHTTP alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.sandbox.braintreegateway.com"] authorizationFingerprint:authorization];
 
-                [self queueAnalyticsEvent:@"ios.started.paypal-uat"];
+                // TODO: - add analytics for PP UAT
                 break;
             }
         }
@@ -124,7 +130,7 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
     } else if (self.tokenizationKey) {
         copiedClient = [[[self class] alloc] initWithAuthorization:self.tokenizationKey sendAnalyticsEvent:NO];
     } else if (self.payPalUAT) {
-        copiedClient = [[[self class] alloc] initWithAuthorization:self.payPalUAT.authorizationFingerprint sendAnalyticsEvent:NO];
+        copiedClient = [[[self class] alloc] initWithAuthorization:self.payPalUAT.token sendAnalyticsEvent:NO];
     } else {
         NSAssert(NO, @"Cannot copy an API client that does not specify a client token or tokenization key");
     }
@@ -324,7 +330,7 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
                     } else if (self.tokenizationKey) {
                         self.http = [[BTHTTP alloc] initWithBaseURL:baseURL tokenizationKey:self.tokenizationKey];
                     } else if (self.payPalUAT) {
-                        self.http = [[BTHTTP alloc] initWithBaseURL:baseURL authorizationFingerprint:self.payPalUAT.authorizationFingerprint];
+                        self.http = [[BTHTTP alloc] initWithBaseURL:baseURL authorizationFingerprint:self.payPalUAT.token];
                     }
                 }
                 if (!self.graphQL) {
@@ -334,7 +340,7 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
                     } else if (self.tokenizationKey) {
                         self.graphQL = [[BTGraphQLHTTP alloc] initWithBaseURL:graphQLBaseURL tokenizationKey:self.tokenizationKey];
                     } else if (self.payPalUAT) {
-                        self.graphQL = [[BTGraphQLHTTP alloc] initWithBaseURL:graphQLBaseURL authorizationFingerprint:self.payPalUAT.authorizationFingerprint];
+                        self.graphQL = [[BTGraphQLHTTP alloc] initWithBaseURL:graphQLBaseURL authorizationFingerprint:self.payPalUAT.token];
                     }
                 }
             }

@@ -7,14 +7,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Initialize a PayPalUAT with a PayPal UAT string.
  */
-- (nullable instancetype)initWithPayPalUAT:(NSString *)payPalUAT error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithUATString:(NSString *)payPalUAT error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init __attribute__((unavailable("Please use initWithPayPalUAT:error: instead.")));
 
 /**
  The extracted authorization fingerprint
  */
-@property (nonatomic, readonly, copy) NSString *authorizationFingerprint;
+@property (nonatomic, readonly, copy) NSString *token;
 
 /**
  The extracted configURL
