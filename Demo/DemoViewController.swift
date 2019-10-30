@@ -43,6 +43,8 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         }
 
         processOrderButton.setTitle("\(intent.capitalized) Order", for: .normal)
+        orderResultLabel.text = "Order ID: None"
+        orderId = nil
     }
 
     // MARK: - IBActions
@@ -114,7 +116,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
                 return
             }
 
-            self.updateCheckoutLabel(withText: "\(self.intent) Order status: \(transactionResult.status)")
+            self.updateCheckoutLabel(withText: "\(self.intent.capitalized) Status: \(transactionResult.status)")
         }
     }
 

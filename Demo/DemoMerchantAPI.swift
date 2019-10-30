@@ -96,8 +96,9 @@ class DemoMerchantAPI {
     }
 
     func processOrder(processOrderParams: ProcessOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
-        var urlRequest = URLRequest(url: URL(string: urlString + "/" + processOrderParams.intent.lowercased())!)
+        var urlRequest = URLRequest(url: URL(string: urlString + "/" + processOrderParams.intent.lowercased() + "-order")!)
         urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = try! JSONEncoder().encode(processOrderParams)
 
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
