@@ -1,20 +1,41 @@
 import Foundation
 
-struct OrderValidationInfo: Codable {
-    let orderId: String
-    let universalAccessToken: String
-}
-
-struct OrderTransactionInfo: Codable {
-    let orderId: String
+struct Order: Codable {
+    let id: String
     let status: String
 }
 
-struct OrderParams: Codable {
-    let amount: String
-    let payeeEmail: String
+struct CreateOrderParams: Codable {
     let intent: String
-    let partnerCountry: String
+    let purchaseUnits: [PurchaseUnit]
+    let payee: Payee
+
+    struct PurchaseUnit: Codable {
+        let amount: Amount
+
+        struct Amount: Codable {
+            let currencyCode: String
+            let value: String
+        }
+    }
+
+    struct Payee: Codable {
+        let emailAddress: String
+    }
+}
+
+typealias PurchaseUnit = CreateOrderParams.PurchaseUnit
+typealias Amount = CreateOrderParams.PurchaseUnit.Amount
+typealias Payee = CreateOrderParams.Payee
+
+struct UAT: Codable {
+    let universalAccessToken: String
+}
+
+struct ProcessOrderParams: Codable {
+    let orderId: String
+    let intent: String
+    let countryCode: String
 }
 
 class DemoMerchantAPI {
@@ -22,65 +43,72 @@ class DemoMerchantAPI {
     static let sharedService = DemoMerchantAPI()
 
     //    private let urlString = "https://braintree-p4p-sample-merchant.herokuapp.com/order-validation-info"
-    private let fetchUrlString = "http://localhost:5000/order-validation-info"
-    private let transactionUrlString = "http://localhost:5000/process-order"
+    private let urlString = "http://localhost:5000"
 
     private init() {}
 
-    func fetchOrderValidationInfo(orderParams: OrderParams, completion: @escaping ((OrderValidationInfo?, Error?) -> Void)) {
-        let url = URL(string: fetchUrlString + constructParamsQueryString(orderParams: orderParams))!
+    func createOrder(orderParams: CreateOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
+        var urlRequest = URLRequest(url: URL(string: urlString + "/order")!)
+        urlRequest.httpMethod = "POST"
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        urlRequest.httpBody = try! encoder.encode(orderParams)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(nil, error!)
                 return
             }
 
             do {
-                let orderValidationInfo = try JSONDecoder().decode(OrderValidationInfo.self, from: data)
-                completion(orderValidationInfo, nil)
+                let order = try JSONDecoder().decode(Order.self, from: data)
+                completion(order, nil)
             } catch (let parseError) {
                 completion(nil, parseError)
             }
-            }.resume()
+        }.resume()
     }
 
-    func constructParamsQueryString(orderParams: OrderParams) -> String {
-        var queryString = ""
+    func generateUAT(countryCode: String, completion: @escaping ((String?, Error?) -> Void)) {
+        var components = URLComponents(string: urlString)!
+        components.path = "/uat"
+        components.queryItems = [URLQueryItem(name: "countryCode", value: countryCode)]
 
-        if (orderParams.payeeEmail != "") {
-            queryString += "?payeeEmail=" + orderParams.payeeEmail
-        }
+        var urlRequest = URLRequest(url: components.url!)
+        urlRequest.httpMethod = "POST"
 
-        if (orderParams.amount != "") {
-            queryString += (queryString.contains("?") ? "&amount=" : "?amount=") + orderParams.amount
-        }
-
-        if (orderParams.intent != "") {
-            queryString += (queryString.contains("?") ? "&intent=" : "?intent=") + orderParams.intent.uppercased()
-        }
-
-        if (orderParams.partnerCountry != "") {
-            queryString += (queryString.contains("?") ? "&partnerCountry=" : "?partnerCountry=") + orderParams.partnerCountry
-        }
-        
-        return queryString
-    }
-
-    func processOrder(orderId: String, intent: String, partnerCountry: String, completion: @escaping ((OrderTransactionInfo?, Error?) -> Void)) {
-        let url = URL(string: transactionUrlString + "/" + orderId + "?intent=" + intent + "&partnerCountry=" + partnerCountry)!
-
-//        let request = URLRequest.init(url: url)
-        //request.httpMethod = "PUT"
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(nil, error!)
                 return
             }
 
             do {
-                let orderTransactionInfo = try JSONDecoder().decode(OrderTransactionInfo.self, from: data)
-                completion(orderTransactionInfo, nil)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let uat = try decoder.decode(UAT.self, from: data)
+                completion(uat.universalAccessToken, nil)
+            } catch (let parseError) {
+                completion(nil, parseError)
+            }
+        }.resume()
+    }
+
+    func processOrder(processOrderParams: ProcessOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
+        var urlRequest = URLRequest(url: URL(string: urlString + "/" + processOrderParams.intent.lowercased())!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.httpBody = try! JSONEncoder().encode(processOrderParams)
+
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(nil, error!)
+                return
+            }
+
+            do {
+                let order = try JSONDecoder().decode(Order.self, from: data)
+                completion(order, nil)
             } catch (let parseError) {
                 completion(nil, parseError)
             }

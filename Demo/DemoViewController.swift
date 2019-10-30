@@ -2,7 +2,9 @@ import BraintreePayPalValidator
 import InAppSettingsKit
 
 class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
-    
+
+    // MARK: - Properties
+
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var expirationDateTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
@@ -10,35 +12,46 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var payeeEmailTextField: UITextField!
     @IBOutlet weak var orderResultLabel: UILabel!
     @IBOutlet weak var processOrderButton: UIButton!
-    @IBOutlet weak var orderIntentSegmentedControl: UISegmentedControl!
     @IBOutlet weak var checkoutResultLabel: UILabel!
-    
-    private var orderValidationInfo: OrderValidationInfo?
-    private var orderRequestParams: OrderParams?
+    @IBOutlet weak var uatLabel: UILabel!
+
+    private var orderId: String?
     private var payPalValidatorClient: BTPayPalValidatorClient?
+
+    private var intent: String {
+        return UserDefaults.standard.string(forKey: "intent") ?? "capture"
+    }
+
+    private var countryCode: String {
+        return UserDefaults.standard.string(forKey: "countryCode") ?? "US"
+    }
+
+    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateOrderLabel(withText: "Generate an order id.")
+        generateUAT()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "US"
+        amountTextField.text = "10.00"
 
-        if partnerCountry == "UK" {
-            self.payeeEmailTextField.placeholder = "native-sdk-gb-merchant-111@paypal.com"
+        if countryCode == "UK" {
+            self.payeeEmailTextField.text = "native-sdk-gb-merchant-111@paypal.com"
         } else {
-            self.payeeEmailTextField.placeholder = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
+            self.payeeEmailTextField.text = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
         }
+
+        processOrderButton.setTitle("\(intent.capitalized) Order", for: .normal)
     }
 
     // MARK: - IBActions
 
     @IBAction func cardCheckoutTapped(_ sender: UIButton) {
-        guard let card = createBTCard() else { return }
+        guard let orderId = orderId, let card = createBTCard() else { return }
 
         updateCheckoutLabel(withText: "Validating card...")
-        payPalValidatorClient?.checkoutWithCard(self.orderValidationInfo!.orderId, card: card, presentingDelegate: self, completion: { (validatorResult, error) in
+        payPalValidatorClient?.checkoutWithCard(orderId, card: card, presentingDelegate: self, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Tokenization Error")")
                 return
@@ -51,8 +64,10 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func payPalCheckoutTapped(_ sender: BTUIPayPalButton) {
+        guard let orderId = orderId else { return }
+
         updateCheckoutLabel(withText: "Checking out with PayPal...")
-        payPalValidatorClient?.checkoutWithPayPal(self.orderValidationInfo!.orderId, presentingDelegate: self, completion: { (validatorResult, error) in
+        payPalValidatorClient?.checkoutWithPayPal(orderId, presentingDelegate: self, completion: { (validatorResult, error) in
             guard let orderID = validatorResult?.orderID else { return }
             self.updateCheckoutLabel(withText: "PayPal checkout complete: \(orderID)")
             self.processOrderButton.isEnabled = true
@@ -60,6 +75,8 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func applePayCheckoutTapped(_ sender: Any) {
+        guard let orderId = orderId else { return }
+
         let paymentRequest = PKPaymentRequest()
 
         // Set other PKPaymentRequest properties here
@@ -70,7 +87,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
-        payPalValidatorClient?.checkoutWithApplePay(self.orderValidationInfo!.orderId, paymentRequest: paymentRequest, presentingDelegate: self, completion: { (validatorResult, error, applePayResultHandler) in
+        payPalValidatorClient?.checkoutWithApplePay(orderId, paymentRequest: paymentRequest, presentingDelegate: self, completion: { (validatorResult, error, applePayResultHandler) in
             guard let validatorResult = validatorResult else {
                 self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
                 applePayResultHandler(false)
@@ -85,27 +102,44 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func processOrderTapped(_ sender: Any) {
+        guard let orderId = orderId else { return }
+
         updateCheckoutLabel(withText: "Processing order...")
 
-        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "GERMANY"
-        DemoMerchantAPI.sharedService.processOrder(orderId: self.orderValidationInfo!.orderId, intent: self.orderRequestParams!.intent, partnerCountry: partnerCountry) { (transactionResult, error) in
+        let params = ProcessOrderParams(orderId: orderId, intent: intent, countryCode: countryCode)
+
+        DemoMerchantAPI.sharedService.processOrder(processOrderParams: params) { (transactionResult, error) in
             guard let transactionResult = transactionResult else {
                 self.updateCheckoutLabel(withText: "Transaction failed: \(error?.localizedDescription ?? "error")")
                 return
             }
 
-            if let orderIntentType = self.orderRequestParams?.intent {
-                self.updateCheckoutLabel(withText: "\(orderIntentType) Order status: \(transactionResult.status)")
-            }
+            self.updateCheckoutLabel(withText: "\(self.intent) Order status: \(transactionResult.status)")
         }
     }
 
     @IBAction func generateOrderTapped(_ sender: Any) {
-        updateOrderLabel(withText: "Fetching new Token and Order ID...")
-        updateCheckoutLabel(withText: "Checkout results")
+        updateOrderLabel(withText: "Creating order...")
+        updateCheckoutLabel(withText: "")
         self.processOrderButton.isEnabled = false
 
-        fetchOrderValidationInfo()
+        let amount = amountTextField.text!
+        let payeeEmail = payeeEmailTextField.text!
+        let currencyCode = countryCode == "US" ? "USD" : "EUR"
+
+        let orderRequestParams = CreateOrderParams(intent: intent.uppercased(),
+                                                   purchaseUnits: [PurchaseUnit(amount: Amount(currencyCode: currencyCode, value: amount))],
+                                                   payee: Payee(emailAddress: payeeEmail))
+
+        DemoMerchantAPI.sharedService.createOrder(orderParams: orderRequestParams) { (orderResult, error) in
+            guard let order = orderResult, error == nil else {
+                self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)")
+                return
+            }
+
+            self.orderId = order.id
+            self.updateOrderLabel(withText: "Order ID: \(order.id)")
+        }
     }
 
     @IBAction func settingsTapped(_ sender: Any) {
@@ -116,6 +150,10 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         present(navigationController, animated: true, completion: nil)
     }
     
+    @IBAction func refreshTapped(_ sender: Any) {
+        generateUAT()
+    }
+
     // MARK: - Construct order/request helpers
 
     func createBTCard() -> BTCard? {
@@ -147,39 +185,16 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         return card
     }
 
-    func fetchOrderValidationInfo() {
-        setOrderQueryParams()
-
-        DemoMerchantAPI.sharedService.fetchOrderValidationInfo(orderParams: self.orderRequestParams!) { (orderValidationInfo, error) in
-            guard let info = orderValidationInfo, error == nil else {
-                self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)")
+    func generateUAT() {
+        DemoMerchantAPI.sharedService.generateUAT(countryCode: countryCode) { (uat, error) in
+            guard let uat = uat, error == nil else {
+                self.updateUATLabel(withText: "Failed to fetch UAT: \(error!.localizedDescription). Tap refresh to try again.")
                 return
             }
 
-            self.orderValidationInfo = info
-            self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: info.universalAccessToken)
-            self.updateOrderLabel(withText: "Order ID: \(info.orderId)\nToken: \(info.universalAccessToken)")
+            self.updateUATLabel(withText: "UAT: \(uat)")
+            self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: uat)
         }
-    }
-
-    func setOrderQueryParams() {
-        var amount = "", payeeEmail = ""
-
-        let orderIntent = orderIntentSegmentedControl.titleForSegment(at: orderIntentSegmentedControl.selectedSegmentIndex)
-        let partnerCountry = UserDefaults.standard.string(forKey: "partnerCountry") ?? "US"
-
-        if let amountField = self.amountTextField.text {
-            amount = amountField
-        }
-
-        if let payeeEmailField = self.payeeEmailTextField.text {
-            payeeEmail = payeeEmailField
-            if (payeeEmail == "") {
-                payeeEmail = self.payeeEmailTextField.placeholder!
-            }
-        }
-        
-        self.orderRequestParams = OrderParams(amount: amount, payeeEmail: payeeEmail, intent: orderIntent!, partnerCountry: partnerCountry)
     }
 
     // MARK: - UI Helpers
@@ -199,6 +214,12 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     private func updateCheckoutLabel(withText text: String) {
         DispatchQueue.main.async {
             self.checkoutResultLabel.text = text
+        }
+    }
+
+    private func updateUATLabel(withText text: String) {
+        DispatchQueue.main.async {
+            self.uatLabel.text = text
         }
     }
 

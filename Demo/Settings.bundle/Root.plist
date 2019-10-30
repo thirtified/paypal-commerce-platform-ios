@@ -10,15 +10,35 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Merchant</string>
+			<string>Intent</string>
 			<key>Key</key>
-			<string>partnerCountry</string>
+			<string>intent</string>
+			<key>DefaultValue</key>
+			<string>capture</string>
+			<key>Titles</key>
+			<array>
+				<string>Capture</string>
+				<string>Authorize</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>capture</string>
+				<string>authorize</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Merchant Account</string>
+			<key>Key</key>
+			<string>countryCode</string>
 			<key>DefaultValue</key>
 			<string>US</string>
 			<key>Titles</key>
 			<array>
-				<string>US Merchant</string>
-				<string>UK Merchant</string>
+				<string>US</string>
+				<string>UK</string>
 			</array>
 			<key>Values</key>
 			<array>
