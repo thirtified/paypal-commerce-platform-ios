@@ -8,8 +8,6 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 @interface BTPayPalValidatorClient() <PKPaymentAuthorizationViewControllerDelegate>
 
 @property (nonatomic, copy) NSString *orderId;
-
-@property (nonatomic, weak) id<BTViewControllerPresentingDelegate> presentingDelegate;
 @property (nonatomic, copy) void (^applePayCompletionBlock)(BTPayPalValidatorResult * _Nullable validatorResult, NSError * _Nullable, BTApplePayResultHandler successHandler);
 
 @end
@@ -37,15 +35,12 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
 - (void)checkoutWithCard:(NSString *)orderID
                     card:(BTCard *)card
-      presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
               completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion {
     self.orderId = orderID;
 
     [self.cardClient tokenizeCard:card completion:^(BTCardNonce * tokenizedCard, NSError *error) {
         if (tokenizedCard) {
-            [self validateTokenizedCard:tokenizedCard
-                 withPresentingDelegate:viewControllerPresentingDelegate
-                             completion:^(BOOL success, NSError *error) {
+            [self validateTokenizedCard:tokenizedCard completion:^(BOOL success, NSError *error) {
                 if (success) {
                     BTPayPalValidatorResult *validatorResult = [BTPayPalValidatorResult new];
                     validatorResult.orderID = self.orderId;
@@ -62,7 +57,6 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 }
 
 - (void)validateTokenizedCard:(BTCardNonce *)tokenizedCard
-       withPresentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
                    completion:(void (^)(BOOL success, NSError * _Nullable error))completion {
     [self.payPalAPIClient validatePaymentMethod:tokenizedCard
                                      forOrderId:self.orderId
@@ -72,7 +66,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
                                             } else if (result.contingencyURL) {
                                                 BTPayPalCardContingencyRequest *contingencyRequest = [[BTPayPalCardContingencyRequest alloc] initWithContigencyURL:result.contingencyURL];
 
-                                                self.paymentFlowDriver.viewControllerPresentingDelegate = viewControllerPresentingDelegate;
+                                                self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
                                                 [self.paymentFlowDriver startPaymentFlow:contingencyRequest completion:^(BTPaymentFlowResult *result, NSError *error) {
                                                     if (result) {
                                                         completion(YES, nil);
@@ -88,7 +82,6 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 }
 
 - (void)checkoutWithPayPal:(NSString *)orderId
-        presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
                 completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion {
     self.orderId = orderId;
 
@@ -97,7 +90,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
     BTPayPalCheckoutRequest *request = [BTPayPalCheckoutRequest new];
     request.checkoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.ppcpn.stage.paypal.com/checkoutnow?token=%@", self.orderId]];
 
-    self.paymentFlowDriver.viewControllerPresentingDelegate = viewControllerPresentingDelegate;
+    self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
     [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {
         if (error) {
             completion(nil, error);
@@ -113,11 +106,8 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
 - (void)checkoutWithApplePay:(NSString * __unused)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
-          presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:)) {
+                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:completion:)) {
     self.orderId = orderId;
-
-    self.presentingDelegate = viewControllerPresentingDelegate;
     self.applePayCompletionBlock = completion;
 
     [self.applePayClient paymentRequest:^(PKPaymentRequest *defaultPaymentRequest, NSError *error) {
@@ -129,7 +119,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 
             PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
             authorizationViewController.delegate = self;
-            [viewControllerPresentingDelegate paymentDriver:self requestsPresentationOfViewController:authorizationViewController];
+            [self.presentingDelegate paymentDriver:self requestsPresentationOfViewController:authorizationViewController];
         } else {
             self.applePayCompletionBlock(nil, error, nil);
         }
@@ -162,8 +152,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
 #pragma mark - PKPaymentAuthorizationViewControllerDelegate
 
 - (void)paymentAuthorizationViewControllerDidFinish:(nonnull PKPaymentAuthorizationViewController *)controller {
-    [self.presentingDelegate paymentDriver:self
-         requestsDismissalOfViewController:controller];
+    [self.presentingDelegate paymentDriver:self requestsDismissalOfViewController:controller];
 }
 
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController * __unused)controller

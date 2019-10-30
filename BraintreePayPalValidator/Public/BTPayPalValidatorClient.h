@@ -26,21 +26,21 @@ FOUNDATION_EXPORT NSString * const BTPayPalValidatorErrorDomain;
 
 typedef void (^BTApplePayResultHandler)(BOOL success);
 
+@property (nonatomic, weak) id<BTViewControllerPresentingDelegate> presentingDelegate;
+
 - (nullable instancetype)initWithAccessToken:(NSString *)accessToken;
 
+// TODO: - check Swift names for these methods
 - (void)checkoutWithCard:(NSString *)orderId
                     card:(BTCard *)card
-      presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-              completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithCard(_:card:presentingDelegate:completion:));
+              completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithCard(_:card:completion:));
 
 - (void)checkoutWithPayPal:(NSString *)orderId
-        presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-                completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithPayPal(_:presentingDelegate:completion:));
+                completion:(void (^)(BTPayPalValidatorResult * _Nullable validateResult, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithPayPal(_:completion:));
 
 - (void)checkoutWithApplePay:(NSString *)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
-          presentingDelegate:(id<BTViewControllerPresentingDelegate>)viewControllerPresentingDelegate
-                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:presentingDelegate:completion:));
+                  completion:(void (^)(BTPayPalValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:completion:));
 
 @end
 

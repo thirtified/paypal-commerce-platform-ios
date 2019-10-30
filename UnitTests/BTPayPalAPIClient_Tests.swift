@@ -11,6 +11,23 @@ class BTPayPalAPIClient_Tests: XCTestCase {
 
     // MARK: -  validatePaymentMethod helpers
 
+    func testAPIClient_constructsURLRequest() {
+        let apiClient = BTPayPalAPIClient(accessToken: "123.123.123")
+        let expectation = self.expectation(description: "Calls URLSession with URLRequest")
+
+        let mockURLSession = MockURLSession()
+        mockURLSession.dataTaskHandler = { request in
+            XCTAssertEqual(request.httpMethod, "POST")
+            // test url, header, body/payload
+            expectation.fulfill()
+        }
+
+//        apiClient.session = mockURLSession
+//        apiClient.validatePaymentMethod(<#T##paymentMethod: BTPaymentMethodNonce##BTPaymentMethodNonce#>, forOrderId: <#T##String#>, completion: <#T##(BTPayPalValidateResult?, Error?) -> Void#>)
+
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
     func testAPIClient_constructTokenizePayload() {
         let apiClient = BTPayPalAPIClient.init(accessToken: "123.123.123")
         let validatePayload = apiClient.constructValidatePayload("fake-nonce") as NSObject?

@@ -8,5 +8,4 @@ class MockPayPalAPIClient: BTPayPalAPIClient {
     override func validatePaymentMethod(_ paymentMethod: BTPaymentMethodNonce, forOrderId orderId: String, completion: @escaping (BTPayPalValidateResult?, Error?) -> Void) {
         completion(validateResult, validateError)
     }
-
 }
