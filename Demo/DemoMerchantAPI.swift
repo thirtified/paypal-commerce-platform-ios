@@ -1,4 +1,5 @@
 import Foundation
+import BraintreePayPalValidator
 
 struct Order: Codable {
     let id: String
@@ -42,7 +43,7 @@ class DemoMerchantAPI {
 
     static let sharedService = DemoMerchantAPI()
 
-    //    private let urlString = "https://braintree-p4p-sample-merchant.herokuapp.com/order-validation-info"
+    // private let urlString = "https://braintree-p4p-sample-merchant.herokuapp.com/order-validation-info"
     private let urlString = "http://localhost:5000"
 
     private init() {}
@@ -95,11 +96,11 @@ class DemoMerchantAPI {
         }.resume()
     }
 
-    func processOrder(processOrderParams: ProcessOrderParams, clientMetadata: String, completion: @escaping ((Order?, Error?) -> Void)) {
+    func processOrder(processOrderParams: ProcessOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
         var urlRequest = URLRequest(url: URL(string: urlString + "/" + processOrderParams.intent.lowercased() + "-order")!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue(clientMetadata, forHTTPHeaderField: "PayPal-Client-Metadata-Id")
+        urlRequest.addValue(PPDataCollector.clientMetadataID(nil), forHTTPHeaderField: "PayPal-Client-Metadata-Id")
         urlRequest.httpBody = try! JSONEncoder().encode(processOrderParams)
 
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in

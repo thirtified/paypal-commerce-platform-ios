@@ -110,7 +110,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         let params = ProcessOrderParams(orderId: orderId, intent: intent, countryCode: countryCode)
 
-        DemoMerchantAPI.sharedService.processOrder(processOrderParams: params, clientMetadata: "blah") { (transactionResult, error) in
+        DemoMerchantAPI.sharedService.processOrder(processOrderParams: params) { (transactionResult, error) in
             guard let transactionResult = transactionResult else {
                 self.updateCheckoutLabel(withText: "Transaction failed: \(error?.localizedDescription ?? "error")")
                 return
