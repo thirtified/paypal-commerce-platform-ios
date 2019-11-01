@@ -2,7 +2,7 @@
 
 @implementation BTPayPalValidateResult
 
-- (instancetype)initWithJSON:(BTJSON * __unused)json {
+- (instancetype)initWithJSON:(BTJSON *)json {
     self = [super init];
     if (self) {
         NSArray *links = [json[@"links"] asArray];

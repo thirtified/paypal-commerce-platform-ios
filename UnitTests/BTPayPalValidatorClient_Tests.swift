@@ -61,7 +61,7 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
     func testCheckoutWithApplePay_whenDefaultPaymentRequestIsAvailable_requestsPresentationOfViewController() {
         let expectation = self.expectation(description: "passes Apple Pay view controller to merchant")
         
-        mockViewControllerPresentingDelegate.requestsPresentationHandler = { driver, viewController in
+        mockViewControllerPresentingDelegate.onPaymentDriverRequestsPresentation = { driver, viewController in
             XCTAssertEqual(driver as? BTPayPalValidatorClient, self.validatorClient)
             XCTAssertNotNil(viewController)
             XCTAssertTrue(viewController is PKPaymentAuthorizationViewController)

@@ -4,17 +4,17 @@
 
 @interface BTPayPalCardContingencyRequest ()
 
-@property (strong, nonatomic) NSURL *contigencyURL;
+@property (strong, nonatomic) NSURL *contingencyURL;
 @property (nonatomic, weak) id<BTPaymentFlowDriverDelegate> paymentFlowDriverDelegate;
 
 @end
 
 @implementation BTPayPalCardContingencyRequest
 
-- (instancetype)initWithContigencyURL:(NSURL *)contigencyURL {
+- (instancetype)initWithContingencyURL:(NSURL *)contingencyURL {
     self = [super init];
     if (self) {
-        _contigencyURL = contigencyURL;
+        _contingencyURL = contingencyURL;
     }
 
     return self;
@@ -27,8 +27,9 @@
     NSString *redirectURLString = [NSString stringWithFormat:@"%@://x-callback-url/braintree/paypal-validator", [BTAppSwitch sharedInstance].returnURLScheme];
     NSURLQueryItem *redirectQueryItem = [NSURLQueryItem queryItemWithName:@"redirect_uri" value:redirectURLString];
 
-    NSURLComponents *contingencyURLComponents = [NSURLComponents componentsWithURL:validateRequest.contigencyURL resolvingAgainstBaseURL:NO];
-    contingencyURLComponents.queryItems = [contingencyURLComponents.queryItems arrayByAddingObject:redirectQueryItem];
+    NSURLComponents *contingencyURLComponents = [NSURLComponents componentsWithURL:validateRequest.contingencyURL resolvingAgainstBaseURL:NO];
+    NSMutableArray<NSURLQueryItem *> *queryItems = [contingencyURLComponents.queryItems mutableCopy] ?: [NSMutableArray new];
+    contingencyURLComponents.queryItems = [queryItems arrayByAddingObject:redirectQueryItem];
 
     [delegate onPaymentWithURL:contingencyURLComponents.URL error:nil];
 }

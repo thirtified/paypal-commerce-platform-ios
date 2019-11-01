@@ -64,7 +64,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
                                             if (error) {
                                                 completion(NO, error);
                                             } else if (result.contingencyURL) {
-                                                BTPayPalCardContingencyRequest *contingencyRequest = [[BTPayPalCardContingencyRequest alloc] initWithContigencyURL:result.contingencyURL];
+                                                BTPayPalCardContingencyRequest *contingencyRequest = [[BTPayPalCardContingencyRequest alloc] initWithContingencyURL:result.contingencyURL];
 
                                                 self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
                                                 [self.paymentFlowDriver startPaymentFlow:contingencyRequest completion:^(BTPaymentFlowResult *result, NSError *error) {

@@ -8,9 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BTPayPalCardContingencyRequest : BTPaymentFlowRequest <BTPaymentFlowRequestDelegate>
 
-@property (readonly, nonatomic) NSURL *contigencyURL;
+@property (readonly, nonatomic) NSURL *contingencyURL;
 
-- (instancetype)initWithContigencyURL:(NSURL *)contigencyURL;
+- (instancetype)initWithContingencyURL:(NSURL *)contingencyURL;
 
 @end
 

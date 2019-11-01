@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		12BEADF0564F9BD925CB484E /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */; };
 		42138C7223678B4B00376E80 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42138C7123678B4B00376E80 /* Settings.bundle */; };
+		425B8315236CBDEC006F694D /* BTJSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8314236CBDEC006F694D /* BTJSONHelper.swift */; };
+		425B831B236CBE8C006F694D /* paypal-validate-request.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831A236CBE8C006F694D /* paypal-validate-request.json */; };
+		425B831F236CCC99006F694D /* paypal-validate-response-without-contingency.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831E236CCC99006F694D /* paypal-validate-response-without-contingency.json */; };
+		425B8321236CDDBF006F694D /* paypal-validate-response-with-contingency.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B8320236CDDBF006F694D /* paypal-validate-response-with-contingency.json */; };
+		425B8323236CE98D006F694D /* BTPayPalCardContingencyRequest_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8322236CE98D006F694D /* BTPayPalCardContingencyRequest_Tests.swift */; };
+		425B8325236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8324236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift */; };
 		4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306C2360E91B00A8734E /* MockCardClient.swift */; };
 		4276306F2360F05A00A8734E /* MockPaymentFlowDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
@@ -60,6 +66,12 @@
 		2094252C46E01FDFCCAB6FB2 /* Pods-SDK_Dependencies-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.release.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		42138C7123678B4B00376E80 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		425B8314236CBDEC006F694D /* BTJSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTJSONHelper.swift; sourceTree = "<group>"; };
+		425B831A236CBE8C006F694D /* paypal-validate-request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "paypal-validate-request.json"; sourceTree = "<group>"; };
+		425B831E236CCC99006F694D /* paypal-validate-response-without-contingency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-response-without-contingency.json"; sourceTree = "<group>"; };
+		425B8320236CDDBF006F694D /* paypal-validate-response-with-contingency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-response-with-contingency.json"; sourceTree = "<group>"; };
+		425B8322236CE98D006F694D /* BTPayPalCardContingencyRequest_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalCardContingencyRequest_Tests.swift; sourceTree = "<group>"; };
+		425B8324236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentFlowDriverDelegate.swift; sourceTree = "<group>"; };
 		4276306B2360DF4F00A8734E /* Demo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		4276306C2360E91B00A8734E /* MockCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardClient.swift; sourceTree = "<group>"; };
 		4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentFlowDriver.swift; sourceTree = "<group>"; };
@@ -139,15 +151,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		425B8319236CBE8C006F694D /* SampleJSON */ = {
+			isa = PBXGroup;
+			children = (
+				425B831A236CBE8C006F694D /* paypal-validate-request.json */,
+				425B831E236CCC99006F694D /* paypal-validate-response-without-contingency.json */,
+				425B8320236CDDBF006F694D /* paypal-validate-response-with-contingency.json */,
+			);
+			path = SampleJSON;
+			sourceTree = "<group>";
+		};
 		42D352F3235E49AC006A9DD1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				425B8314236CBDEC006F694D /* BTJSONHelper.swift */,
 				42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */,
 				4276306C2360E91B00A8734E /* MockCardClient.swift */,
 				4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */,
+				425B8324236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift */,
 				8066A05D235F5E9C007ACC28 /* MockPayPalAPIClient.swift */,
-				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
 				8077518C236A3D08001B61BE /* MockURLSession.swift */,
+				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -193,11 +217,13 @@
 			isa = PBXGroup;
 			children = (
 				802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */,
+				425B8322236CE98D006F694D /* BTPayPalCardContingencyRequest_Tests.swift */,
 				8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */,
 				8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */,
 				8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */,
 				42D352F3235E49AC006A9DD1 /* Helpers */,
 				8066A050235F5026007ACC28 /* Info.plist */,
+				425B8319236CBE8C006F694D /* SampleJSON */,
 				8066A05A235F50D7007ACC28 /* UnitTests-Bridging-Header.h */,
 			);
 			path = UnitTests;
@@ -407,6 +433,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425B831F236CCC99006F694D /* paypal-validate-response-without-contingency.json in Resources */,
+				425B8321236CDDBF006F694D /* paypal-validate-response-with-contingency.json in Resources */,
+				425B831B236CBE8C006F694D /* paypal-validate-request.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +552,9 @@
 				8066A05C235F51F2007ACC28 /* MockViewControllerPresentingDelegate.swift in Sources */,
 				8066A05B235F51EF007ACC28 /* MockApplePayClient.swift in Sources */,
 				4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */,
+				425B8325236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift in Sources */,
+				425B8315236CBDEC006F694D /* BTJSONHelper.swift in Sources */,
+				425B8323236CE98D006F694D /* BTPayPalCardContingencyRequest_Tests.swift in Sources */,
 				8066A05E235F5E9C007ACC28 /* MockPayPalAPIClient.swift in Sources */,
 				8077518D236A3D08001B61BE /* MockURLSession.swift in Sources */,
 				8066A059235F506F007ACC28 /* BTPayPalValidateResult_Tests.swift in Sources */,

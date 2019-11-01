@@ -12,6 +12,7 @@
 - (instancetype)initWithAccessToken:(NSString *)accessToken {
     if (self = [super init]) {
         _accessToken = accessToken;
+        _urlSession = NSURLSession.sharedSession;
     }
 
     return self;
@@ -31,8 +32,7 @@
         return;
     }
 
-    NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[self.urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 completion(nil, error);
@@ -66,7 +66,7 @@
 
 - (nullable NSURLRequest *)createValidateURLRequest:(NSURL *)url
                              withPaymentMethodNonce:(NSString *)paymentMethodNonce
-                                              error:(NSError **)error{
+                                              error:(NSError **)error {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     [request setValue:[NSString stringWithFormat:@"Bearer %@", self.accessToken] forHTTPHeaderField:@"Authorization"];

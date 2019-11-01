@@ -8,3 +8,4 @@
 #import "BTPayPalCardContingencyResult.h"
 #import "BTPayPalValidatorClient_Internal.h"
 #import "BTPaymentFlowDriver.h"
+#import "BTPayPalCardContingencyRequest.h"

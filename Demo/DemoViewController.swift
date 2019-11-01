@@ -31,8 +31,6 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateUAT()
-        print("****** \(PPDataCollector.clientMetadataID())")
-        print("****** \(PPDataCollector.collectPayPalDeviceData())")
     }
 
     override func viewWillAppear(_ animated: Bool) {

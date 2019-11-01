@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BTPayPalAPIClient : NSObject
 
 @property (readonly, nonatomic) NSString *accessToken;
+@property (nonatomic, strong) NSURLSession *urlSession;
 
 - (instancetype)initWithAccessToken:(NSString *)accessToken;
 

@@ -2,14 +2,14 @@ import Foundation
 
 class MockViewControllerPresentingDelegate: NSObject, BTViewControllerPresentingDelegate {
     
-    var requestsPresentationHandler: ((Any, UIViewController) -> Void)?
-    var requestsDismissalHandler: ((Any, UIViewController) -> Void)?
+    var onPaymentDriverRequestsPresentation: ((Any, UIViewController) -> Void)?
+    var onPaymentDriverRequestsDismissal: ((Any, UIViewController) -> Void)?
     
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
-        requestsPresentationHandler?(driver, viewController)
+        onPaymentDriverRequestsPresentation?(driver, viewController)
     }
     
     func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
-        requestsDismissalHandler?(driver, viewController)
+        onPaymentDriverRequestsDismissal?(driver, viewController)
     }
 }
