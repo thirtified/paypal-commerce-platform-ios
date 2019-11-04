@@ -43,7 +43,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         }
 
         processOrderButton.setTitle("\(intent.capitalized) Order", for: .normal)
-        orderResultLabel.text = "Order ID: None"
+        updateOrderLabel(withText: "Order ID: None", color: UIColor.lightGray)
         orderId = nil
     }
 
@@ -121,7 +121,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func generateOrderTapped(_ sender: Any) {
-        updateOrderLabel(withText: "Creating order...")
+        updateOrderLabel(withText: "Creating order...", color: UIColor.black)
         updateCheckoutLabel(withText: "")
         self.processOrderButton.isEnabled = false
 
@@ -135,12 +135,12 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         DemoMerchantAPI.sharedService.createOrder(orderParams: orderRequestParams) { (orderResult, error) in
             guard let order = orderResult, error == nil else {
-                self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)")
+                self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)", color: UIColor.red)
                 return
             }
 
             self.orderId = order.id
-            self.updateOrderLabel(withText: "Order ID: \(order.id)")
+            self.updateOrderLabel(withText: "Order ID: \(order.id)", color: UIColor.black)
         }
     }
 
@@ -208,9 +208,10 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         self.present(alert, animated: true)
     }
 
-    private func updateOrderLabel(withText text: String) {
+    private func updateOrderLabel(withText text: String, color: UIColor) {
         DispatchQueue.main.async {
             self.orderResultLabel.text = text
+            self.orderResultLabel.textColor = color
         }
     }
 
