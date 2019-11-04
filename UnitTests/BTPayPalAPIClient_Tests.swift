@@ -8,8 +8,6 @@ class BTPayPalAPIClient_Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockURLSession.data = try! BTJSON(withJSONFile: "paypal-validate-response-without-contingency")?.asJSON()
-        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
         mockURLSession.error = nil
         payPalAPIClient.urlSession = mockURLSession
     }
@@ -24,7 +22,10 @@ class BTPayPalAPIClient_Tests: XCTestCase {
 
     func testValidatePaymentMethod_constructsURLRequest() {
         let expectation = self.expectation(description: "Calls URLSession with URLRequest")
-        
+
+        mockURLSession.data = try! BTJSON().asJSON()
+        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+
         mockURLSession.onDataTaskWithRequest = { request in
             guard let body = request.httpBody else { XCTFail(); return }
             
@@ -41,9 +42,12 @@ class BTPayPalAPIClient_Tests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
-    func testValidatePaymentMethod_whenResponseCodeIsLessThan400_callsCompletionWithValidateResult() {
+    func testValidatePaymentMethod_whenResponseCodeIs200_callsCompletionWithValidateResult() {
         let expectation = self.expectation(description: "Calls completion with BTPayPalValidateResult")
-        
+
+        mockURLSession.data = try! BTJSON(withJSONFile: "paypal-validate-response-without-contingency")?.asJSON()
+        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+
         payPalAPIClient.validatePaymentMethod(nonce, forOrderId: "order-id") { (result, error) in
             XCTAssertNotNil(result)
             XCTAssertNil(result?.contingencyURL)
@@ -54,11 +58,11 @@ class BTPayPalAPIClient_Tests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
-    func testValidatePaymentMethod_whenResponseCodeIsGreaterThanOrEqualTo400_andContingencyIsPresent_callsCompletionWithValidateResult() {
+    func testValidatePaymentMethod_whenResponseCodeIs422_andContingencyIsPresent_callsCompletionWithValidateResult() {
         let expectation = self.expectation(description: "Calls completion with BTPayPalValidateResult")
         
         mockURLSession.data = try! BTJSON(withJSONFile: "paypal-validate-response-with-contingency")?.asJSON()
-        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 400, httpVersion: nil, headerFields: nil)
+        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 422, httpVersion: nil, headerFields: nil)
         
         payPalAPIClient.validatePaymentMethod(nonce, forOrderId: "order-id") { (result, error) in
             XCTAssertNotNil(result)
@@ -71,16 +75,31 @@ class BTPayPalAPIClient_Tests: XCTestCase {
 
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
-    func testValidatePaymentMethod_whenResponseCodeIsGreaterThanOrEqualTo400_andContingencyIsNotPresent_callsCompletionWithError() {
+
+    func testValidatePaymentMethod_whenResponseCodeIs422_andCardExpiredResponse_callsCompletionWithError() {
         let expectation = self.expectation(description: "Calls completion with error")
-        
-        mockURLSession.data = try! BTJSON(withJSONFile: "paypal-validate-response-without-contingency")?.asJSON()
-        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 400, httpVersion: nil, headerFields: nil)
-        
+
+        mockURLSession.data = try! BTJSON(withJSONFile: "paypal-validate-response-card-expired")?.asJSON()
+        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 422, httpVersion: nil, headerFields: nil)
+
         payPalAPIClient.validatePaymentMethod(nonce, forOrderId: "order-id") { (result, error) in
             XCTAssertNil(result)
-            XCTAssertEqual(error?.localizedDescription, "Validation Error")
+            XCTAssertEqual(error?.localizedDescription, "The requested action could not be performed, semantically incorrect, or failed business validation.")
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
+    func testValidatePaymentMethod_whenResponseCodeIs403_andInvalidTokenResponse_callsCompletionWithError() {
+        let expectation = self.expectation(description: "Calls completion with error")
+
+        mockURLSession.data = try! BTJSON(withJSONFile: "paypal-validate-response-invalid-token")?.asJSON()
+        mockURLSession.urlResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 403, httpVersion: nil, headerFields: nil)
+
+        payPalAPIClient.validatePaymentMethod(nonce, forOrderId: "order-id") { (result, error) in
+            XCTAssertNil(result)
+            XCTAssertEqual(error?.localizedDescription, "Token signature verification failed")
             expectation.fulfill()
         }
 

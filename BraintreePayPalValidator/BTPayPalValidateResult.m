@@ -14,6 +14,12 @@
         }
         _issueType = [json[@"details"][0][@"issue"] asString];
         _message = [json[@"message"] asString];
+
+        if ([json[@"message"] isString]) {
+            _message = [json[@"message"] asString];
+        } else {
+            _message = [json[@"error_description"] asString];
+        }
     }
     return self;
 }

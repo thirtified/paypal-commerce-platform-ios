@@ -27,7 +27,7 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
         _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:braintreeAPIClient];
         _cardClient = [[BTCardClient alloc] initWithAPIClient:braintreeAPIClient];
         _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:braintreeAPIClient];
-        _payPalAPIClient = [[BTPayPalAPIClient alloc] initWithAccessToken:accessToken];
+        _payPalAPIClient = [[BTPayPalAPIClient alloc] initWithAccessToken:@"RANDO"];
     }
 
     return self;

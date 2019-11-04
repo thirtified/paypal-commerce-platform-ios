@@ -21,6 +21,8 @@
 		42FF386C235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* BTPayPalValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */; };
+		802C28F12370CC4100A918C7 /* paypal-validate-response-card-expired.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F02370CC4100A918C7 /* paypal-validate-response-card-expired.json */; };
+		802C28F32370D1FE00A918C7 /* paypal-validate-response-invalid-token.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F22370D1FE00A918C7 /* paypal-validate-response-invalid-token.json */; };
 		8066A056235F506F007ACC28 /* BTPayPalValidatorClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */; };
 		8066A057235F506F007ACC28 /* BTPayPalCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */; };
 		8066A058235F506F007ACC28 /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */; };
@@ -87,6 +89,8 @@
 		8026243B2357A4E2005EA84A /* BTPayPalValidateResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidateResult_Tests.swift; sourceTree = "<group>"; };
 		8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalCardContingencyResult_Tests.swift; sourceTree = "<group>"; };
 		8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidatorClient_Tests.swift; sourceTree = "<group>"; };
+		802C28F02370CC4100A918C7 /* paypal-validate-response-card-expired.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-response-card-expired.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		802C28F22370D1FE00A918C7 /* paypal-validate-response-invalid-token.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-response-invalid-token.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		8066A04C235F5026007ACC28 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8066A050235F5026007ACC28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8066A05A235F50D7007ACC28 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 				425B831A236CBE8C006F694D /* paypal-validate-request.json */,
 				425B831E236CCC99006F694D /* paypal-validate-response-without-contingency.json */,
 				425B8320236CDDBF006F694D /* paypal-validate-response-with-contingency.json */,
+				802C28F02370CC4100A918C7 /* paypal-validate-response-card-expired.json */,
+				802C28F22370D1FE00A918C7 /* paypal-validate-response-invalid-token.json */,
 			);
 			path = SampleJSON;
 			sourceTree = "<group>";
@@ -433,7 +439,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802C28F12370CC4100A918C7 /* paypal-validate-response-card-expired.json in Resources */,
 				425B831F236CCC99006F694D /* paypal-validate-response-without-contingency.json in Resources */,
+				802C28F32370D1FE00A918C7 /* paypal-validate-response-invalid-token.json in Resources */,
 				425B8321236CDDBF006F694D /* paypal-validate-response-with-contingency.json in Resources */,
 				425B831B236CBE8C006F694D /* paypal-validate-request.json in Resources */,
 			);
