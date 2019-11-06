@@ -48,9 +48,14 @@ class DemoMerchantAPI {
 
     private init() {}
 
-    func createOrder(orderParams: CreateOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
-        var urlRequest = URLRequest(url: URL(string: urlString + "/order")!)
+    func createOrder(countryCode: String, orderParams: CreateOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
+        var components = URLComponents(string: urlString)!
+        components.path = "/order"
+        components.queryItems = [URLQueryItem(name: "countryCode", value: countryCode)]
+
+        var urlRequest = URLRequest(url: components.url!)
         urlRequest.httpMethod = "POST"
+        
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         urlRequest.httpBody = try! encoder.encode(orderParams)

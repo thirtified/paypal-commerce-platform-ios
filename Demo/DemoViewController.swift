@@ -133,7 +133,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
                                                    purchaseUnits: [PurchaseUnit(amount: Amount(currencyCode: currencyCode, value: amount))],
                                                    payee: Payee(emailAddress: payeeEmail))
 
-        DemoMerchantAPI.sharedService.createOrder(orderParams: orderRequestParams) { (orderResult, error) in
+        DemoMerchantAPI.sharedService.createOrder(countryCode: countryCode, orderParams: orderRequestParams) { (orderResult, error) in
             guard let order = orderResult, error == nil else {
                 self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)", color: UIColor.red)
                 return
