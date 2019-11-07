@@ -116,10 +116,16 @@ NSString * const BTPayPalValidatorErrorDomain = @"com.braintreepayments.BTPayPal
             paymentRequest.currencyCode = defaultPaymentRequest.currencyCode;
             paymentRequest.merchantIdentifier = defaultPaymentRequest.merchantIdentifier;
 
-            // TODO: - revert change after MVP
+            // TODO: - revert change after E2E
             // Disabling Discover and Amex support for MVP. PayPal processor interaction is not coded for those 2 card networks.
             // paymentRequest.supportedNetworks = defaultPaymentRequest.supportedNetworks;
-            paymentRequest.supportedNetworks = [NSArray  arrayWithObjects:PKPaymentNetworkMasterCard, PKPaymentNetworkVisa, nil];
+            NSMutableArray <PKPaymentNetwork> *supportedNetworks = [NSMutableArray new];
+            for (PKPaymentNetwork network in defaultPaymentRequest.supportedNetworks) {
+                if (![network isEqualToString:@"Discover"] && ![network isEqualToString:@"AmEx"]) {
+                    [supportedNetworks addObject:network];
+                }
+            }
+            paymentRequest.supportedNetworks = supportedNetworks;
 
             PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
             authorizationViewController.delegate = self;
