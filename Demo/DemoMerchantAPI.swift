@@ -9,25 +9,25 @@ struct Order: Codable {
 struct CreateOrderParams: Codable {
     let intent: String
     let purchaseUnits: [PurchaseUnit]
-    let payee: Payee
 
     struct PurchaseUnit: Codable {
         let amount: Amount
+        let payee: Payee
 
         struct Amount: Codable {
             let currencyCode: String
             let value: String
         }
-    }
 
-    struct Payee: Codable {
-        let emailAddress: String
+        struct Payee: Codable {
+            let emailAddress: String
+        }
     }
 }
 
 typealias PurchaseUnit = CreateOrderParams.PurchaseUnit
 typealias Amount = CreateOrderParams.PurchaseUnit.Amount
-typealias Payee = CreateOrderParams.Payee
+typealias Payee = CreateOrderParams.PurchaseUnit.Payee
 
 struct UAT: Codable {
     let universalAccessToken: String

@@ -130,8 +130,8 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         let currencyCode = countryCode == "US" ? "USD" : "EUR"
 
         let orderRequestParams = CreateOrderParams(intent: intent.uppercased(),
-                                                   purchaseUnits: [PurchaseUnit(amount: Amount(currencyCode: currencyCode, value: amount))],
-                                                   payee: Payee(emailAddress: payeeEmail))
+                                                   purchaseUnits: [PurchaseUnit(amount: Amount(currencyCode: currencyCode, value: amount),
+                                                                                payee: Payee(emailAddress: payeeEmail))])
 
         DemoMerchantAPI.sharedService.createOrder(countryCode: countryCode, orderParams: orderRequestParams) { (orderResult, error) in
             guard let order = orderResult, error == nil else {
