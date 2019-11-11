@@ -127,7 +127,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         let amount = amountTextField.text!
         let payeeEmail = payeeEmailTextField.text!
-        let currencyCode = countryCode == "US" ? "USD" : "EUR"
+        let currencyCode = countryCode == "US" ? "USD" : "GBP"
 
         let orderRequestParams = CreateOrderParams(intent: intent.uppercased(),
                                                    purchaseUnits: [PurchaseUnit(amount: Amount(currencyCode: currencyCode, value: amount),
