@@ -14,7 +14,8 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var processOrderButton: UIButton!
     @IBOutlet weak var checkoutResultLabel: UILabel!
     @IBOutlet weak var uatLabel: UILabel!
-
+    @IBOutlet weak var otherCheckoutStackView: UIStackView!
+    
     private var orderId: String?
     private var payPalValidatorClient: BTPayPalValidatorClient?
 
@@ -30,6 +31,11 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let applePayButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .whiteOutline)
+        applePayButton.addTarget(self, action: #selector(applePayCheckoutTapped(_:)), for: .touchUpInside)
+        otherCheckoutStackView.addArrangedSubview(applePayButton)
+        
         generateUAT()
     }
 
@@ -42,6 +48,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
             self.payeeEmailTextField.text = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
         }
 
+        generateUAT()
         processOrderButton.setTitle("\(intent.capitalized) Order", for: .normal)
         updateOrderLabel(withText: "Order ID: None", color: UIColor.lightGray)
         orderId = nil
@@ -188,6 +195,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     func generateUAT() {
+        updateUATLabel(withText: "Fetching UAT...")
         DemoMerchantAPI.sharedService.generateUAT(countryCode: countryCode) { (uat, error) in
             guard let uat = uat, error == nil else {
                 self.updateUATLabel(withText: "Failed to fetch UAT: \(error!.localizedDescription). Tap refresh to try again.")
