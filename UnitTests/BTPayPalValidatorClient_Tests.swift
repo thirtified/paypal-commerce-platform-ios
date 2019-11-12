@@ -48,7 +48,10 @@ class BTPayPalValidatorClient_Tests: XCTestCase {
     // MARK: - initWithAccessToken
 
     func testValidatorClientInitialization_withUAT_initializes() {
+        let accessToken = "123.ewogICJleHRlcm5hbF9pZHMiOiBbCiAgICAiQnJhaW50cmVlOm1lcmNoYW50LWlkIgogIF0KfQ.456"
+        let validatorClient = BTPayPalValidatorClient(accessToken: accessToken)
         XCTAssertNotNil(validatorClient)
+        XCTAssertEqual(validatorClient?.payPalAPIClient.accessToken, accessToken)
     }
 
     func testValidatorClientInitialization_withInvalidUAT_returnsNil() {

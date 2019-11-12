@@ -43,7 +43,6 @@ class DemoMerchantAPI {
 
     static let sharedService = DemoMerchantAPI()
 
-    // private let urlString = "https://braintree-p4p-sample-merchant.herokuapp.com/order-validation-info"
     private let urlString = "http://localhost:5000"
 
     private init() {}
