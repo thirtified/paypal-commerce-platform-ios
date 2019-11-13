@@ -50,8 +50,6 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         generateUAT()
         processOrderButton.setTitle("\(intent.capitalized) Order", for: .normal)
-        updateOrderLabel(withText: "Order ID: None", color: UIColor.lightGray)
-        orderId = nil
     }
 
     // MARK: - IBActions
@@ -157,6 +155,10 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         present(navigationController, animated: true, completion: nil)
+
+        // Wipe orderID when settings page is accessed
+        updateOrderLabel(withText: "Order ID: None", color: UIColor.lightGray)
+        orderId = nil
     }
     
     @IBAction func refreshTapped(_ sender: Any) {
