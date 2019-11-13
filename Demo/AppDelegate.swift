@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UserDefaults.standard.register(defaults: defaults)
         
+        if ProcessInfo.processInfo.arguments.contains("-Capture") {
+            UserDefaults.standard.set("capture", forKey: "intent")
+        } else if ProcessInfo.processInfo.arguments.contains("-Authorize") {
+            UserDefaults.standard.set("authorize", forKey: "intent")
+        }
+        
         return true
     }
     
