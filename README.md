@@ -16,3 +16,5 @@ BraintreePayPalValidator provides a native SDK offering to current PayPal partne
 - *Note:* When testing the PayPal flow, we notice that Xcode 11 simulators sometimes act buggy when displaying an `SFSafariViewController`. The screen will sometimes go entirely white and flicker.
   - In toolbar at the top of the Xcode simulator, click `Hardware > Erase All Content and Settings`. Also, try testing on a different simulator iPhone model and iOS version.
 
+## Xcode 
+Running this repo's Demo app requires Xcode 11+, due to our inclusion of [`InAppSettingsKit Framework`](https://github.com/futuretap/InAppSettingsKit).
