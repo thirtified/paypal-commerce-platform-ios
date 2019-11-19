@@ -1,5 +1,8 @@
 import XCTest
 
+// Note: These tests rely on the PPCP sample merchant server to be running locally.
+//       Tests are flakey due to PP staging environment.
+
 class CardCheckout_UITests: XCTestCase {
     var app: XCUIApplication!
     
@@ -8,18 +11,18 @@ class CardCheckout_UITests: XCTestCase {
         app.launchArguments.append("-Capture")
         app.launch()
 
-        // wait for UAT
+        // wait for PP UAT
         let uatExistsPredicate = NSPredicate(format: "label LIKE 'Fetched UAT:*'")
         waitForElementToAppear(app.staticTexts.containing(uatExistsPredicate).element(boundBy: 0))
 
         // tap Create Order button
         app.buttons["Create Order"].tap()
 
-        // wait for order ID
+        // wait for Order ID
         let orderExistsPredicate = NSPredicate(format: "label LIKE 'Order ID:*'")
         waitForElementToAppear(app.staticTexts.containing(orderExistsPredicate).element(boundBy: 0))
 
-        // fill out credit card fields
+        // fill out card fields
         let cardNumberTextField = app.textFields["Card Number"]
         cardNumberTextField.tap()
         cardNumberTextField.typeText("4000000000000051")
@@ -32,35 +35,125 @@ class CardCheckout_UITests: XCTestCase {
         cvvTextField.tap()
         cvvTextField.typeText("123")
 
-        // tap submit
+        // tap Submit
         app.buttons["Submit"].tap()
+        let validateSuccessPredicate = NSPredicate(format: "label LIKE 'Validate card success:*'")
+        waitForElementToAppear(app.staticTexts.containing(validateSuccessPredicate).element(boundBy: 0))
 
-        // TO DO: - the capture order button isn't actually being hit in this test
+        // wait for Capture button to become enabled
+        sleep(10)
 
-        // wait for "Capture" button to become enabled
-        waitForElementToBeHittable(app.buttons["Capture Order"])
-        app.buttons["Capture Order"].forceTapElement()
-
-        // tap "Capture"
-        app.buttons["Capture Order"].forceTapElement()
+        // tap Capture
+        app.buttons["Capture Order"].tap()
 
         // Check for success message
-        let resultPredicate = NSPredicate(format: "label LIKE 'Fetched UAT:*'")
+        let resultPredicate = NSPredicate(format: "label LIKE 'Capture Status:*'")
+        sleep(20)
+        waitForElementToAppear(app.staticTexts.containing(resultPredicate).element(boundBy: 0))
         XCTAssertTrue(app.staticTexts.containing(resultPredicate).element(boundBy: 0).exists);
     }
     
     func testAuthorizePayment() {
         app = XCUIApplication()
         app.launchArguments.append("-Authorize")
-        self.app.launch()
-        
-        // wait for UAT
+        app.launch()
+
+        // wait for PP UAT
+        let uatExistsPredicate = NSPredicate(format: "label LIKE 'Fetched UAT:*'")
+        waitForElementToAppear(app.staticTexts.containing(uatExistsPredicate).element(boundBy: 0))
+
         // tap Create Order button
-        // wait for order ID
-        // fill out credit card fields
-        // tap submit
-        // wait for "Capture" button to become enabled
-        // tap "Capture"
+        app.buttons["Create Order"].tap()
+
+        // wait for Order ID
+        let orderExistsPredicate = NSPredicate(format: "label LIKE 'Order ID:*'")
+        waitForElementToAppear(app.staticTexts.containing(orderExistsPredicate).element(boundBy: 0))
+
+        // fill out card fields
+        let cardNumberTextField = app.textFields["Card Number"]
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("4000000000000051")
+
+        let expiryTextField = app.textFields["MM/YY"]
+        expiryTextField.tap()
+        expiryTextField.typeText("01/22")
+
+        let cvvTextField = app.textFields["CVV"]
+        cvvTextField.tap()
+        cvvTextField.typeText("123")
+
+        // tap Submit
+        app.buttons["Submit"].tap()
+        let validateSuccessPredicate = NSPredicate(format: "label LIKE 'Validate card success:*'")
+        waitForElementToAppear(app.staticTexts.containing(validateSuccessPredicate).element(boundBy: 0))
+
+        // wait for Authorize button to become enabled
+        sleep(10)
+
+        // tap Authorize
+        app.buttons["Authorize Order"].tap()
+
         // Check for success message
+        let resultPredicate = NSPredicate(format: "label LIKE 'Authorize Status:*'")
+        sleep(20)
+        waitForElementToAppear(app.staticTexts.containing(resultPredicate).element(boundBy: 0))
+        XCTAssertTrue(app.staticTexts.containing(resultPredicate).element(boundBy: 0).exists);
+    }
+
+    func testCardContingencySuccess() {
+        app = XCUIApplication()
+        app.launch()
+
+        // wait for PP UAT
+        let uatExistsPredicate = NSPredicate(format: "label LIKE 'Fetched UAT:*'")
+        waitForElementToAppear(app.staticTexts.containing(uatExistsPredicate).element(boundBy: 0))
+
+        // tap Create Order button
+        app.buttons["Create Order"].tap()
+
+        // wait for Order ID
+        let orderExistsPredicate = NSPredicate(format: "label LIKE 'Order ID:*'")
+        waitForElementToAppear(app.staticTexts.containing(orderExistsPredicate).element(boundBy: 0))
+
+        // fill out card fields
+        let cardNumberTextField = app.textFields["Card Number"]
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("4000000000000051")
+
+        let expiryTextField = app.textFields["MM/YY"]
+        expiryTextField.tap()
+        expiryTextField.typeText("01/20")
+
+        let cvvTextField = app.textFields["CVV"]
+        cvvTextField.tap()
+        cvvTextField.typeText("123")
+
+        // tap Submit
+        app.buttons["Submit"].tap()
+
+        // expect a 3DS challenge web view
+        self.waitForElementToAppear(getPasswordFieldQuery().element, timeout: 60)
+        let passwordTextField = getPasswordFieldQuery().element
+
+        // enter the 3DS password
+        passwordTextField.forceTapElement()
+        sleep(2)
+        passwordTextField.typeText("1234")
+
+        // tap 3DS Submit button
+        getSubmitButton().tap()
+
+        let validateSuccessPredicate = NSPredicate(format: "label LIKE 'Validate card success:*'")
+        waitForElementToAppear(app.staticTexts.containing(validateSuccessPredicate).element(boundBy: 0))
+    }
+
+    // MARK: - Helpers
+
+    func getPasswordFieldQuery() -> XCUIElementQuery {
+        return app.webViews.element.otherElements.children(matching: .other).children(matching: .secureTextField)
+    }
+
+    func getSubmitButton() -> XCUIElement {
+        return app.webViews.element.otherElements.children(matching: .other).children(matching: .other).buttons["Submit"]
     }
 }
