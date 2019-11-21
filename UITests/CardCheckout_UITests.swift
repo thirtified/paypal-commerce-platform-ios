@@ -1,7 +1,7 @@
 import XCTest
 
-// Note: These tests rely on the PPCP sample merchant server to be running locally.
-//       Tests are flakey due to PP staging environment.
+// Note: Tests rely on the PPCP sample merchant server to be running locally.
+//       Tests are VERY flakey due to PP staging environment.
 
 class CardCheckout_UITests: XCTestCase {
     var app: XCUIApplication!
@@ -40,7 +40,7 @@ class CardCheckout_UITests: XCTestCase {
         let validateSuccessPredicate = NSPredicate(format: "label LIKE 'Validate card success:*'")
         waitForElementToAppear(app.staticTexts.containing(validateSuccessPredicate).element(boundBy: 0))
 
-        // wait for Capture button to become enabled
+        // wait for validate & Capture button enabled
         sleep(10)
 
         // tap Capture
@@ -87,7 +87,7 @@ class CardCheckout_UITests: XCTestCase {
         let validateSuccessPredicate = NSPredicate(format: "label LIKE 'Validate card success:*'")
         waitForElementToAppear(app.staticTexts.containing(validateSuccessPredicate).element(boundBy: 0))
 
-        // wait for Authorize button to become enabled
+        // wait for validate & Authorize button enabled
         sleep(10)
 
         // tap Authorize
@@ -131,11 +131,9 @@ class CardCheckout_UITests: XCTestCase {
         // tap Submit
         app.buttons["Submit"].tap()
 
-        // expect a 3DS challenge web view
+        // enter password in 3DS challenge web view
         self.waitForElementToAppear(getPasswordFieldQuery().element, timeout: 60)
         let passwordTextField = getPasswordFieldQuery().element
-
-        // enter the 3DS password
         passwordTextField.forceTapElement()
         sleep(2)
         passwordTextField.typeText("1234")
