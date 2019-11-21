@@ -24,4 +24,5 @@ abstract_target 'Tests' do
   pod 'Braintree/PaymentFlow', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
 
   target 'UnitTests'
+  target 'IntegrationTests'
 end
