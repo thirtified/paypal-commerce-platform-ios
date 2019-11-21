@@ -17,12 +17,16 @@
 		425B8325236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8324236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift */; };
 		4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306C2360E91B00A8734E /* MockCardClient.swift */; };
 		4276306F2360F05A00A8734E /* MockPaymentFlowDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */; };
+		4294F15D237B5C4C00A789E5 /* CardCheckout_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15C237B5C4C00A789E5 /* CardCheckout_UITests.swift */; };
+		4294F15F237B629C00A789E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15E237B629C00A789E5 /* TestHelpers.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
 		42FF386C235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* BTPayPalValidatorClient_Internal.h */; };
+		5B3DD5D19E88EA59E25B14F2 /* Pods_Tests_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DCDEBA1A699094CAACD0ED /* Pods_Tests_IntegrationTests.framework */; };
 		80015A2D23566AD6002825E1 /* BTPayPalValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* BTPayPalValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* BTPayPalValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* BTPayPalValidatorResult.m */; };
 		802C28F12370CC4100A918C7 /* paypal-validate-response-card-expired.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F02370CC4100A918C7 /* paypal-validate-response-card-expired.json */; };
 		802C28F32370D1FE00A918C7 /* paypal-validate-response-invalid-token.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F22370D1FE00A918C7 /* paypal-validate-response-invalid-token.json */; };
+		804588DC23848A5700936C3A /* BTPayPalValidator_IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804588DB23848A5700936C3A /* BTPayPalValidator_IntegrationTests.swift */; };
 		8066A056235F506F007ACC28 /* BTPayPalValidatorClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */; };
 		8066A057235F506F007ACC28 /* BTPayPalCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* BTPayPalCardContingencyResult_Tests.swift */; };
 		8066A058235F506F007ACC28 /* BTPayPalAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* BTPayPalAPIClient_Tests.swift */; };
@@ -54,6 +58,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4294F157237B5BB600A789E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80BAD272234531B30050F86C;
+			remoteInfo = Demo;
+		};
+		804588D5238489F800936C3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80BAD272234531B30050F86C;
+			remoteInfo = Demo;
+		};
 		8066A051235F5026007ACC28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80BAD26B234531B30050F86C /* Project object */;
@@ -77,6 +95,10 @@
 		4276306B2360DF4F00A8734E /* Demo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		4276306C2360E91B00A8734E /* MockCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardClient.swift; sourceTree = "<group>"; };
 		4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentFlowDriver.swift; sourceTree = "<group>"; };
+		4294F152237B5BB600A789E5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4294F156237B5BB600A789E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4294F15C237B5C4C00A789E5 /* CardCheckout_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckout_UITests.swift; sourceTree = "<group>"; };
+		4294F15E237B629C00A789E5 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewControllerPresentingDelegate.swift; sourceTree = "<group>"; };
 		42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplePayClient.swift; sourceTree = "<group>"; };
 		42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +113,10 @@
 		8026243F2357B3DE005EA84A /* BTPayPalValidatorClient_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidatorClient_Tests.swift; sourceTree = "<group>"; };
 		802C28F02370CC4100A918C7 /* paypal-validate-response-card-expired.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-response-card-expired.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		802C28F22370D1FE00A918C7 /* paypal-validate-response-invalid-token.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-response-invalid-token.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		804588D0238489F800936C3A /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		804588D4238489F800936C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		804588DA23848A5700936C3A /* IntegrationTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntegrationTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		804588DB23848A5700936C3A /* BTPayPalValidator_IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPayPalValidator_IntegrationTests.swift; sourceTree = "<group>"; };
 		8066A04C235F5026007ACC28 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8066A050235F5026007ACC28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8066A05A235F50D7007ACC28 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -120,6 +146,9 @@
 		80BAD294234532A30050F86C /* BraintreePayPalValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BraintreePayPalValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BAD296234532A30050F86C /* BraintreePayPalValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BraintreePayPalValidator.h; sourceTree = "<group>"; };
 		80BAD297234532A30050F86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80CEDEADCFB5708D5E48941E /* Pods-Tests-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		85DCDEBA1A699094CAACD0ED /* Pods_Tests_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C99288CAAEC0C8B1F36ECC4 /* Pods-Tests-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A19364E404CB9CC3B8456AD /* Pods_Tests_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1785D517CDA33B044846BD6 /* Pods-SDK_Dependencies-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK_Dependencies-Demo.debug.xcconfig"; path = "Target Support Files/Pods-SDK_Dependencies-Demo/Pods-SDK_Dependencies-Demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +158,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4294F14F237B5BB600A789E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		804588CD238489F800936C3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B3DD5D19E88EA59E25B14F2 /* Pods_Tests_IntegrationTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8066A049235F5026007ACC28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,6 +211,16 @@
 			path = SampleJSON;
 			sourceTree = "<group>";
 		};
+		4294F153237B5BB600A789E5 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				4294F15C237B5C4C00A789E5 /* CardCheckout_UITests.swift */,
+				4294F15E237B629C00A789E5 /* TestHelpers.swift */,
+				4294F156237B5BB600A789E5 /* Info.plist */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
 		42D352F3235E49AC006A9DD1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +247,8 @@
 				0A9D7D23552BD887D4EB3462 /* Pods-SDK_Dependencies-UnitTests.debug.xcconfig */,
 				EDDCB2D6713F5F54C5AE06CC /* Pods-SDK_Dependencies-UnitTests.release.xcconfig */,
 				7C967B76CFBAE0107281E01B /* Pods-Tests-UnitTests.release.xcconfig */,
+				8C99288CAAEC0C8B1F36ECC4 /* Pods-Tests-IntegrationTests.debug.xcconfig */,
+				80CEDEADCFB5708D5E48941E /* Pods-Tests-IntegrationTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -217,6 +273,16 @@
 				80B36CCF23454C9E00AD35E8 /* BTPayPalCheckoutResult.m */,
 			);
 			path = PayPalCheckout;
+			sourceTree = "<group>";
+		};
+		804588D1238489F800936C3A /* IntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				804588DB23848A5700936C3A /* BTPayPalValidator_IntegrationTests.swift */,
+				804588D4238489F800936C3A /* Info.plist */,
+				804588DA23848A5700936C3A /* IntegrationTests-Bridging-Header.h */,
+			);
+			path = IntegrationTests;
 			sourceTree = "<group>";
 		};
 		8066A04D235F5026007ACC28 /* UnitTests */ = {
@@ -251,6 +317,8 @@
 				80BAD275234531B30050F86C /* Demo */,
 				80BAD295234532A30050F86C /* BraintreePayPalValidator */,
 				8066A04D235F5026007ACC28 /* UnitTests */,
+				4294F153237B5BB600A789E5 /* UITests */,
+				804588D1238489F800936C3A /* IntegrationTests */,
 				80BAD274234531B30050F86C /* Products */,
 				6D8747EA22F435AE06F0EF97 /* Pods */,
 				C9DB1FDC124257E4D46F6F7B /* Frameworks */,
@@ -263,6 +331,8 @@
 				80BAD273234531B30050F86C /* Demo.app */,
 				80BAD294234532A30050F86C /* BraintreePayPalValidator.framework */,
 				8066A04C235F5026007ACC28 /* UnitTests.xctest */,
+				4294F152237B5BB600A789E5 /* UITests.xctest */,
+				804588D0238489F800936C3A /* IntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,6 +377,7 @@
 			children = (
 				AF13019BF32BEBA2456FF329 /* Pods_Demo.framework */,
 				9A19364E404CB9CC3B8456AD /* Pods_Tests_UnitTests.framework */,
+				85DCDEBA1A699094CAACD0ED /* Pods_Tests_IntegrationTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -333,6 +404,44 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4294F151237B5BB600A789E5 /* UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4294F15B237B5BB600A789E5 /* Build configuration list for PBXNativeTarget "UITests" */;
+			buildPhases = (
+				4294F14E237B5BB600A789E5 /* Sources */,
+				4294F14F237B5BB600A789E5 /* Frameworks */,
+				4294F150237B5BB600A789E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4294F158237B5BB600A789E5 /* PBXTargetDependency */,
+			);
+			name = UITests;
+			productName = UITests;
+			productReference = 4294F152237B5BB600A789E5 /* UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		804588CF238489F800936C3A /* IntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 804588D9238489F800936C3A /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
+			buildPhases = (
+				8F5BB28FE391D624CD3E17E1 /* [CP] Check Pods Manifest.lock */,
+				804588CC238489F800936C3A /* Sources */,
+				804588CD238489F800936C3A /* Frameworks */,
+				804588CE238489F800936C3A /* Resources */,
+				6C6055AF03C219818E6A2752 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				804588D6238489F800936C3A /* PBXTargetDependency */,
+			);
+			name = IntegrationTests;
+			productName = IntegrationTests;
+			productReference = 804588D0238489F800936C3A /* IntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8066A04B235F5026007ACC28 /* UnitTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8066A053235F5026007ACC28 /* Build configuration list for PBXNativeTarget "UnitTests" */;
@@ -397,10 +506,19 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
-				LastSwiftUpdateCheck = 1110;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Braintree Payments";
 				TargetAttributes = {
+					4294F151237B5BB600A789E5 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = 80BAD272234531B30050F86C;
+					};
+					804588CF238489F800936C3A = {
+						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
+						TestTargetID = 80BAD272234531B30050F86C;
+					};
 					8066A04B235F5026007ACC28 = {
 						CreatedOnToolsVersion = 11.1;
 						TestTargetID = 80BAD272234531B30050F86C;
@@ -430,11 +548,27 @@
 				80BAD272234531B30050F86C /* Demo */,
 				80BAD293234532A30050F86C /* BraintreePayPalValidator */,
 				8066A04B235F5026007ACC28 /* UnitTests */,
+				4294F151237B5BB600A789E5 /* UITests */,
+				804588CF238489F800936C3A /* IntegrationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4294F150237B5BB600A789E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		804588CE238489F800936C3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8066A04A235F5026007ACC28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,6 +624,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6C6055AF03C219818E6A2752 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		799409B98C1F65E4EA2DC20A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,6 +656,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F5BB28FE391D624CD3E17E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tests-IntegrationTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AA9FF6CA277D0D5AA74EB846 /* [CP] Check Pods Manifest.lock */ = {
@@ -549,6 +722,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4294F14E237B5BB600A789E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4294F15D237B5C4C00A789E5 /* CardCheckout_UITests.swift in Sources */,
+				4294F15F237B629C00A789E5 /* TestHelpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		804588CC238489F800936C3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				804588DC23848A5700936C3A /* BTPayPalValidator_IntegrationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8066A048235F5026007ACC28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -597,6 +787,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4294F158237B5BB600A789E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80BAD272234531B30050F86C /* Demo */;
+			targetProxy = 4294F157237B5BB600A789E5 /* PBXContainerItemProxy */;
+		};
+		804588D6238489F800936C3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80BAD272234531B30050F86C /* Demo */;
+			targetProxy = 804588D5238489F800936C3A /* PBXContainerItemProxy */;
+		};
 		8066A052235F5026007ACC28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 80BAD272234531B30050F86C /* Demo */;
@@ -616,6 +816,99 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4294F159237B5BB600A789E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Demo;
+			};
+			name = Debug;
+		};
+		4294F15A237B5BB600A789E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Demo;
+			};
+			name = Release;
+		};
+		804588D7238489F800936C3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C99288CAAEC0C8B1F36ECC4 /* Pods-Tests-IntegrationTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43253H4X22;
+				INFOPLIST_FILE = IntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.IntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "IntegrationTests/IntegrationTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Debug;
+		};
+		804588D8238489F800936C3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80CEDEADCFB5708D5E48941E /* Pods-Tests-IntegrationTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43253H4X22;
+				INFOPLIST_FILE = IntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braintreepayments.IntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "IntegrationTests/IntegrationTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Release;
+		};
 		8066A054235F5026007ACC28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23D030C91942D9387C652866 /* Pods-Tests-UnitTests.debug.xcconfig */;
@@ -884,6 +1177,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4294F15B237B5BB600A789E5 /* Build configuration list for PBXNativeTarget "UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4294F159237B5BB600A789E5 /* Debug */,
+				4294F15A237B5BB600A789E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		804588D9238489F800936C3A /* Build configuration list for PBXNativeTarget "IntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				804588D7238489F800936C3A /* Debug */,
+				804588D8238489F800936C3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8066A053235F5026007ACC28 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -31,7 +31,15 @@
 - (void)handleOpenURL:(nonnull NSURL *)url {
     BTPayPalCheckoutResult *result = [[BTPayPalCheckoutResult alloc] initWithURL:url];
 
-    [self.paymentFlowDriverDelegate onPaymentComplete:result error:nil];
+    if (result.payerID && result.token) {
+        [self.paymentFlowDriverDelegate onPaymentComplete:result error:nil];
+    } else {
+        NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                             code:0
+                                         userInfo:@{NSLocalizedDescriptionKey: @"PayPal redirect URL error."}];
+        [self.paymentFlowDriverDelegate onPaymentComplete:nil error:error];
+    }
+
 }
 
 - (nonnull NSString *)paymentFlowName {

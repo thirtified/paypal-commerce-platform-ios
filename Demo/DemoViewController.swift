@@ -204,7 +204,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
                 return
             }
 
-            self.updateUATLabel(withText: "UAT: \(uat)")
+            self.updateUATLabel(withText: "Fetched UAT: \(uat)")
             self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: uat)
             self.payPalValidatorClient?.presentingDelegate = self
         }
