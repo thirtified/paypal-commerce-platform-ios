@@ -1,5 +1,5 @@
 import Foundation
-import BraintreePayPalValidator
+import PayPalCommerce
 
 struct Order: Codable {
     let id: String

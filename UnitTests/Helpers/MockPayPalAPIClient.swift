@@ -1,11 +1,11 @@
 import Foundation
 
-class MockPayPalAPIClient: BTPayPalAPIClient {
+class MockPayPalAPIClient: PPCAPIClient {
 
-    var validateResult: BTPayPalValidateResult?
-    var validateError: Error?
+    var validationResult: PPCValidationResult?
+    var validationError: Error?
 
-    override func validatePaymentMethod(_ paymentMethod: BTPaymentMethodNonce, forOrderId orderId: String, completion: @escaping (BTPayPalValidateResult?, Error?) -> Void) {
-        completion(validateResult, validateError)
+    override func validatePaymentMethod(_ paymentMethod: BTPaymentMethodNonce, forOrderId orderId: String, completion: @escaping (PPCValidationResult?, Error?) -> Void) {
+        completion(validationResult, validationError)
     }
 }

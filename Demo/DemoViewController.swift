@@ -1,4 +1,4 @@
-import BraintreePayPalValidator
+import PayPalCommerce
 import InAppSettingsKit
 
 class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
@@ -17,7 +17,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var otherCheckoutStackView: UIStackView!
     
     private var orderId: String?
-    private var payPalValidatorClient: BTPayPalValidatorClient?
+    private var payPalValidatorClient: PPCValidatorClient?
 
     private var intent: String {
         return UserDefaults.standard.string(forKey: "intent") ?? "capture"
@@ -205,7 +205,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
             }
 
             self.updateUATLabel(withText: "Fetched UAT: \(uat)")
-            self.payPalValidatorClient = BTPayPalValidatorClient(accessToken: uat)
+            self.payPalValidatorClient = PPCValidatorClient(accessToken: uat)
             self.payPalValidatorClient?.presentingDelegate = self
         }
     }

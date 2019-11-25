@@ -1,11 +1,11 @@
 // Public Headers
-#import "BraintreePayPalValidator.h"
-#import "BTPayPalValidatorClient.h"
+#import "PayPalCommerce.h"
+#import "PPCValidatorClient.h"
 
 // Internal headers for testing
-#import "BTPayPalValidateResult.h"
-#import "BTPayPalAPIClient.h"
-#import "BTPayPalCardContingencyResult.h"
-#import "BTPayPalValidatorClient_Internal.h"
+#import "PPCValidationResult.h"
+#import "PPCAPIClient.h"
+#import "PPCCardContingencyResult.h"
+#import "PPCValidatorClient_Internal.h"
 #import "BTPaymentFlowDriver.h"
-#import "BTPayPalCardContingencyRequest.h"
+#import "PPCCardContingencyRequest.h"
