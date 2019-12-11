@@ -49,7 +49,15 @@
                     completion(result, nil);
                     return;
                 } else {
-                    NSString *errorDescription = result.message ?: @"Validation Error";
+                    NSString *errorDescription;
+                    if (result.issueType) {
+                        errorDescription = result.issueType;
+                    } else if (result.message) {
+                        errorDescription = result.message;
+                    } else {
+                        errorDescription = @"Validation Error";
+                    }
+
                     NSError *validateError = [[NSError alloc] initWithDomain:PPCValidatorErrorDomain
                         code:0
                     userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
