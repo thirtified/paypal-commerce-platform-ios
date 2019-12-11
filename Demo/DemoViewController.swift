@@ -45,7 +45,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         if countryCode == "UK" {
             self.payeeEmailTextField.text = "native-sdk-gb-merchant-111@paypal.com"
         } else {
-            self.payeeEmailTextField.text = "ahuang-us-bus-ppcp-approve-seller3@paypal.com"
+            self.payeeEmailTextField.text = "ahuang-us-bus-ppcp-approve-seller7@paypal.com"
         }
 
         generateUAT()
