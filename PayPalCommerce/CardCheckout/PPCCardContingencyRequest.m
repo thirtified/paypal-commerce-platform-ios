@@ -43,8 +43,8 @@
 
     if (result.error.length) {
         NSError *validateError = [[NSError alloc] initWithDomain:PPCValidatorErrorDomain
-                                                    code:0
-                                                userInfo:@{NSLocalizedDescriptionKey: result.errorDescription}];
+                                                            code:0
+                                                        userInfo:@{NSLocalizedDescriptionKey: result.errorDescription ?: @"contingency error"}];
 
         [self.paymentFlowDriverDelegate onPaymentComplete:nil error:validateError];
     } else {

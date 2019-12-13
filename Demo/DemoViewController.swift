@@ -60,7 +60,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         updateCheckoutLabel(withText: "Validating card...")
         payPalValidatorClient?.checkoutWithCard(orderId, card: card, completion: { (validatorResult, error) in
             if ((error) != nil) {
-                self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Tokenization Error")")
+                self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Card checkout error")")
                 return
             }
 
@@ -89,8 +89,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         // Set other PKPaymentRequest properties here
         paymentRequest.merchantCapabilities = .capability3DS
         paymentRequest.paymentSummaryItems = [
-            PKPaymentSummaryItem(label: "Sock", amount: NSDecimalNumber(string: "10")),
-            PKPaymentSummaryItem(label: "Demo", amount: NSDecimalNumber(string: "10")),
+            PKPaymentSummaryItem(label: "Sock", amount: NSDecimalNumber(string: self.amountTextField.text))
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")

@@ -11,10 +11,10 @@ PayPalCommerce provides a native SDK offering to current PayPal partners. It all
 - Make sure to now open the **Xcode workspace** instead of the project file when going to build/run the project. This is called `PayPalCommerce.xcworkspace`.
 
 - Choose the `Demo` app target from the drop-down menu before clicking the run/play button to run the app. Choose the simulator appropriate for your testing needs. See screenshot below.
-  - ![Choose Demo target](documentation_image_assets/p4p_demo_target.png)
+  - ![Choose Demo target](documentation_image_assets/xcode_image.png)
 
 - *Note:* When testing the PayPal flow, we notice that Xcode 11 simulators sometimes act buggy when displaying an `SFSafariViewController`. The screen will sometimes go entirely white and flicker.
   - In toolbar at the top of the Xcode simulator, click `Hardware > Erase All Content and Settings`. Also, try testing on a different simulator iPhone model and iOS version.
 
-## Xcode 
+## Xcode
 Running this repo's Demo app requires Xcode 11+, due to our inclusion of [`InAppSettingsKit Framework`](https://github.com/futuretap/InAppSettingsKit).
