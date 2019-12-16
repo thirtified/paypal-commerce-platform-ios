@@ -45,6 +45,7 @@
 
             NSInteger statusCode = ((NSHTTPURLResponse *) response).statusCode;
             if (statusCode >= 400) {
+                // Contingency error represents 3DS challenge required
                 if ([result.issueType isEqualToString:@"CONTINGENCY"]) {
                     completion(result, nil);
                     return;

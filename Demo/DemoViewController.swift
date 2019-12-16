@@ -75,6 +75,11 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         updateCheckoutLabel(withText: "Checking out with PayPal...")
         payPalValidatorClient?.checkoutWithPayPal(orderId, completion: { (validatorResult, error) in
+            if ((error) != nil) {
+                self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "PayPal Checkout error")")
+                return
+            }
+            
             guard let orderID = validatorResult?.orderID else { return }
             self.updateCheckoutLabel(withText: "PayPal checkout complete: \(orderID)")
             self.processOrderButton.isEnabled = true

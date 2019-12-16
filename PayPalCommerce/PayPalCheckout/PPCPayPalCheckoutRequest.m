@@ -39,7 +39,6 @@
                                          userInfo:@{NSLocalizedDescriptionKey: @"PayPal redirect URL error."}];
         [self.paymentFlowDriverDelegate onPaymentComplete:nil error:error];
     }
-
 }
 
 - (nonnull NSString *)paymentFlowName {

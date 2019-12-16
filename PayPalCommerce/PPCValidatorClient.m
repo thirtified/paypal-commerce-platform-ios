@@ -75,7 +75,6 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
                                                     }
                                                 }];
                                             } else {
-                                                // TODO: is this an accurate fallback?
                                                 completion(YES, nil);
                                             }
     }];
