@@ -23,12 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)validatePaymentMethod:(BTPaymentMethodNonce *)paymentMethod
                    forOrderId:(NSString *)orderId
+                      with3DS:(BOOL)isThreeDSecureRequired
                    completion:(void (^)(PPCValidationResult * _Nullable result, NSError * _Nullable error))completion;
 
-- (NSDictionary *)constructValidatePayload:(NSString *)nonce;
+- (NSDictionary *)constructValidatePayload:(NSString *)nonce
+                                   with3DS:(BOOL)isThreeDSecureRequired;
 
 - (nullable NSURLRequest *)createValidateURLRequest:(NSURL *)url
                              withPaymentMethodNonce:(NSString *)paymentMethodNonce
+                                            with3DS:(BOOL)isThreeDSecureRequired
                                               error:(NSError **)error;
 
 @end

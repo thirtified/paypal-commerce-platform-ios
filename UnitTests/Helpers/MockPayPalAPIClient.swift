@@ -5,7 +5,7 @@ class MockPayPalAPIClient: PPCAPIClient {
     var validationResult: PPCValidationResult?
     var validationError: Error?
 
-    override func validatePaymentMethod(_ paymentMethod: BTPaymentMethodNonce, forOrderId orderId: String, completion: @escaping (PPCValidationResult?, Error?) -> Void) {
+    override func validatePaymentMethod(_ paymentMethod: BTPaymentMethodNonce, forOrderId orderId: String, with3DS isThreeDSecureRequired: Bool, completion: @escaping (PPCValidationResult?, Error?) -> Void) {
         completion(validationResult, validationError)
     }
 }

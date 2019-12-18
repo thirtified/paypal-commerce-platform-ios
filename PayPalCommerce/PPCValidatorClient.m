@@ -60,6 +60,7 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
                    completion:(void (^)(BOOL success, NSError * _Nullable error))completion {
     [self.payPalAPIClient validatePaymentMethod:tokenizedCard
                                      forOrderId:self.orderId
+                                        with3DS:YES
                                      completion:^(PPCValidationResult *result, NSError __unused *error) {
                                             if (error) {
                                                 completion(NO, error);
@@ -144,6 +145,7 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
 
         [self.payPalAPIClient validatePaymentMethod:tokenizedApplePayPayment
                                          forOrderId:self.orderId
+                                            with3DS:NO
                                          completion:^(PPCValidationResult * __unused result, NSError *error) {
             if (!result || error) {
                 completion(nil, error);

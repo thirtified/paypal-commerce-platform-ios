@@ -12,7 +12,7 @@
 		395C8B5EB5B26BD9FD6CD379 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D220B33A7172135FE81997A /* Pods_Tests_UnitTests.framework */; };
 		42138C7223678B4B00376E80 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42138C7123678B4B00376E80 /* Settings.bundle */; };
 		425B8315236CBDEC006F694D /* BTJSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8314236CBDEC006F694D /* BTJSONHelper.swift */; };
-		425B831B236CBE8C006F694D /* paypal-validate-request.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831A236CBE8C006F694D /* paypal-validate-request.json */; };
+		425B831B236CBE8C006F694D /* paypal-validate-request-with-3ds.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831A236CBE8C006F694D /* paypal-validate-request-with-3ds.json */; };
 		425B831F236CCC99006F694D /* paypal-validation-response-without-contingency.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831E236CCC99006F694D /* paypal-validation-response-without-contingency.json */; };
 		425B8321236CDDBF006F694D /* paypal-validation-response-with-contingency.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B8320236CDDBF006F694D /* paypal-validation-response-with-contingency.json */; };
 		425B8323236CE98D006F694D /* PPCCardContingencyRequest_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8322236CE98D006F694D /* PPCCardContingencyRequest_Tests.swift */; };
@@ -23,6 +23,7 @@
 		4294F15F237B629C00A789E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15E237B629C00A789E5 /* TestHelpers.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
 		42FF386C235E42D000F0CF10 /* PPCValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* PPCValidatorClient_Internal.h */; };
+		49A52AFB23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json in Resources */ = {isa = PBXBuildFile; fileRef = 49A52AFA23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json */; };
 		80015A2D23566AD6002825E1 /* PPCValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* PPCValidatorResult.h */; };
 		80015A2E23566AD6002825E1 /* PPCValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* PPCValidatorResult.m */; };
 		802C28F12370CC4100A918C7 /* paypal-validation-response-card-expired.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F02370CC4100A918C7 /* paypal-validation-response-card-expired.json */; };
@@ -89,7 +90,7 @@
 		383376EAD22876D9D8202CF6 /* Pods_Tests_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42138C7123678B4B00376E80 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		425B8314236CBDEC006F694D /* BTJSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTJSONHelper.swift; sourceTree = "<group>"; };
-		425B831A236CBE8C006F694D /* paypal-validate-request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "paypal-validate-request.json"; sourceTree = "<group>"; };
+		425B831A236CBE8C006F694D /* paypal-validate-request-with-3ds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "paypal-validate-request-with-3ds.json"; sourceTree = "<group>"; };
 		425B831E236CCC99006F694D /* paypal-validation-response-without-contingency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validation-response-without-contingency.json"; sourceTree = "<group>"; };
 		425B8320236CDDBF006F694D /* paypal-validation-response-with-contingency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validation-response-with-contingency.json"; sourceTree = "<group>"; };
 		425B8322236CE98D006F694D /* PPCCardContingencyRequest_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCCardContingencyRequest_Tests.swift; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplePayClient.swift; sourceTree = "<group>"; };
 		42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42FF386B235E42D000F0CF10 /* PPCValidatorClient_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCValidatorClient_Internal.h; sourceTree = "<group>"; };
+		49A52AFA23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-request-without-3ds.json"; sourceTree = "<group>"; };
 		73E624DE8CD4D477F5A29A85 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		80015A2B23566AD6002825E1 /* PPCValidatorResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCValidatorResult.h; sourceTree = "<group>"; };
 		80015A2C23566AD6002825E1 /* PPCValidatorResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPCValidatorResult.m; sourceTree = "<group>"; };
@@ -210,7 +212,8 @@
 		425B8319236CBE8C006F694D /* SampleJSON */ = {
 			isa = PBXGroup;
 			children = (
-				425B831A236CBE8C006F694D /* paypal-validate-request.json */,
+				425B831A236CBE8C006F694D /* paypal-validate-request-with-3ds.json */,
+				49A52AFA23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json */,
 				425B831E236CCC99006F694D /* paypal-validation-response-without-contingency.json */,
 				425B8320236CDDBF006F694D /* paypal-validation-response-with-contingency.json */,
 				802C28F02370CC4100A918C7 /* paypal-validation-response-card-expired.json */,
@@ -577,10 +580,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				802C28F12370CC4100A918C7 /* paypal-validation-response-card-expired.json in Resources */,
+				49A52AFB23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json in Resources */,
 				425B831F236CCC99006F694D /* paypal-validation-response-without-contingency.json in Resources */,
 				802C28F32370D1FE00A918C7 /* paypal-validation-response-invalid-token.json in Resources */,
 				425B8321236CDDBF006F694D /* paypal-validation-response-with-contingency.json in Resources */,
-				425B831B236CBE8C006F694D /* paypal-validate-request.json in Resources */,
+				425B831B236CBE8C006F694D /* paypal-validate-request-with-3ds.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

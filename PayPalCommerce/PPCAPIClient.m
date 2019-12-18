@@ -20,12 +20,14 @@
 
 - (void)validatePaymentMethod:(BTPaymentMethodNonce *)paymentMethod
                    forOrderId:(NSString *)orderId
+                      with3DS:(BOOL)isThreeDSecureRequired
                    completion:(void (^)(PPCValidationResult * _Nullable result, NSError * _Nullable error))completion {
     NSString *urlString = [NSString stringWithFormat:@"https://api.ppcpn.stage.paypal.com/v2/checkout/orders/%@/validate-payment-method", orderId];
     NSError *createRequestError;
 
     NSURLRequest *urlRequest = [self createValidateURLRequest:[NSURL URLWithString:urlString]
                                        withPaymentMethodNonce:paymentMethod.nonce
+                                                      with3DS:isThreeDSecureRequired
                                                         error:&createRequestError];
     if (!urlRequest) {
         completion(nil, createRequestError);
@@ -75,13 +77,14 @@
 
 - (nullable NSURLRequest *)createValidateURLRequest:(NSURL *)url
                              withPaymentMethodNonce:(NSString *)paymentMethodNonce
+                                            with3DS:(BOOL)isThreeDSecureRequired
                                               error:(NSError **)error {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     [request setValue:[NSString stringWithFormat:@"Bearer %@", self.accessToken] forHTTPHeaderField:@"Authorization"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
-    NSDictionary *body = [self constructValidatePayload:paymentMethodNonce];
+    NSDictionary *body = [self constructValidatePayload:paymentMethodNonce with3DS:isThreeDSecureRequired];
 
     NSData *bodyData = [NSJSONSerialization dataWithJSONObject:body options:0 error:error];
     if (!bodyData) {
@@ -92,18 +95,22 @@
     return [request copy];
 }
 
-- (NSDictionary *)constructValidatePayload:(NSString *)nonce {
-    NSDictionary *body = @{@"payment_source":
-                               @{@"token":
-                                     @{@"id": nonce,
-                                       // contingency nonce "tokencc_bf_p5hq9t_2dxqdg_yv8pfw_m6935m_rpz"
-                                       // regular nonce "8wgd2f"
-                                       @"type": @"NONCE"
-                                       },
-                                 @"contingencies": @[@"3D_SECURE"]}
-                           };
+- (NSDictionary *)constructValidatePayload:(NSString *)nonce
+                                   with3DS:(BOOL) isThreeDSecureRequired {
+    NSMutableDictionary *tokenParameters = [NSMutableDictionary new];
+    NSMutableDictionary *validateParameters = [NSMutableDictionary new];
 
-    return body;
+    tokenParameters[@"id"] = nonce;
+    tokenParameters[@"type"] = @"NONCE";
+
+    validateParameters[@"payment_source"] = @{
+        @"token" : tokenParameters,
+        @"contingencies": (isThreeDSecureRequired ? @[@"3D_SECURE"] : @[])
+    };
+
+    //TODO - sweep all logging before test pilot
+    NSLog(@"🍏Validate Request Params: %@", validateParameters);
+    return (NSDictionary *)validateParameters;
 }
 
 @end
