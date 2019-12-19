@@ -106,7 +106,7 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
 
 - (void)checkoutWithApplePay:(NSString * __unused)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
-                  completion:(void (^)(PPCValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:completion:)) {
+                  completion:(void (^)(PPCValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion {
     self.orderId = orderId;
     self.applePayCompletionBlock = completion;
 

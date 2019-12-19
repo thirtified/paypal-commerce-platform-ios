@@ -33,14 +33,14 @@ typedef void (^BTApplePayResultHandler)(BOOL success);
 // TODO: - check Swift names for these methods
 - (void)checkoutWithCard:(NSString *)orderId
                     card:(BTCard *)card
-              completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithCard(_:card:completion:));
+              completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithCard(orderID:card:completion:));
 
 - (void)checkoutWithPayPal:(NSString *)orderId
-                completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithPayPal(_:completion:));
+                completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithPayPal(orderID:completion:));
 
 - (void)checkoutWithApplePay:(NSString *)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
-                  completion:(void (^)(PPCValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(_:paymentRequest:completion:));
+                  completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(orderID:paymentRequest:completion:));
 
 @end
 

@@ -16,7 +16,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     @IBOutlet weak var uatLabel: UILabel!
     @IBOutlet weak var otherCheckoutStackView: UIStackView!
     
-    private var orderId: String?
+    private var orderID: String?
     private var payPalValidatorClient: PPCValidatorClient?
 
     private var intent: String {
@@ -55,10 +55,10 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     // MARK: - IBActions
 
     @IBAction func cardCheckoutTapped(_ sender: UIButton) {
-        guard let orderId = orderId, let card = createBTCard() else { return }
+        guard let orderID = orderID, let card = createBTCard() else { return }
 
         updateCheckoutLabel(withText: "Validating card...")
-        payPalValidatorClient?.checkoutWithCard(orderId, card: card, completion: { (validatorResult, error) in
+        payPalValidatorClient?.checkoutWithCard(orderID: orderID, card: card, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Card checkout error")")
                 return
@@ -71,15 +71,16 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func payPalCheckoutTapped(_ sender: BTUIPayPalButton) {
-        guard let orderId = orderId else { return }
+        guard let orderID = orderID else { return }
 
         updateCheckoutLabel(withText: "Checking out with PayPal...")
-        payPalValidatorClient?.checkoutWithPayPal(orderId, completion: { (validatorResult, error) in
+
+        payPalValidatorClient?.checkoutWithPayPal(orderID: orderID, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "PayPal Checkout error")")
                 return
             }
-            
+
             guard let orderID = validatorResult?.orderID else { return }
             self.updateCheckoutLabel(withText: "PayPal checkout complete: \(orderID)")
             self.processOrderButton.isEnabled = true
@@ -87,7 +88,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func applePayCheckoutTapped(_ sender: Any) {
-        guard let orderId = orderId else { return }
+        guard let orderID = orderID else { return }
 
         let paymentRequest = PKPaymentRequest()
 
@@ -98,7 +99,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         ]
 
         self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
-        payPalValidatorClient?.checkoutWithApplePay(orderId, paymentRequest: paymentRequest, completion: { (validatorResult, error, applePayResultHandler) in
+        payPalValidatorClient?.checkoutWithApplePay(orderID: orderID, paymentRequest: paymentRequest, completion: { (validatorResult, error, applePayResultHandler) in
             guard let validatorResult = validatorResult else {
                 self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
                 applePayResultHandler(false)
@@ -113,11 +114,11 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     }
 
     @IBAction func processOrderTapped(_ sender: Any) {
-        guard let orderId = orderId else { return }
+        guard let orderID = orderID else { return }
 
         updateCheckoutLabel(withText: "Processing order...")
 
-        let params = ProcessOrderParams(orderId: orderId, intent: intent, countryCode: countryCode)
+        let params = ProcessOrderParams(orderId: orderID, intent: intent, countryCode: countryCode)
 
         DemoMerchantAPI.sharedService.processOrder(processOrderParams: params) { (transactionResult, error) in
             guard let transactionResult = transactionResult else {
@@ -148,7 +149,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
                 return
             }
 
-            self.orderId = order.id
+            self.orderID = order.id
             self.updateOrderLabel(withText: "Order ID: \(order.id)", color: UIColor.black)
         }
     }
@@ -162,7 +163,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         // Wipe orderID when settings page is accessed
         updateOrderLabel(withText: "Order ID: None", color: UIColor.lightGray)
-        orderId = nil
+        orderID = nil
     }
     
     @IBAction func refreshTapped(_ sender: Any) {
