@@ -71,7 +71,7 @@ class PPCValidatorClient_Tests: XCTestCase {
             expectation.fulfill()
         }
 
-        validatorClient?.checkoutWithApplePay("my-order-id", paymentRequest: paymentRequest) { (_, _, _) in
+        validatorClient?.checkoutWithApplePay(orderID: "my-order-id", paymentRequest: paymentRequest) { (_, _, _) in
             // not called
         }
         
@@ -84,7 +84,7 @@ class PPCValidatorClient_Tests: XCTestCase {
 
         let expectation = self.expectation(description: "returns Apple Pay error to merchant")
 
-        validatorClient?.checkoutWithApplePay("my-order-id", paymentRequest: PKPaymentRequest()) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay(orderID: "my-order-id", paymentRequest: PKPaymentRequest()) { (validatorResult, error, handler) in
             XCTAssertEqual(error?.localizedDescription, "error message")
             XCTAssertNil(validatorResult)
             expectation.fulfill()
@@ -101,7 +101,7 @@ class PPCValidatorClient_Tests: XCTestCase {
             
             mockPayPalAPIClient.validationResult = PPCValidationResult()
             
-            validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
+            validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
                 XCTAssertEqual(validatorResult?.orderID, "fake-order")
                 XCTAssertEqual(validatorResult?.type, .applePay)
                 XCTAssertNil(error)
@@ -123,7 +123,7 @@ class PPCValidatorClient_Tests: XCTestCase {
             mockApplePayClient.applePayCardNonce = nil
             mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
             
-            validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
+            validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
                 XCTAssertNil(validatorResult)
                 XCTAssertEqual(error?.localizedDescription, "error message")
                 expectation.fulfill()
@@ -143,7 +143,7 @@ class PPCValidatorClient_Tests: XCTestCase {
             mockPayPalAPIClient.validationError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
             mockPayPalAPIClient.validationResult = nil
             
-            validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
+            validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
                 XCTAssertNil(validatorResult)
                 XCTAssertEqual(error?.localizedDescription, "error message")
                 expectation.fulfill()
@@ -163,7 +163,7 @@ class PPCValidatorClient_Tests: XCTestCase {
 
         mockPayPalAPIClient.validationResult = PPCValidationResult()
 
-        validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .applePay)
             XCTAssertNil(error)
@@ -183,7 +183,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         mockApplePayClient.applePayCardNonce = nil
         mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
 
-        validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -201,7 +201,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         mockPayPalAPIClient.validationError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockPayPalAPIClient.validationResult = nil
 
-        validatorClient?.checkoutWithApplePay("fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
+        validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -220,7 +220,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         
         mockPayPalAPIClient.validationResult = PPCValidationResult()
         
-        validatorClient?.checkoutWithCard("fake-order", card: BTCard()) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .card)
             XCTAssertNil(error)
@@ -248,7 +248,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         
         mockPaymentFlowDriver.paymentFlowResult = BTPaymentFlowResult()
         
-        validatorClient?.checkoutWithCard("fake-order", card: BTCard()) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .card)
             XCTAssertNil(error)
@@ -277,7 +277,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         mockPaymentFlowDriver.paymentFlowResult = nil
         mockPaymentFlowDriver.paymentFlowError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         
-        validatorClient?.checkoutWithCard("fake-order", card: BTCard()) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -292,7 +292,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         mockCardClient.tokenizeCardError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockCardClient.cardNonce = nil
         
-        validatorClient?.checkoutWithCard("fake-order", card: BTCard()) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -307,7 +307,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         mockPayPalAPIClient.validationError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockPayPalAPIClient.validationResult = nil
         
-        validatorClient?.checkoutWithCard("fake-order", card: BTCard()) { (validatorResult, error) in
+        validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()
@@ -321,7 +321,7 @@ class PPCValidatorClient_Tests: XCTestCase {
     func testCheckoutWithPayPal_callsCompletionWithValidatorResult() {
         let expectation = self.expectation(description: "calls completion with validator result")
         
-        validatorClient?.checkoutWithPayPal("fake-order") { (validatorResult, error) in
+        validatorClient?.checkoutWithPayPal(orderID: "fake-order") { (validatorResult, error) in
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .payPal)
             XCTAssertNil(error)
@@ -337,7 +337,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         mockPaymentFlowDriver.paymentFlowError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
         mockPaymentFlowDriver.paymentFlowResult = nil
         
-        validatorClient?.checkoutWithPayPal("fake-order") { (validatorResult, error) in
+        validatorClient?.checkoutWithPayPal(orderID: "fake-order") { (validatorResult, error) in
             XCTAssertNil(validatorResult)
             XCTAssertEqual(error?.localizedDescription, "error message")
             expectation.fulfill()

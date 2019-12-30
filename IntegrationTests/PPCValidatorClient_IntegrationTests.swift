@@ -17,7 +17,7 @@ class PPCValidatorClient_IntegrationTests: XCTestCase {
 
     func testCheckoutWithCard_returnsSuccessResult() {
         let expectation = self.expectation(description: "Checkout with Card Complete")
-        validatorClient.checkoutWithCard(PPCIntegrationTestsConstants.sandbox_orderId, card: validCard(), completion: { (validatorResult, error) in
+        validatorClient.checkoutWithCard(orderID: PPCIntegrationTestsConstants.sandbox_orderId, card: validCard(), completion: { (validatorResult, error) in
             if ((error) != nil) {
                 XCTFail()
             }
@@ -34,7 +34,7 @@ class PPCValidatorClient_IntegrationTests: XCTestCase {
         BTAppSwitch.sharedInstance().returnURLScheme = "com.braintreepayments.Demo.payments"
 
         let expectation = self.expectation(description: "Checkout with PayPal Complete")
-        validatorClient.checkoutWithPayPal(PPCIntegrationTestsConstants.sandbox_orderId, completion: { (validatorResult, error) in
+        validatorClient.checkoutWithPayPal(orderID: PPCIntegrationTestsConstants.sandbox_orderId, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 XCTFail()
             }
@@ -51,7 +51,7 @@ class PPCValidatorClient_IntegrationTests: XCTestCase {
 
     func testCheckoutWithApplePay_returnsSuccessResult() {
         let expectation = self.expectation(description: "Checkout with ApplePay Complete")
-        validatorClient?.checkoutWithApplePay(PPCIntegrationTestsConstants.sandbox_orderId, paymentRequest: validPKPaymentRequest(), completion: { (validatorResult, error, applePayResultHandler) in
+        validatorClient?.checkoutWithApplePay(orderID: PPCIntegrationTestsConstants.sandbox_orderId, paymentRequest: validPKPaymentRequest(), completion: { (validatorResult, error, applePayResultHandler) in
                 if ((error) != nil) {
                     XCTFail()
                 }
