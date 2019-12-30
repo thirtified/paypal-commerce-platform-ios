@@ -27,7 +27,6 @@ Pod::Spec.new do |s|
   # }
 
   s.dependency "Braintree"
-  s.dependency "Braintree/PayPal"
   s.dependency "Braintree/Core"
   s.dependency "Braintree/Card"
   s.dependency "Braintree/Apple-Pay"
