@@ -93,6 +93,21 @@ class PPCValidatorClient_Tests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
+    func testCheckoutWithApplePay_callsPayPalDataCollector_getClientMetadataID() {
+        PPCValidatorClient.setPayPalDataCollectorClass(MockPPDataCollector.self)
+
+        let expectation = self.expectation(description: "calls PPDataCollector.clientMetadataId()")
+
+        mockViewControllerPresentingDelegate.onPaymentDriverRequestsPresentation = { _, _ in
+            XCTAssertTrue(MockPPDataCollector.didFetchClientMetadataID)
+            expectation.fulfill()
+        }
+
+        validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (_, _, _) in }
+
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
     // MARK: - paymentAuthorizationViewControllerDidAuthorizePayment (iOS 11+)
 
     func testPaymentAuthorizationViewControllerDidAuthorizePayment_callsCompletionWithValidatorResult() {
@@ -315,6 +330,19 @@ class PPCValidatorClient_Tests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+
+    func testCheckoutWithCard_callsPayPalDataCollector_getClientMetadataID() {
+        PPCValidatorClient.setPayPalDataCollectorClass(MockPPDataCollector.self)
+
+        let expectation = self.expectation(description: "calls PPDataCollector.clientMetadataId()")
+
+        validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
+            XCTAssertTrue(MockPPDataCollector.didFetchClientMetadataID)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
     
     // MARK: - checkoutWithPayPal
     
@@ -343,6 +371,19 @@ class PPCValidatorClient_Tests: XCTestCase {
             expectation.fulfill()
         }
         
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
+    func testCheckoutWithPayPal_callsPayPalDataCollector_getClientMetadataID() {
+        PPCValidatorClient.setPayPalDataCollectorClass(MockPPDataCollector.self)
+
+        let expectation = self.expectation(description: "calls PPDataCollector.clientMetadataId()")
+
+        validatorClient?.checkoutWithPayPal(orderID: "fake-order") { (validatorResult, error) in
+            XCTAssertTrue(MockPPDataCollector.didFetchClientMetadataID)
+            expectation.fulfill()
+        }
+
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

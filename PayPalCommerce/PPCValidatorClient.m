@@ -12,8 +12,20 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
 
 @end
 
-// TODO: - add delegate as a property instead of parameter to the checkout methods
 @implementation PPCValidatorClient
+
+#pragma mark - Properties
+
+// For testing
+static Class PayPalDataCollectorClass;
+static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
+
+#pragma mark - Initialization
+
+- (void)setOrderId:(NSString *)orderId {
+    _orderId = orderId;
+    [PayPalDataCollectorClass clientMetadataID:_orderId];
+}
 
 - (nullable instancetype)initWithAccessToken:(NSString *)accessToken {
     self = [super init];
@@ -32,6 +44,8 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
 
     return self;
 }
+
+#pragma mark - Checkout with Card
 
 - (void)checkoutWithCard:(NSString *)orderID
                     card:(BTCard *)card
@@ -81,6 +95,8 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
     }];
 }
 
+#pragma mark - Checkout with PayPal
+
 - (void)checkoutWithPayPal:(NSString *)orderId
                 completion:(void (^)(PPCValidatorResult * _Nullable validationResult, NSError * _Nullable error))completion {
     self.orderId = orderId;
@@ -103,6 +119,8 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
         completion(validatorResult, nil);
     }];
 }
+
+#pragma mark - Checkout with ApplePay
 
 - (void)checkoutWithApplePay:(NSString * __unused)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
@@ -192,6 +210,12 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorE
             }
         });
     }];
+}
+
+#pragma mark - Test Helpers
+
++ (void)setPayPalDataCollectorClass:(Class)payPalDataCollectorClass {
+    PayPalDataCollectorClass = payPalDataCollectorClass;
 }
 
 @end

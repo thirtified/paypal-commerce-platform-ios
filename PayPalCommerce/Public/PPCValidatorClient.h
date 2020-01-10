@@ -16,6 +16,12 @@
 #import <BraintreePaymentFlow/BraintreePaymentFlow.h>
 #endif
 
+#if __has_include("PayPalDataCollector.h")
+#import "PPDataCollector.h"
+#else
+#import <PayPalDataCollector/PPDataCollector.h>
+#endif
+
 #import "PPCValidatorResult.h"
 
 NS_ASSUME_NONNULL_BEGIN

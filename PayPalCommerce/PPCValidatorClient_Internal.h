@@ -10,6 +10,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) BTCardClient *cardClient;
 @property (nonatomic, strong) BTPaymentFlowDriver *paymentFlowDriver;
 
+/**
+ The `PPDataCollector` class, exposed internally for injecting test doubles for unit tests
+ */
++ (void)setPayPalDataCollectorClass:(nonnull Class)payPalDataCollectorClass;
+
 @end
 
 NS_ASSUME_NONNULL_END
