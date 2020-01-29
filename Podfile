@@ -4,7 +4,7 @@ workspace 'PayPalCommerce.xcworkspace'
 use_frameworks!
 
 target 'Demo' do
-  pod 'PayPalCommerce', :path => './'
+  pod 'PayPalCommercePlatform', :path => './'
   pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   pod 'Braintree/Core', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   pod 'Braintree/Card', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
@@ -14,7 +14,7 @@ target 'Demo' do
 end
 
 abstract_target 'Tests' do
-  pod 'PayPalCommerce', :path => './'
+  pod 'PayPalCommercePlatform', :path => './'
   pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   pod 'Braintree/Core', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   pod 'Braintree/Card', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
