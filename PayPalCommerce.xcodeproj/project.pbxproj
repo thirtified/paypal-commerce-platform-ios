@@ -57,7 +57,7 @@
 		80B36CE523454EC000AD35E8 /* PPCValidatorClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B36CE323454EC000AD35E8 /* PPCValidatorClient.m */; };
 		80BAD283234531B50050F86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BAD282234531B50050F86C /* Assets.xcassets */; };
 		80BAD286234531B50050F86C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BAD284234531B50050F86C /* LaunchScreen.storyboard */; };
-		80BAD298234532A30050F86C /* PayPalCommerce.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BAD296234532A30050F86C /* PayPalCommerce.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80BAD298234532A30050F86C /* PayPalCommercePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BAD296234532A30050F86C /* PayPalCommercePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,7 +151,7 @@
 		80BAD285234531B50050F86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80BAD287234531B50050F86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80BAD294234532A30050F86C /* PayPalCommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PayPalCommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80BAD296234532A30050F86C /* PayPalCommerce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayPalCommerce.h; sourceTree = "<group>"; };
+		80BAD296234532A30050F86C /* PayPalCommercePlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayPalCommercePlatform.h; sourceTree = "<group>"; };
 		80BAD297234532A30050F86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E73EDEF84A75D3509864E71 /* Pods-Tests-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF24EE982DAE707EB55E15FA /* Pods-Tests-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		80B36CB423453DB800AD35E8 /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				80BAD296234532A30050F86C /* PayPalCommerce.h */,
+				80BAD296234532A30050F86C /* PayPalCommercePlatform.h */,
 				80B36CE223454EC000AD35E8 /* PPCValidatorClient.h */,
 				80015A2B23566AD6002825E1 /* PPCValidatorResult.h */,
 			);
@@ -399,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B36CD023454C9E00AD35E8 /* PPCPayPalCheckoutResult.h in Headers */,
-				80BAD298234532A30050F86C /* PayPalCommerce.h in Headers */,
+				80BAD298234532A30050F86C /* PayPalCommercePlatform.h in Headers */,
 				80B36CE423454EC000AD35E8 /* PPCValidatorClient.h in Headers */,
 				80015A2D23566AD6002825E1 /* PPCValidatorResult.h in Headers */,
 				80B36CD423454D2D00AD35E8 /* PPCCardContingencyResult.h in Headers */,

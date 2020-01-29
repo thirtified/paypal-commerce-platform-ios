@@ -1,12 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "PayPalCommerce"
   s.version          = "0.0.1"
-  s.summary          = "Braintree's PayPal Commerce component for use with the Braintree iOS SDK"
+  s.summary          = "Braintree's PayPal Commerce Platform component for use with the Braintree iOS SDK"
   s.description      = <<-DESC
                        Braintree is a full-stack payments platform for developers
-
                        This CocoaPod will help you accept Visa Checkout payments in your iOS app.
-
                        Check out our development portal at https://developers.braintreepayments.com.
   DESC
   s.homepage         = "https://www.braintreepayments.com/how-braintree-works"
@@ -32,4 +30,3 @@ Pod::Spec.new do |s|
   s.dependency "Braintree/Apple-Pay"
   s.dependency "Braintree/PaymentFlow"
 end
-
