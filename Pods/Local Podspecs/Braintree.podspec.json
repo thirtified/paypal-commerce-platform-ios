@@ -1,6 +1,6 @@
 {
   "name": "Braintree",
-  "version": "4.30.0",
+  "version": "4.31.0",
   "summary": "Braintree v.zero: A modern foundation for accepting payments",
   "description": "Braintree is a full-stack payments platform for developers\n\nThis CocoaPod will help you accept payments in your iOS app.\n\nCheck out our development portal at https://developers.braintreepayments.com.",
   "homepage": "https://www.braintreepayments.com/how-braintree-works",
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/braintree/braintree_ios.git",
-    "tag": "4.30.0"
+    "tag": "4.31.0"
   },
   "social_media_url": "https://twitter.com/braintree",
   "platforms": {

@@ -164,7 +164,7 @@ NSString * const BTAnalyticsServiceErrorDomain = @"com.braintreepayments.BTAnaly
             } else if (self.apiClient.tokenizationKey) {
                 self.http = [[BTHTTP alloc] initWithBaseURL:analyticsURL tokenizationKey:self.apiClient.tokenizationKey];
             } else if (self.apiClient.payPalUAT) {
-                // TODO: - add analytics support for PayPal UAT
+                self.http = [[BTHTTP alloc] initWithBaseURL:analyticsURL authorizationFingerprint:self.apiClient.payPalUAT.token];
                 return;
             }
             if (!self.http) {

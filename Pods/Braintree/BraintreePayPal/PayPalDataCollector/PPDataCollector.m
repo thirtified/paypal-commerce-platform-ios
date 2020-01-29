@@ -24,7 +24,8 @@
 
 
 + (PPRMOCMagnesSDKResult *)generateMagnesResultWithClientMetadataID:(NSString *)clientMetadataID disableBeacon:(BOOL)disableBeacon data:(NSDictionary *)data {
-    [[PPRMOCMagnesSDK shared] setUpEnvironment:LIVE withOptionalAppGuid:[PPOTDevice appropriateIdentifier] withOptionalAPNToken:nil disableRemoteConfiguration:NO disableBeacon:disableBeacon forMagnesSource:MAGNES_SOURCE_BRAINTREE];
+    // TODO: - Change env back to LIVE before merge
+    [[PPRMOCMagnesSDK shared] setUpEnvironment:STAGE withOptionalAppGuid:[PPOTDevice appropriateIdentifier] withOptionalAPNToken:nil disableRemoteConfiguration:NO disableBeacon:disableBeacon forMagnesSource:MAGNES_SOURCE_BRAINTREE];
 
     return [[PPRMOCMagnesSDK shared] collectAndSubmitWithPayPalClientMetadataId:[clientMetadataID copy] withAdditionalData:data];
 }
