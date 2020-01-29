@@ -334,7 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				80BAD275234531B30050F86C /* Demo */,
-				80BAD295234532A30050F86C /* PayPalCommerce */,
+				80BAD295234532A30050F86C /* PayPalCommercePlatform */,
 				8066A04D235F5026007ACC28 /* UnitTests */,
 				4294F153237B5BB600A789E5 /* UITests */,
 				804588D1238489F800936C3A /* IntegrationTests */,
@@ -373,7 +373,7 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		80BAD295234532A30050F86C /* PayPalCommerce */ = {
+		80BAD295234532A30050F86C /* PayPalCommercePlatform */ = {
 			isa = PBXGroup;
 			children = (
 				80B36CDE23454E8700AD35E8 /* PPCAPIClient.h */,
@@ -388,7 +388,7 @@
 				80015A32235673A4002825E1 /* PayPalCheckout */,
 				80B36CB423453DB800AD35E8 /* Public */,
 			);
-			path = PayPalCommerce;
+			path = PayPalCommercePlatform;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

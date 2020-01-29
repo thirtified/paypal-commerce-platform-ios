@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
   s.compiler_flags = "-Wall -Werror -Wextra"
 
-  s.source_files  = "PayPalCommerce/**/*.{h,m}"
-  s.public_header_files = "PayPalCommerce/Public/*.h"
+  s.source_files  = "PayPalCommercePlatform/**/*.{h,m}"
+  s.public_header_files = "PayPalCommercePlatform/Public/*.h"
   # s.vendored_frameworks = "VisaCheckout_IOS_SDK/VisaCheckoutSDK.framework"
   # s.xcconfig            = {
   #   "FRAMEWORK_SEARCH_PATHS" => '"${PODS_ROOT}/BraintreeVisaCheckout/VisaCheckout_IOS_SDK"'
