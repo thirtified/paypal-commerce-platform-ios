@@ -164,13 +164,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework"
   install_framework "${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PayPalCommerce/PayPalCommerce.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PayPalCommercePlatform/PayPalCommercePlatform.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework"
   install_framework "${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PayPalCommerce/PayPalCommerce.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PayPalCommercePlatform/PayPalCommercePlatform.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

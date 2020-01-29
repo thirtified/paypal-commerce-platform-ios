@@ -1,0 +1,40 @@
+{
+  "name": "PayPalCommercePlatform",
+  "version": "0.0.1",
+  "summary": "Braintree's PayPal Commerce Platform component for use with the Braintree iOS SDK",
+  "description": "Braintree is a full-stack payments platform for developers\nThis CocoaPod will help you accept Visa Checkout payments in your iOS app.\nCheck out our development portal at https://developers.braintreepayments.com.",
+  "homepage": "https://www.braintreepayments.com/how-braintree-works",
+  "documentation_url": "https://developers.braintreepayments.com/guides/visa-checkout/overview",
+  "authors": {
+    "Braintree": "code@getbraintree.com"
+  },
+  "source": {
+    "git": "https://github.com/braintree/braintree-ios-paypal-validator-test.git",
+    "tag": "0.0.1"
+  },
+  "social_media_url": "https://twitter.com/braintree",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "requires_arc": true,
+  "compiler_flags": "-Wall -Werror -Wextra",
+  "source_files": "PayPalCommercePlatform/**/*.{h,m}",
+  "public_header_files": "PayPalCommercePlatform/Public/*.h",
+  "dependencies": {
+    "Braintree": [
+
+    ],
+    "Braintree/Core": [
+
+    ],
+    "Braintree/Card": [
+
+    ],
+    "Braintree/Apple-Pay": [
+
+    ],
+    "Braintree/PaymentFlow": [
+
+    ]
+  }
+}

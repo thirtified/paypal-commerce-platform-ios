@@ -1,6 +1,0 @@
-framework module PayPalCommerce {
-  umbrella header "PayPalCommerce-umbrella.h"
-
-  export *
-  module * { export * }
-}

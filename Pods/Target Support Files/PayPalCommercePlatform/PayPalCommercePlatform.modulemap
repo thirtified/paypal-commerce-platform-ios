@@ -1,0 +1,6 @@
+framework module PayPalCommercePlatform {
+  umbrella header "PayPalCommercePlatform-umbrella.h"
+
+  export *
+  module * { export * }
+}
