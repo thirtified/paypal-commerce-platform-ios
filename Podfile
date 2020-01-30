@@ -1,6 +1,6 @@
 platform :ios, '9.0'
 
-workspace 'PayPalCommerce.xcworkspace'
+workspace 'PayPalCommercePlatform.xcworkspace'
 use_frameworks!
 
 target 'Demo' do
