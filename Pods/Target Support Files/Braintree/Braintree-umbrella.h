@@ -80,6 +80,7 @@
 #import "BTThreeDSecurePostalAddress.h"
 #import "BTThreeDSecureRequest.h"
 #import "BTThreeDSecureResult.h"
+#import "BTThreeDSecureV1UICustomization.h"
 #import "BraintreeUI.h"
 #import "BTDropInViewController.h"
 #import "BTPaymentButton.h"
