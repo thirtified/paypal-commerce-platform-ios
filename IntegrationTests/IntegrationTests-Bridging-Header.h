@@ -1,5 +1,5 @@
 // Public Headers
-#import "PayPalCommerce.h"
+#import "PayPalCommercePlatform.h"
 #import "PPCValidatorClient.h"
 
 // Internal headers for testing

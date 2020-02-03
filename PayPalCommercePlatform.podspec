@@ -1,12 +1,10 @@
 Pod::Spec.new do |s|
-  s.name             = "PayPalCommerce"
+  s.name             = "PayPalCommercePlatform"
   s.version          = "0.0.1"
-  s.summary          = "Braintree's PayPal Commerce component for use with the Braintree iOS SDK"
+  s.summary          = "Braintree's PayPal Commerce Platform component for use with the Braintree iOS SDK"
   s.description      = <<-DESC
                        Braintree is a full-stack payments platform for developers
-
                        This CocoaPod will help you accept Visa Checkout payments in your iOS app.
-
                        Check out our development portal at https://developers.braintreepayments.com.
   DESC
   s.homepage         = "https://www.braintreepayments.com/how-braintree-works"
@@ -19,8 +17,8 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
   s.compiler_flags = "-Wall -Werror -Wextra"
 
-  s.source_files  = "PayPalCommerce/**/*.{h,m}"
-  s.public_header_files = "PayPalCommerce/Public/*.h"
+  s.source_files  = "PayPalCommercePlatform/**/*.{h,m}"
+  s.public_header_files = "PayPalCommercePlatform/Public/*.h"
   # s.vendored_frameworks = "VisaCheckout_IOS_SDK/VisaCheckoutSDK.framework"
   # s.xcconfig            = {
   #   "FRAMEWORK_SEARCH_PATHS" => '"${PODS_ROOT}/BraintreeVisaCheckout/VisaCheckout_IOS_SDK"'
@@ -32,4 +30,3 @@ Pod::Spec.new do |s|
   s.dependency "Braintree/Apple-Pay"
   s.dependency "Braintree/PaymentFlow"
 end
-

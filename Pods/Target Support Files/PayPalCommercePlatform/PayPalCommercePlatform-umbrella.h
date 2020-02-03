@@ -10,10 +10,10 @@
 #endif
 #endif
 
-#import "PayPalCommerce.h"
+#import "PayPalCommercePlatform.h"
 #import "PPCValidatorClient.h"
 #import "PPCValidatorResult.h"
 
-FOUNDATION_EXPORT double PayPalCommerceVersionNumber;
-FOUNDATION_EXPORT const unsigned char PayPalCommerceVersionString[];
+FOUNDATION_EXPORT double PayPalCommercePlatformVersionNumber;
+FOUNDATION_EXPORT const unsigned char PayPalCommercePlatformVersionString[];
 

@@ -1,5 +1,5 @@
 import Foundation
-import PayPalCommerce
+import PayPalCommercePlatform
 
 struct Order: Codable {
     let id: String

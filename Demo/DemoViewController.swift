@@ -1,4 +1,4 @@
-import PayPalCommerce
+import PayPalCommercePlatform
 import InAppSettingsKit
 
 class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
