@@ -74,7 +74,7 @@ NSString *const BTAPIClientErrorDomain = @"com.braintreepayments.BTAPIClientErro
                     return nil;
                 }
                 
-                _configurationHTTP = [[BTHTTP alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.sandbox.braintreegateway.com"] authorizationFingerprint:authorization];
+                _configurationHTTP = [[BTHTTP alloc] initWithPayPalUAT:_payPalUAT];
 
                 if (sendAnalyticsEvent) {
                     [self queueAnalyticsEvent:@"ios.started.paypal-uat"];

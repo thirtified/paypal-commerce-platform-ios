@@ -2,20 +2,45 @@ import XCTest
 
 class PPCAPIClient_Tests: XCTestCase {
 
-    let payPalAPIClient = PPCAPIClient(accessToken: "123.123.123")
+    let uatParams: [String : Any] = [
+        "iss": "https://some-paypal-url.com",
+        "braintreeURL": "https://some-braintree-url.com",
+        "sub": "PayPal:fake-pp-merchant",
+        "acr": [
+            "client"
+        ],
+        "scopes": [
+            "Braintree:Vault"
+        ],
+        "exp": 1571980506,
+        "external_ids": [
+            "PayPal:fake-pp-merchant",
+            "Braintree:fake-bt-merchant"
+        ],
+        "jti": "fake-jti"
+    ]
+    
+    var uatString: String!
+    var payPalAPIClient: PPCAPIClient!
     let nonce = BTPayPalAccountNonce(nonce: "paypal-nonce", localizedDescription: "PayPal Account Nonce")!
     let mockURLSession = MockURLSession()
     
     override func setUp() {
         super.setUp()
+        uatString = PayPalUATTestHelper.encodeUAT(uatParams)
+        payPalAPIClient = PPCAPIClient(accessToken: uatString)!
         mockURLSession.error = nil
         payPalAPIClient.urlSession = mockURLSession
     }
     
     // MARK: - initialization
 
-    func testInitWithAccessToken_setsAccessToken() {
-        XCTAssertEqual(payPalAPIClient.accessToken, "123.123.123")
+    func testInitWithAccessToken_returnsAPIClient() {
+        XCTAssertNotNil(PPCAPIClient(accessToken: uatString))
+    }
+    
+    func testInitWithInvalidAccessToken_returnsNil() {
+        XCTAssertNil(PPCAPIClient(accessToken: "invalid-token"))
     }
 
     // MARK: -  validatePaymentMethod
@@ -30,8 +55,8 @@ class PPCAPIClient_Tests: XCTestCase {
             guard let body = request.httpBody else { XCTFail(); return }
             
             XCTAssertEqual(request.httpMethod, "POST")
-            XCTAssertEqual(request.url?.absoluteString, "https://api.ppcpn.stage.paypal.com/v2/checkout/orders/order-id/validate-payment-method")
-            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer 123.123.123")
+            XCTAssertEqual(request.url?.absoluteString, "https://some-paypal-url.com/v2/checkout/orders/order-id/validate-payment-method")
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(self.uatString!)")
             XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
             XCTAssertEqual(body, try! BTJSON(withJSONFile: "paypal-validate-request-with-3ds")?.asJSON())
             expectation.fulfill()
@@ -52,8 +77,8 @@ class PPCAPIClient_Tests: XCTestCase {
             guard let body = request.httpBody else { XCTFail(); return }
 
             XCTAssertEqual(request.httpMethod, "POST")
-            XCTAssertEqual(request.url?.absoluteString, "https://api.ppcpn.stage.paypal.com/v2/checkout/orders/order-id/validate-payment-method")
-            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer 123.123.123")
+            XCTAssertEqual(request.url?.absoluteString, "https://some-paypal-url.com/v2/checkout/orders/order-id/validate-payment-method")
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(self.uatString!)")
             XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
             XCTAssertEqual(body, try! BTJSON(withJSONFile: "paypal-validate-request-without-3ds")?.asJSON())
             expectation.fulfill()

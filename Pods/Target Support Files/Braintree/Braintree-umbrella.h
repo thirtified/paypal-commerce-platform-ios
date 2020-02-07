@@ -35,6 +35,7 @@
 #import "BTLogger.h"
 #import "BTPaymentMethodNonce.h"
 #import "BTPaymentMethodNonceParser.h"
+#import "BTPayPalUAT.h"
 #import "BTPostalAddress.h"
 #import "BTTokenizationService.h"
 #import "BTViewControllerPresentingDelegate.h"

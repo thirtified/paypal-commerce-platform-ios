@@ -16,10 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PPCAPIClient : NSObject
 
-@property (readonly, nonatomic) NSString *accessToken;
 @property (nonatomic, strong) NSURLSession *urlSession;
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken;
+- (nullable instancetype)initWithAccessToken:(NSString *)accessToken;
 
 - (void)validatePaymentMethod:(BTPaymentMethodNonce *)paymentMethod
                    forOrderId:(NSString *)orderId

@@ -51,7 +51,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         let accessToken = "123.ewogICJleHRlcm5hbF9pZHMiOiBbCiAgICAiQnJhaW50cmVlOm1lcmNoYW50LWlkIgogIF0KfQ.456"
         let validatorClient = PPCValidatorClient(accessToken: accessToken)
         XCTAssertNotNil(validatorClient)
-        XCTAssertEqual(validatorClient?.payPalAPIClient.accessToken, accessToken)
+        XCTAssertNotNil(validatorClient?.payPalAPIClient)
     }
 
     func testValidatorClientInitialization_withInvalidUAT_returnsNil() {

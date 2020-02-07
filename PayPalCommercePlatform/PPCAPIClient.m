@@ -3,16 +3,22 @@
 
 @interface PPCAPIClient()
 
-@property (copy, nonatomic) NSString *accessToken;
+@property (nonatomic, strong) BTPayPalUAT *payPalUAT;
 
 @end
 
 @implementation PPCAPIClient
 
-- (instancetype)initWithAccessToken:(NSString *)accessToken {
+- (nullable instancetype)initWithAccessToken:(NSString *)accessToken {
     if (self = [super init]) {
-        _accessToken = accessToken;
         _urlSession = NSURLSession.sharedSession;
+        
+        NSError *error;
+        _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:accessToken error:&error];
+        if (error || !_payPalUAT) {
+            NSLog(@"%@", error.localizedDescription ?: @"Error initializing PayPal UAT");
+            return nil;
+        }
     }
 
     return self;
@@ -22,7 +28,8 @@
                    forOrderId:(NSString *)orderId
                       with3DS:(BOOL)isThreeDSecureRequired
                    completion:(void (^)(PPCValidationResult * _Nullable result, NSError * _Nullable error))completion {
-    NSString *urlString = [NSString stringWithFormat:@"https://api.ppcpn.stage.paypal.com/v2/checkout/orders/%@/validate-payment-method", orderId];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/v2/checkout/orders/%@/validate-payment-method", self.payPalUAT.basePayPalURL, orderId];
     NSError *createRequestError;
 
     NSURLRequest *urlRequest = [self createValidateURLRequest:[NSURL URLWithString:urlString]
@@ -81,7 +88,7 @@
                                               error:(NSError **)error {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
-    [request setValue:[NSString stringWithFormat:@"Bearer %@", self.accessToken] forHTTPHeaderField:@"Authorization"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", self.payPalUAT.token] forHTTPHeaderField:@"Authorization"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
     NSDictionary *body = [self constructValidatePayload:paymentMethodNonce with3DS:isThreeDSecureRequired];

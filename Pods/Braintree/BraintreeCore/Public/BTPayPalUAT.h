@@ -21,6 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly, strong) NSURL *configURL;
 
+/**
+ The base Braintree URL
+ */
+@property (nonatomic, readonly, strong) NSURL *baseBraintreeURL;
+
+/**
+ The base PayPal URL
+ */
+@property (nonatomic, readonly, strong) NSURL *basePayPalURL;
+
 @end
 
 NS_ASSUME_NONNULL_END

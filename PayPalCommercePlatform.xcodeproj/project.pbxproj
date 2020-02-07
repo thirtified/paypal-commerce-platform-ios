@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42138C7223678B4B00376E80 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42138C7123678B4B00376E80 /* Settings.bundle */; };
+		423AB53A23EDC9D700B3E06A /* PayPalUATTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423AB53923EDC9D700B3E06A /* PayPalUATTestHelper.swift */; };
 		425B8315236CBDEC006F694D /* BTJSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8314236CBDEC006F694D /* BTJSONHelper.swift */; };
 		425B831B236CBE8C006F694D /* paypal-validate-request-with-3ds.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831A236CBE8C006F694D /* paypal-validate-request-with-3ds.json */; };
 		425B831F236CCC99006F694D /* paypal-validation-response-without-contingency.json in Resources */ = {isa = PBXBuildFile; fileRef = 425B831E236CCC99006F694D /* paypal-validation-response-without-contingency.json */; };
@@ -88,6 +89,7 @@
 		20281D19EF50BA9E6B42562A /* Pods_Tests_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3441CD506C7FA8F4863060B2 /* Pods-Tests-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		42138C7123678B4B00376E80 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		423AB53923EDC9D700B3E06A /* PayPalUATTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalUATTestHelper.swift; sourceTree = "<group>"; };
 		425B8314236CBDEC006F694D /* BTJSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTJSONHelper.swift; sourceTree = "<group>"; };
 		425B831A236CBE8C006F694D /* paypal-validate-request-with-3ds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "paypal-validate-request-with-3ds.json"; sourceTree = "<group>"; };
 		425B831E236CCC99006F694D /* paypal-validation-response-without-contingency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validation-response-without-contingency.json"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				8077518C236A3D08001B61BE /* MockURLSession.swift */,
 				42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */,
 				809E0A8E23C7D7AD00D9A2C0 /* MockPPDataCollector.swift */,
+				423AB53923EDC9D700B3E06A /* PayPalUATTestHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 				8066A05C235F51F2007ACC28 /* MockViewControllerPresentingDelegate.swift in Sources */,
 				8066A05B235F51EF007ACC28 /* MockApplePayClient.swift in Sources */,
 				4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */,
+				423AB53A23EDC9D700B3E06A /* PayPalUATTestHelper.swift in Sources */,
 				425B8325236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift in Sources */,
 				425B8315236CBDEC006F694D /* BTJSONHelper.swift in Sources */,
 				425B8323236CE98D006F694D /* PPCCardContingencyRequest_Tests.swift in Sources */,
