@@ -24,6 +24,7 @@ class PPCAPIClient_Tests: XCTestCase {
     var payPalAPIClient: PPCAPIClient!
     let nonce = BTPayPalAccountNonce(nonce: "paypal-nonce", localizedDescription: "PayPal Account Nonce")!
     let mockURLSession = MockURLSession()
+    let mockBTAPIClient = MockBTAPIClient(authorization: "123.ewogICJleHRlcm5hbF9pZHMiOiBbCiAgICAiQnJhaW50cmVlOm1lcmNoYW50LWlkIgogIF0KfQ.456")!
     
     override func setUp() {
         super.setUp()
@@ -31,6 +32,7 @@ class PPCAPIClient_Tests: XCTestCase {
         payPalAPIClient = PPCAPIClient(accessToken: uatString)!
         mockURLSession.error = nil
         payPalAPIClient.urlSession = mockURLSession
+        payPalAPIClient.braintreeAPIClient = mockBTAPIClient
     }
     
     // MARK: - initialization
@@ -99,6 +101,7 @@ class PPCAPIClient_Tests: XCTestCase {
             XCTAssertNotNil(result)
             XCTAssertNil(result?.contingencyURL)
             XCTAssertNil(error)
+            XCTAssertTrue(self.mockBTAPIClient.postedAnalyticsEvents.contains("ios.paypal-commerce-platform.validate.succeeded"))
             expectation.fulfill()
         }
 
@@ -147,6 +150,7 @@ class PPCAPIClient_Tests: XCTestCase {
         payPalAPIClient.validatePaymentMethod(nonce, forOrderId: "order-id", with3DS: false) { (result, error) in
             XCTAssertNil(result)
             XCTAssertEqual(error?.localizedDescription, "Token signature verification failed")
+            XCTAssertTrue(self.mockBTAPIClient.postedAnalyticsEvents.contains("ios.paypal-commerce-platform.validate.failed"))
             expectation.fulfill()
         }
 
@@ -163,6 +167,7 @@ class PPCAPIClient_Tests: XCTestCase {
         payPalAPIClient.validatePaymentMethod(nonce, forOrderId: "order-id", with3DS: false) { (result, error) in
             XCTAssertNil(result)
             XCTAssertEqual(error?.localizedDescription, "An error occurred")
+            XCTAssertTrue(self.mockBTAPIClient.postedAnalyticsEvents.contains("ios.paypal-commerce-platform.validate.failed"))
             expectation.fulfill()
         }
 

@@ -1,3 +1,4 @@
+#import "BTAPIClient+Analytics_Internal.h"
 #import "PPCValidatorClient_Internal.h"
 #import "PPCCardContingencyRequest.h"
 #import "PPCPayPalCheckoutRequest.h"
@@ -32,13 +33,13 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     if (self) {
         // NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
 
-        BTAPIClient *braintreeAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
-        if (!braintreeAPIClient) {
+        _braintreeAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
+        if (!_braintreeAPIClient) {
             return nil;
         }
-        _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:braintreeAPIClient];
-        _cardClient = [[BTCardClient alloc] initWithAPIClient:braintreeAPIClient];
-        _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:braintreeAPIClient];
+        _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:_braintreeAPIClient];
+        _cardClient = [[BTCardClient alloc] initWithAPIClient:_braintreeAPIClient];
+        _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:_braintreeAPIClient];
         _payPalAPIClient = [[PPCAPIClient alloc] initWithAccessToken:accessToken];
     }
 
@@ -51,6 +52,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                     card:(BTCard *)card
               completion:(void (^)(PPCValidatorResult * _Nullable validationResult, NSError * _Nullable error))completion {
     self.orderId = orderID;
+    [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.started"];
 
     [self.cardClient tokenizeCard:card completion:^(BTCardNonce * tokenizedCard, NSError *error) {
         if (tokenizedCard) {
@@ -59,12 +61,16 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                     PPCValidatorResult *validatorResult = [PPCValidatorResult new];
                     validatorResult.orderID = self.orderId;
                     validatorResult.type = PPCValidatorResultTypeCard;
+
+                    [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.succeeded"];
                     completion(validatorResult, nil);
                 } else {
+                    [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.failed"];
                     completion(nil, error);
                 }
             }];
         } else {
+            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.failed"];
             completion(nil, error);
         }
     }];
@@ -80,16 +86,20 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                                                 completion(NO, error);
                                             } else if (result.contingencyURL) {
                                                 PPCCardContingencyRequest *contingencyRequest = [[PPCCardContingencyRequest alloc] initWithContingencyURL:result.contingencyURL];
+                                                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.started"];
 
                                                 self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
                                                 [self.paymentFlowDriver startPaymentFlow:contingencyRequest completion:^(BTPaymentFlowResult *result, NSError *error) {
                                                     if (result) {
+                                                        [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.succeeded"];
                                                         completion(YES, nil);
                                                     } else {
+                                                        [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.failed"];
                                                         completion(NO, error);
                                                     }
                                                 }];
                                             } else {
+                                                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.no-challenge"];
                                                 completion(YES, nil);
                                             }
     }];
@@ -100,6 +110,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 - (void)checkoutWithPayPal:(NSString *)orderId
                 completion:(void (^)(PPCValidatorResult * _Nullable validationResult, NSError * _Nullable error))completion {
     self.orderId = orderId;
+    [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.started"];
 
     // TODO: Use hardcode URL (https://api.paypal.com/checkoutnow?token=) with orderId to complete PayPal flow until orders v2 accepts universal JWT
 
@@ -109,6 +120,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
     [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {
         if (error) {
+            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.failed"];
             completion(nil, error);
             return;
         }
@@ -116,6 +128,8 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
         PPCValidatorResult *validatorResult = [PPCValidatorResult new];
         validatorResult.orderID = self.orderId;
         validatorResult.type = PPCValidatorResultTypePayPal;
+
+        [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.succeeded"];
         completion(validatorResult, nil);
     }];
 }
@@ -127,6 +141,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                   completion:(void (^)(PPCValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion {
     self.orderId = orderId;
     self.applePayCompletionBlock = completion;
+    [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.started"];
 
     [self.applePayClient paymentRequest:^(PKPaymentRequest *defaultPaymentRequest, NSError *error) {
         if (defaultPaymentRequest) {
@@ -146,9 +161,20 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
             paymentRequest.supportedNetworks = supportedNetworks;
 
             PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
+
+            if (!authorizationViewController) {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-sheet.failed"];
+                NSError *error = [[NSError alloc] initWithDomain:PPCValidatorErrorDomain
+                                                            code:0
+                                                        userInfo:@{NSLocalizedDescriptionKey: @"Apple Pay authorizationViewController failed to initialize"}];
+                self.applePayCompletionBlock(nil, error, nil);
+                return;
+            }
+
             authorizationViewController.delegate = self;
             [self.presentingDelegate paymentDriver:self requestsPresentationOfViewController:authorizationViewController];
         } else {
+            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-payment-request.failed"];
             self.applePayCompletionBlock(nil, error, nil);
         }
     }];
@@ -157,6 +183,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 - (void)tokenizeAndValidateApplePayPayment:(PKPayment *)payment completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion {
     [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce *tokenizedApplePayPayment, NSError *error) {
         if (!tokenizedApplePayPayment || error) {
+            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.failed"];
             completion(nil, error);
             return;
         }
@@ -166,6 +193,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                                             with3DS:NO
                                          completion:^(PPCValidationResult * __unused result, NSError *error) {
             if (!result || error) {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.failed"];
                 completion(nil, error);
                 return;
             }
@@ -173,6 +201,8 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
             PPCValidatorResult *validatorResult = [PPCValidatorResult new];
             validatorResult.orderID = self.orderId;
             validatorResult.type = PPCValidatorResultTypeApplePay;
+
+            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.succeeded"];
             completion(validatorResult, error);
         }];
     }];
@@ -184,28 +214,34 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     [self.presentingDelegate paymentDriver:self requestsDismissalOfViewController:controller];
 }
 
+// iOS 11+ delegate method
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController * __unused)controller
                        didAuthorizePayment:(PKPayment *)payment
                                    handler:(void (^)(PKPaymentAuthorizationResult * _Nonnull))completion API_AVAILABLE(ios(11.0)) {
     [self tokenizeAndValidateApplePayPayment:payment completion:^(PPCValidatorResult *result, NSError *error) {
         self.applePayCompletionBlock(result, error, ^(BOOL success) {
             if (success) {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-result-handler.true"];
                 completion([[PKPaymentAuthorizationResult alloc] initWithStatus:PKPaymentAuthorizationStatusSuccess errors:nil]);
             } else {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-result-handler.false"];
                 completion([[PKPaymentAuthorizationResult alloc] initWithStatus:PKPaymentAuthorizationStatusFailure errors:nil]);
             }
         });
     }];
 }
 
+// pre-iOS 11 delegate method
 - (void)paymentAuthorizationViewController:(__unused PKPaymentAuthorizationViewController *)controller
                        didAuthorizePayment:(PKPayment *)payment
                                 completion:(void (^)(PKPaymentAuthorizationStatus status))completion {
     [self tokenizeAndValidateApplePayPayment:payment completion:^(PPCValidatorResult *result, NSError *error) {
         self.applePayCompletionBlock(result, error, ^(BOOL success) {
             if (success) {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-result-handler.true"];
                 completion(PKPaymentAuthorizationStatusSuccess);
             } else {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-result-handler.false"];
                 completion(PKPaymentAuthorizationStatusFailure);
             }
         });

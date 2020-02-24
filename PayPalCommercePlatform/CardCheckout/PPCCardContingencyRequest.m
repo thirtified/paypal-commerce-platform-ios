@@ -53,7 +53,7 @@
 }
 
 - (nonnull NSString *)paymentFlowName {
-    return @"PayPalValidateCard";
+    return @"paypal-commerce-platform-contingency";
 }
 
 @end

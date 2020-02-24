@@ -42,7 +42,7 @@
 }
 
 - (nonnull NSString *)paymentFlowName {
-    return @"PayPalCheckout";
+    return @"paypal-commerce-platform-pwpp";
 }
 
 @end

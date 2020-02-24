@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PPCAPIClient : NSObject
 
 @property (nonatomic, strong) NSURLSession *urlSession;
+@property (nonatomic, strong) BTAPIClient *braintreeAPIClient;
 
 - (nullable instancetype)initWithAccessToken:(NSString *)accessToken;
 

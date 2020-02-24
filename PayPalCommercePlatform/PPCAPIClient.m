@@ -1,3 +1,4 @@
+#import "BTAPIClient+Analytics_Internal.h"
 #import "PPCAPIClient.h"
 #import "PPCValidatorClient.h"
 
@@ -12,7 +13,8 @@
 - (nullable instancetype)initWithAccessToken:(NSString *)accessToken {
     if (self = [super init]) {
         _urlSession = NSURLSession.sharedSession;
-        
+        _braintreeAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
+
         NSError *error;
         _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:accessToken error:&error];
         if (error || !_payPalUAT) {
@@ -44,6 +46,7 @@
     [[self.urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
+                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.validate.failed"];
                 completion(nil, error);
                 return;
             }
@@ -72,11 +75,13 @@
                         code:0
                     userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
 
+                    [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.validate.failed"];
                     completion(nil, validateError);
                     return;
                 }
             }
-
+            
+            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.validate.succeeded"];
             completion(result, nil);
         });
     }] resume];

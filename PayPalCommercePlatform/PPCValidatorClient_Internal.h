@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PPCAPIClient *payPalAPIClient;
 @property (nonatomic, strong) BTCardClient *cardClient;
 @property (nonatomic, strong) BTPaymentFlowDriver *paymentFlowDriver;
+@property (nonatomic, strong) BTAPIClient *braintreeAPIClient;
 
 /**
  The `PPDataCollector` class, exposed internally for injecting test doubles for unit tests

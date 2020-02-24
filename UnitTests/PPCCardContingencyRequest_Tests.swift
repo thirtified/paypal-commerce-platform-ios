@@ -82,6 +82,6 @@ class PPCCardContingencyRequest_Tests: XCTestCase {
     // MARK: - paymentFlowName
     
     func testPaymentFlowName() {
-        XCTAssertEqual(cardContingencyRequest.paymentFlowName(), "PayPalValidateCard")
+        XCTAssertEqual(cardContingencyRequest.paymentFlowName(), "paypal-commerce-platform-contingency")
     }
 }
