@@ -58,7 +58,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         guard let orderID = orderID, let card = createBTCard() else { return }
 
         updateCheckoutLabel(withText: "Validating card...")
-        payPalValidatorClient?.checkoutWithCard(orderID: orderID, card: card, completion: { (validatorResult, error) in
+        payPalValidatorClient?.checkoutWithCard(orderID: orderID, card: card) { (validatorResult, error) in
             if ((error) != nil) {
                 self.updateCheckoutLabel(withText: "\(error?.localizedDescription ?? "Card checkout error")")
                 return
@@ -67,7 +67,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
             guard let orderID = validatorResult?.orderID else { return }
             self.updateCheckoutLabel(withText: "Validate card success: \(orderID)")
             self.processOrderButton.isEnabled = true
-        })
+        }
     }
 
     @IBAction func payPalCheckoutTapped(_ sender: BTUIPayPalButton) {
@@ -98,18 +98,17 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
             PKPaymentSummaryItem(label: "Sock", amount: NSDecimalNumber(string: self.amountTextField.text))
         ]
 
-        self.updateCheckoutLabel(withText: "Presenting ApplePay Sheet ...")
+        self.updateCheckoutLabel(withText: "Checking out with Apple Pay ...")
         payPalValidatorClient?.checkoutWithApplePay(orderID: orderID, paymentRequest: paymentRequest, completion: { (validatorResult, error, applePayResultHandler) in
-            guard let validatorResult = validatorResult else {
+            guard let validatorResult = validatorResult, let resultHandler = applePayResultHandler else {
                 self.updateCheckoutLabel(withText: "ApplePay Error: \(error?.localizedDescription ?? "error")")
-                applePayResultHandler(false)
                 return
             }
 
             self.updateCheckoutLabel(withText: "ApplePay successful: \(validatorResult.orderID)")
             self.processOrderButton.isEnabled = true
 
-            applePayResultHandler(true)
+            resultHandler(true)
         })
     }
 

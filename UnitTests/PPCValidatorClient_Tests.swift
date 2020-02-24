@@ -87,6 +87,7 @@ class PPCValidatorClient_Tests: XCTestCase {
         validatorClient?.checkoutWithApplePay(orderID: "my-order-id", paymentRequest: PKPaymentRequest()) { (validatorResult, error, handler) in
             XCTAssertEqual(error?.localizedDescription, "error message")
             XCTAssertNil(validatorResult)
+            XCTAssertNil(handler)
             expectation.fulfill()
         }
         
@@ -120,6 +121,7 @@ class PPCValidatorClient_Tests: XCTestCase {
                 XCTAssertEqual(validatorResult?.orderID, "fake-order")
                 XCTAssertEqual(validatorResult?.type, .applePay)
                 XCTAssertNil(error)
+                XCTAssertNotNil(handler)
                 // TODO - test that handler is called correctly
                 expectation.fulfill()
             }
@@ -182,6 +184,7 @@ class PPCValidatorClient_Tests: XCTestCase {
             XCTAssertEqual(validatorResult?.orderID, "fake-order")
             XCTAssertEqual(validatorResult?.type, .applePay)
             XCTAssertNil(error)
+            XCTAssertNotNil(handler)
             // TODO - test that handler is called correctly
             expectation.fulfill()
         }

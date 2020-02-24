@@ -46,7 +46,7 @@ typedef void (^BTApplePayResultHandler)(BOOL success);
 
 - (void)checkoutWithApplePay:(NSString *)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
-                  completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(orderID:paymentRequest:completion:));
+                  completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error, _Nullable BTApplePayResultHandler resultHandler))completion NS_SWIFT_NAME(checkoutWithApplePay(orderID:paymentRequest:completion:));
 
 @end
 
