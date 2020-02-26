@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
                                             with3DS:(BOOL)isThreeDSecureRequired
                                               error:(NSError **)error;
 
+- (void)fetchPayPalApproveURLForOrderId:(NSString *)orderId
+                             completion:(void (^)(NSURL * _Nullable approveURL, NSError * _Nullable error))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

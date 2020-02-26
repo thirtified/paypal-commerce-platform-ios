@@ -18,6 +18,9 @@
 		425B8325236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8324236CEBF7006F694D /* MockPaymentFlowDriverDelegate.swift */; };
 		4276306D2360E91B00A8734E /* MockCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306C2360E91B00A8734E /* MockCardClient.swift */; };
 		4276306F2360F05A00A8734E /* MockPaymentFlowDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */; };
+		427E12CB2405CA2E004313C3 /* PPCOrderDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E12C92405CA2E004313C3 /* PPCOrderDetails.h */; };
+		427E12CC2405CA2E004313C3 /* PPCOrderDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E12CA2405CA2E004313C3 /* PPCOrderDetails.m */; };
+		427E12CE2405CB48004313C3 /* PPCOrderDetails_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E12CD2405CB48004313C3 /* PPCOrderDetails_Tests.swift */; };
 		4294F15D237B5C4C00A789E5 /* CardCheckout_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15C237B5C4C00A789E5 /* CardCheckout_UITests.swift */; };
 		4294F15F237B629C00A789E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15E237B629C00A789E5 /* TestHelpers.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
@@ -99,6 +102,9 @@
 		4276306B2360DF4F00A8734E /* Demo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		4276306C2360E91B00A8734E /* MockCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardClient.swift; sourceTree = "<group>"; };
 		4276306E2360F05A00A8734E /* MockPaymentFlowDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentFlowDriver.swift; sourceTree = "<group>"; };
+		427E12C92405CA2E004313C3 /* PPCOrderDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCOrderDetails.h; sourceTree = "<group>"; };
+		427E12CA2405CA2E004313C3 /* PPCOrderDetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPCOrderDetails.m; sourceTree = "<group>"; };
+		427E12CD2405CB48004313C3 /* PPCOrderDetails_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCOrderDetails_Tests.swift; sourceTree = "<group>"; };
 		4294F152237B5BB600A789E5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4294F156237B5BB600A789E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4294F15C237B5C4C00A789E5 /* CardCheckout_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckout_UITests.swift; sourceTree = "<group>"; };
@@ -280,6 +286,8 @@
 				80B36CC72345473800AD35E8 /* PPCPayPalCheckoutRequest.m */,
 				80B36CCE23454C9E00AD35E8 /* PPCPayPalCheckoutResult.h */,
 				80B36CCF23454C9E00AD35E8 /* PPCPayPalCheckoutResult.m */,
+				427E12C92405CA2E004313C3 /* PPCOrderDetails.h */,
+				427E12CA2405CA2E004313C3 /* PPCOrderDetails.m */,
 			);
 			path = PayPalCheckout;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				802624392357A469005EA84A /* PPCAPIClient_Tests.swift */,
 				425B8322236CE98D006F694D /* PPCCardContingencyRequest_Tests.swift */,
 				8026243D2357A613005EA84A /* PPCCardContingencyResult_Tests.swift */,
+				427E12CD2405CB48004313C3 /* PPCOrderDetails_Tests.swift */,
 				803F7C2823E8BC8900F9D70A /* PPCPayPalCheckoutRequest_Tests.swift */,
 				8026243B2357A4E2005EA84A /* PPCValidationResult_Tests.swift */,
 				8026243F2357B3DE005EA84A /* PPCValidatorClient_Tests.swift */,
@@ -409,6 +418,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427E12CB2405CA2E004313C3 /* PPCOrderDetails.h in Headers */,
 				80B36CD023454C9E00AD35E8 /* PPCPayPalCheckoutResult.h in Headers */,
 				80BAD298234532A30050F86C /* PayPalCommercePlatform.h in Headers */,
 				80015A2D23566AD6002825E1 /* PPCValidatorResult.h in Headers */,
@@ -780,6 +790,7 @@
 				425B8323236CE98D006F694D /* PPCCardContingencyRequest_Tests.swift in Sources */,
 				8066A05E235F5E9C007ACC28 /* MockPayPalAPIClient.swift in Sources */,
 				8077518D236A3D08001B61BE /* MockURLSession.swift in Sources */,
+				427E12CE2405CB48004313C3 /* PPCOrderDetails_Tests.swift in Sources */,
 				8066A059235F506F007ACC28 /* PPCValidationResult_Tests.swift in Sources */,
 				809E0A8F23C7D7AD00D9A2C0 /* MockPPDataCollector.swift in Sources */,
 			);
@@ -799,6 +810,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427E12CC2405CA2E004313C3 /* PPCOrderDetails.m in Sources */,
 				80B36CDD23454E3700AD35E8 /* PPCCardContingencyRequest.m in Sources */,
 				80B36CD123454C9E00AD35E8 /* PPCPayPalCheckoutResult.m in Sources */,
 				80B36CD523454D2D00AD35E8 /* PPCCardContingencyResult.m in Sources */,
