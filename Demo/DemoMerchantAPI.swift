@@ -43,12 +43,10 @@ class DemoMerchantAPI {
 
     static let sharedService = DemoMerchantAPI()
 
-    private let urlString = "http://localhost:5000"
-
     private init() {}
 
     func createOrder(countryCode: String, orderParams: CreateOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
-        var components = URLComponents(string: urlString)!
+        var components = URLComponents(url: DemoSettings.sampleMerchantServerURL, resolvingAgainstBaseURL: false)!
         components.path = "/order"
         components.queryItems = [URLQueryItem(name: "countryCode", value: countryCode)]
 
@@ -76,7 +74,7 @@ class DemoMerchantAPI {
     }
 
     func generateUAT(countryCode: String, completion: @escaping ((String?, Error?) -> Void)) {
-        var components = URLComponents(string: urlString)!
+        var components = URLComponents(url: DemoSettings.sampleMerchantServerURL, resolvingAgainstBaseURL: false)!
         components.path = "/uat"
         components.queryItems = [URLQueryItem(name: "countryCode", value: countryCode)]
 
@@ -101,7 +99,10 @@ class DemoMerchantAPI {
     }
 
     func processOrder(processOrderParams: ProcessOrderParams, completion: @escaping ((Order?, Error?) -> Void)) {
-        var urlRequest = URLRequest(url: URL(string: urlString + "/" + processOrderParams.intent.lowercased() + "-order")!)
+        var components = URLComponents(url: DemoSettings.sampleMerchantServerURL, resolvingAgainstBaseURL: false)!
+        components.path = "/\(processOrderParams.intent.lowercased())-order"
+        
+        var urlRequest = URLRequest(url: components.url!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue(PPDataCollector.clientMetadataID(nil), forHTTPHeaderField: "PayPal-Client-Metadata-Id")

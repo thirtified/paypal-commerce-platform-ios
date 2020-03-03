@@ -23,6 +23,7 @@
 		427E12CE2405CB48004313C3 /* PPCOrderDetails_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E12CD2405CB48004313C3 /* PPCOrderDetails_Tests.swift */; };
 		4294F15D237B5C4C00A789E5 /* CardCheckout_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15C237B5C4C00A789E5 /* CardCheckout_UITests.swift */; };
 		4294F15F237B629C00A789E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294F15E237B629C00A789E5 /* TestHelpers.swift */; };
+		42D95334240D64E700489F15 /* DemoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D95333240D64E700489F15 /* DemoSettings.swift */; };
 		42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */; };
 		42FF386C235E42D000F0CF10 /* PPCValidatorClient_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF386B235E42D000F0CF10 /* PPCValidatorClient_Internal.h */; };
 		49A52AFB23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json in Resources */ = {isa = PBXBuildFile; fileRef = 49A52AFA23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json */; };
@@ -111,6 +112,7 @@
 		4294F15E237B629C00A789E5 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		42986C05235E4B9F00D31176 /* MockViewControllerPresentingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewControllerPresentingDelegate.swift; sourceTree = "<group>"; };
 		42D352F4235E49BF006A9DD1 /* MockApplePayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplePayClient.swift; sourceTree = "<group>"; };
+		42D95333240D64E700489F15 /* DemoSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSettings.swift; sourceTree = "<group>"; };
 		42FCAAAF235E32FA00B9BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42FF386B235E42D000F0CF10 /* PPCValidatorClient_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCValidatorClient_Internal.h; sourceTree = "<group>"; };
 		49A52AFA23AABF9000F7BC8D /* paypal-validate-request-without-3ds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validate-request-without-3ds.json"; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				4276306B2360DF4F00A8734E /* Demo.entitlements */,
 				80ADA74A234644AE00579E7A /* DemoMerchantAPI.swift */,
 				80B36CB623453FF100AD35E8 /* DemoViewController.swift */,
+				42D95333240D64E700489F15 /* DemoSettings.swift */,
 				80BAD287234531B50050F86C /* Info.plist */,
 				80BAD284234531B50050F86C /* LaunchScreen.storyboard */,
 				80ADA74E23464A8900579E7A /* Main.storyboard */,
@@ -803,6 +806,7 @@
 				80ADA74B234644AE00579E7A /* DemoMerchantAPI.swift in Sources */,
 				80B36CB723453FF100AD35E8 /* DemoViewController.swift in Sources */,
 				42FCAAB0235E32FA00B9BC3E /* AppDelegate.swift in Sources */,
+				42D95334240D64E700489F15 /* DemoSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

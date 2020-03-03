@@ -19,14 +19,6 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
     private var orderID: String?
     private var payPalValidatorClient: PPCValidatorClient?
 
-    private var intent: String {
-        return UserDefaults.standard.string(forKey: "intent") ?? "capture"
-    }
-
-    private var countryCode: String {
-        return UserDefaults.standard.string(forKey: "countryCode") ?? "US"
-    }
-
     // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
@@ -41,15 +33,10 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         amountTextField.text = "10.00"
-
-        if countryCode == "UK" {
-            self.payeeEmailTextField.text = "native-sdk-gb-merchant-111@paypal.com"
-        } else {
-            self.payeeEmailTextField.text = "ahuang-us-bus-ppcp-approve-seller7@paypal.com"
-        }
+        payeeEmailTextField.text = DemoSettings.payeeEmailAddress
 
         generateUAT()
-        processOrderButton.setTitle("\(intent.capitalized) Order", for: .normal)
+        processOrderButton.setTitle("\(DemoSettings.intent.capitalized) Order", for: .normal)
     }
 
     // MARK: - IBActions
@@ -117,7 +104,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         updateCheckoutLabel(withText: "Processing order...")
 
-        let params = ProcessOrderParams(orderId: orderID, intent: intent, countryCode: countryCode)
+        let params = ProcessOrderParams(orderId: orderID, intent: DemoSettings.intent, countryCode: DemoSettings.countryCode)
 
         DemoMerchantAPI.sharedService.processOrder(processOrderParams: params) { (transactionResult, error) in
             guard let transactionResult = transactionResult else {
@@ -125,7 +112,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
                 return
             }
 
-            self.updateCheckoutLabel(withText: "\(self.intent.capitalized) Status: \(transactionResult.status)")
+            self.updateCheckoutLabel(withText: "\(DemoSettings.intent.capitalized) Status: \(transactionResult.status)")
         }
     }
 
@@ -136,13 +123,13 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
         let amount = amountTextField.text!
         let payeeEmail = payeeEmailTextField.text!
-        let currencyCode = countryCode == "US" ? "USD" : "GBP"
+        let currencyCode = DemoSettings.currencyCode
 
-        let orderRequestParams = CreateOrderParams(intent: intent.uppercased(),
+        let orderRequestParams = CreateOrderParams(intent: DemoSettings.intent.uppercased(),
                                                    purchaseUnits: [PurchaseUnit(amount: Amount(currencyCode: currencyCode, value: amount),
                                                                                 payee: Payee(emailAddress: payeeEmail))])
 
-        DemoMerchantAPI.sharedService.createOrder(countryCode: countryCode, orderParams: orderRequestParams) { (orderResult, error) in
+        DemoMerchantAPI.sharedService.createOrder(countryCode: DemoSettings.countryCode, orderParams: orderRequestParams) { (orderResult, error) in
             guard let order = orderResult, error == nil else {
                 self.updateOrderLabel(withText: "Error: \(error!.localizedDescription)", color: UIColor.red)
                 return
@@ -202,7 +189,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     func generateUAT() {
         updateUATLabel(withText: "Fetching UAT...")
-        DemoMerchantAPI.sharedService.generateUAT(countryCode: countryCode) { (uat, error) in
+        DemoMerchantAPI.sharedService.generateUAT(countryCode: DemoSettings.countryCode) { (uat, error) in
             guard let uat = uat, error == nil else {
                 self.updateUATLabel(withText: "Failed to fetch UAT: \(error!.localizedDescription). Tap refresh to try again.")
                 return
