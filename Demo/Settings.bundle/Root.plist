@@ -14,7 +14,7 @@
 			<key>Key</key>
 			<string>environment</string>
 			<key>DefaultValue</key>
-			<string>Sandbox</string>
+			<string>sandbox</string>
 			<key>Titles</key>
 			<array>
 				<string>Local</string>
