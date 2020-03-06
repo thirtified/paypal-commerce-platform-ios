@@ -30,6 +30,7 @@
 		7D28383A205BAD8ECE4CC40A /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FB2323E8434B10259B2A27 /* Pods_Tests_UnitTests.framework */; };
 		80015A2D23566AD6002825E1 /* PPCValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 80015A2B23566AD6002825E1 /* PPCValidatorResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80015A2E23566AD6002825E1 /* PPCValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80015A2C23566AD6002825E1 /* PPCValidatorResult.m */; };
+		801DB2F02412EC0B0074426F /* PPCValidationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 8026243823578F75005EA84A /* PPCValidationResult.h */; };
 		802C28F12370CC4100A918C7 /* paypal-validation-response-card-expired.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F02370CC4100A918C7 /* paypal-validation-response-card-expired.json */; };
 		802C28F32370D1FE00A918C7 /* paypal-validation-response-invalid-token.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F22370D1FE00A918C7 /* paypal-validation-response-invalid-token.json */; };
 		803F7C2923E8BC8900F9D70A /* PPCPayPalCheckoutRequest_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F7C2823E8BC8900F9D70A /* PPCPayPalCheckoutRequest_Tests.swift */; };
@@ -425,6 +426,7 @@
 				80B36CD023454C9E00AD35E8 /* PPCPayPalCheckoutResult.h in Headers */,
 				80BAD298234532A30050F86C /* PayPalCommercePlatform.h in Headers */,
 				80015A2D23566AD6002825E1 /* PPCValidatorResult.h in Headers */,
+				801DB2F02412EC0B0074426F /* PPCValidationResult.h in Headers */,
 				80B36CE423454EC000AD35E8 /* PPCValidatorClient.h in Headers */,
 				80B36CD423454D2D00AD35E8 /* PPCCardContingencyResult.h in Headers */,
 				80B36CC82345473800AD35E8 /* PPCPayPalCheckoutRequest.h in Headers */,
