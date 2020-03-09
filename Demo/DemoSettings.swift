@@ -5,10 +5,12 @@ class DemoSettings {
     enum Environment: String {
         case local, sandbox, production
     }
+
+    static var environment: Environment {
+        UserDefaults.standard.string(forKey: "environment").flatMap( { Environment(rawValue: $0) }) ?? .sandbox
+    }
     
     static var sampleMerchantServerURL: URL {
-        let environment = UserDefaults.standard.string(forKey: "environment").flatMap( { Environment(rawValue: $0) }) ?? .sandbox
-        
         switch environment {
         case .local:
             return URL(string: "http://localhost:5000")!
@@ -32,10 +34,17 @@ class DemoSettings {
     }
     
     static var payeeEmailAddress: String {
-        if countryCode == "UK" {
-            return "native-sdk-gb-merchant-111@paypal.com"
-        } else {
-            return "ahuang-us-bus-ppcp-approve-seller7@paypal.com"
+        if environment == .local {
+            if countryCode == "UK" {
+                return "native-sdk-gb-merchant-111@paypal.com"
+            } else {
+                return "ahuang-us-bus-ppcp-approve-seller7@paypal.com"
+            }
+        } else if environment == .sandbox {
+            if countryCode == "US" {
+                return "ahuang-ppcp-demo-sb1@paypal.com"
+            } // TODO obtain UK merchant account credentials
         }
+        return "default-email@paypal.com"
     }
 }
