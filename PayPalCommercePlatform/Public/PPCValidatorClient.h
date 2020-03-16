@@ -1,9 +1,7 @@
 #import <PassKit/PassKit.h>
 
-#if __has_include("BraintreeCard.h")
-#import "BraintreeCard.h"
-#else
-#import <BraintreeCard/BraintreeCard.h>
+#if __has_include(<Braintree/BraintreeCard.h>)
+#import <Braintree/BraintreeCard.h>
 #endif
 
 #if __has_include("BraintreeApplePay.h")
