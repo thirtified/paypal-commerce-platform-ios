@@ -2,6 +2,7 @@ platform :ios, '9.0'
 
 workspace 'PayPalCommercePlatform.xcworkspace'
 use_frameworks!
+inhibit_all_warnings!
 
 target 'Demo' do
   pod 'PayPalCommercePlatform', :path => './'

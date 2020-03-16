@@ -1,30 +1,30 @@
 PODS:
-  - Braintree (4.31.0):
-    - Braintree/Card (= 4.31.0)
-    - Braintree/Core (= 4.31.0)
-    - Braintree/PayPal (= 4.31.0)
-    - Braintree/UI (= 4.31.0)
-  - Braintree/Apple-Pay (4.31.0):
+  - Braintree (4.32.1):
+    - Braintree/Card (= 4.32.1)
+    - Braintree/Core (= 4.32.1)
+    - Braintree/PayPal (= 4.32.1)
+    - Braintree/UI (= 4.32.1)
+  - Braintree/Apple-Pay (4.32.1):
     - Braintree/Core
-  - Braintree/Card (4.31.0):
+  - Braintree/Card (4.32.1):
     - Braintree/Core
-  - Braintree/Core (4.31.0)
-  - Braintree/PaymentFlow (4.31.0):
+  - Braintree/Core (4.32.1)
+  - Braintree/PaymentFlow (4.32.1):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.31.0):
+  - Braintree/PayPal (4.32.1):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.31.0):
+  - Braintree/PayPalDataCollector (4.32.1):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.31.0):
+  - Braintree/PayPalOneTouch (4.32.1):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.31.0)
-  - Braintree/UI (4.31.0):
+  - Braintree/PayPalUtils (4.32.1)
+  - Braintree/UI (4.32.1):
     - Braintree/Card
     - Braintree/Core
   - InAppSettingsKit (2.14)
@@ -57,14 +57,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Braintree:
-    :commit: 95c6731c6508fb411d09f2462b3faadd8a852f79
+    :commit: 3a258805273efeb14ee4ec17766acd91031ac6d8
     :git: https://github.com/braintree/braintree_ios.git
 
 SPEC CHECKSUMS:
-  Braintree: c20fb599a8cfee54ad7dfc603dee68f0922bfcba
+  Braintree: b06d2b42f0c591e508f7f538a7cc6715af1958b7
   InAppSettingsKit: 800853da39388780c15191846688c0974c5b13b5
   PayPalCommercePlatform: 4de8434b8ace432322581f1e6dabe54372c74a25
 
-PODFILE CHECKSUM: dc3380f766585faf1c92221365434f65c139057c
+PODFILE CHECKSUM: 23a1535d5b7ca66b29bc80d9a4fafbf8da664274
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
