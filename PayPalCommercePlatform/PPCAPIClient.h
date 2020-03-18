@@ -1,14 +1,5 @@
-#if __has_include("BraintreeCore.h")
-#import "BraintreeCore.h"
-#else
-#import <BraintreeCore/BraintreeCore.h>
-#endif
-
-#if __has_include("BraintreeCard.h")
-#import "BraintreeCard.h"
-#else
-#import <BraintreeCard/BraintreeCard.h>
-#endif
+@import Braintree.BraintreeCard;
+@import Braintree.BraintreeCore;
 
 #import "PPCValidationResult.h"
 

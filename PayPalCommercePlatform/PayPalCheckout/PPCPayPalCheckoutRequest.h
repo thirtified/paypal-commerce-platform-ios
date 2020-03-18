@@ -1,8 +1,4 @@
-#if __has_include("BraintreePaymentFlow.h")
-#import "BraintreePaymentFlow.h"
-#else
-#import <BraintreePaymentFlow/BraintreePaymentFlow.h>
-#endif
+@import Braintree.BraintreePaymentFlow;
 
 NS_ASSUME_NONNULL_BEGIN
 

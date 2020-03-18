@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 //! Project version number for PayPalCommerce.
 FOUNDATION_EXPORT double PayPalCommerceVersionNumber;

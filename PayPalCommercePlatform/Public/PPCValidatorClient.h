@@ -1,26 +1,8 @@
-#import <PassKit/PassKit.h>
-
-#if __has_include(<Braintree/BraintreeCard.h>)
-#import <Braintree/BraintreeCard.h>
-#endif
-
-#if __has_include("BraintreeApplePay.h")
-#import "BraintreeApplePay.h"
-#else
-#import <BraintreeApplePay/BraintreeApplePay.h>
-#endif
-
-#if __has_include("BraintreePaymentFlow.h")
-#import "BraintreePaymentFlow.h"
-#else
-#import <BraintreePaymentFlow/BraintreePaymentFlow.h>
-#endif
-
-#if __has_include("PayPalDataCollector.h")
-#import "PPDataCollector.h"
-#else
-#import <PayPalDataCollector/PPDataCollector.h>
-#endif
+@import PassKit;
+@import Braintree;
+@import Braintree.BraintreeApplePay;
+@import Braintree.BraintreePaymentFlow;
+@import Braintree.PayPalDataCollector;
 
 #import "PPCValidatorResult.h"
 
