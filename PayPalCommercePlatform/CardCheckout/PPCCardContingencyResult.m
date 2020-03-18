@@ -1,5 +1,4 @@
 #import "PPCCardContingencyResult.h"
-#import "BTURLUtils.h"
 
 @implementation PPCCardContingencyResult
 
