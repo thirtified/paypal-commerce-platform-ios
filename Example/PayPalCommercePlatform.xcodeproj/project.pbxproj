@@ -131,7 +131,7 @@
 		42476CED242A651C00C80F20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42476CEE242A651C00C80F20 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5380D4874B503287F583C69D /* PayPalCommercePlatform.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PayPalCommercePlatform.podspec; path = ../PayPalCommercePlatform.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		6003F58A195388D20070C39A /* PayPalCommercePlatform_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayPalCommercePlatform_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* PPCP Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PPCP Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -305,7 +305,7 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* PayPalCommercePlatform_Example.app */,
+				6003F58A195388D20070C39A /* PPCP Demo.app */,
 				4213E2C224295A0200A07C17 /* UnitTests.xctest */,
 				4213E3372429600D00A07C17 /* UITests.xctest */,
 				4213E349242960B300A07C17 /* IntegrationTests.xctest */,
@@ -434,7 +434,7 @@
 			);
 			name = PayPalCommercePlatform_Example;
 			productName = PayPalCommercePlatform;
-			productReference = 6003F58A195388D20070C39A /* PayPalCommercePlatform_Example.app */;
+			productReference = 6003F58A195388D20070C39A /* PPCP Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1052,8 +1052,8 @@
 				INFOPLIST_FILE = PayPalCommercePlatform/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.braintreepayments.PayPalCommercePlatform-Example";
+				PRODUCT_NAME = "PPCP Demo";
 				SWIFT_OBJC_BRIDGING_HEADER = "PayPalCommercePlatform/Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1072,8 +1072,8 @@
 				INFOPLIST_FILE = PayPalCommercePlatform/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.braintreepayments.PayPalCommercePlatform-Example";
+				PRODUCT_NAME = "PPCP Demo";
 				SWIFT_OBJC_BRIDGING_HEADER = "PayPalCommercePlatform/Demo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
