@@ -1,4 +1,4 @@
-import PayPalCommercePlatform
+@testable import PayPalCommercePlatform
 
 class MockViewControllerPresentingDelegate: NSObject, BTViewControllerPresentingDelegate {
     

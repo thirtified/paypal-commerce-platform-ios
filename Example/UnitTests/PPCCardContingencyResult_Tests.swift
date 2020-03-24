@@ -1,5 +1,5 @@
 import XCTest
-import PayPalCommercePlatform
+@testable import PayPalCommercePlatform
 
 class PPCCardContingencyResult_Tests: XCTestCase {
 

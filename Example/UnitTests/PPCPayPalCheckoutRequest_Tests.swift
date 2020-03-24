@@ -1,5 +1,5 @@
 import XCTest
-import PayPalCommercePlatform
+@testable import PayPalCommercePlatform
 
 class PPCPayPalCheckoutRequest_Tests: XCTestCase {
 

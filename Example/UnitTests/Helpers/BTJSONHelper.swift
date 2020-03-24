@@ -1,4 +1,4 @@
-import PayPalCommercePlatform
+@testable import PayPalCommercePlatform
 
 extension BTJSON {
     convenience init?(withJSONFile filename: String) {
