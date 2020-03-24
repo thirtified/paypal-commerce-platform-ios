@@ -1,46 +1,24 @@
-#
-# Be sure to run `pod lib lint PayPalCommercePlatform.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = 'PayPalCommercePlatform'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of PayPalCommercePlatform.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
+  s.name             = "PayPalCommercePlatform"
+  s.version          = "0.0.1"
+  s.summary          = "The PayPal Commerce Platform SDK is a limited-release solution only available to select merchants and partners."
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+                          The PayPal Commerce Platform SDK enables you to accept payments in your native mobile app.
+                          This native SDK leverages the client-side SDK in conjunction with PayPal's v2 Orders API for seamless and faster mobile optimization.
+  DESC
+  s.homepage         = "https://developer.paypal.com/docs/limited-release/ppcp-sdk/"
+  s.documentation_url = "https://developer.paypal.com/docs/limited-release/ppcp-sdk/"
+  s.author           = { "Braintree" => "code@getbraintree.com" }
+  s.source           = { :git => "https://github.com/braintree/paypal-commerce-platform-ios.git", :tag => s.version.to_s }
 
-  s.homepage         = 'https://github.com/sestevens/PayPalCommercePlatform'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'sestevens' => 'susan.stevens@getbraintree.com' }
-  s.source           = { :git => 'https://github.com/sestevens/PayPalCommercePlatform.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.platform         = :ios, "9.0"
+  s.requires_arc     = true
+  s.compiler_flags = "-Wall -Werror -Wextra"
 
-  s.ios.deployment_target = '8.0'
+  s.source_files  = "PayPalCommercePlatform/Classes/**/*"
+  s.public_header_files = "PayPalCommercePlatform/Classes/Public/**/*"
 
-  s.source_files = 'PayPalCommercePlatform/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'PayPalCommercePlatform' => ['PayPalCommercePlatform/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  
   s.dependency "Braintree"
-#  s.dependency "Braintree/Apple-Pay"
-#  s.dependency "Braintree/PaymentFlow"
+  s.dependency "Braintree/Apple-Pay"
+  s.dependency "Braintree/PaymentFlow"
 end

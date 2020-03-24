@@ -9,10 +9,6 @@ target 'PayPalCommercePlatform_Example' do
   pod 'Braintree/Apple-Pay', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   
   pod 'InAppSettingsKit'
-#  target 'UnitTests' do
-#    inherit! :search_paths
-#
-#  end
 end
 
 abstract_target 'Tests' do
