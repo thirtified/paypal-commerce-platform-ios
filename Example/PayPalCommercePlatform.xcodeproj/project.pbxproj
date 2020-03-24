@@ -785,7 +785,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PayPalCommercePlatform_Example.app/PayPalCommercePlatform_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PPCP Demo.app/PPCP Demo";
 			};
 			name = Debug;
 		};
@@ -816,7 +816,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PayPalCommercePlatform_Example.app/PayPalCommercePlatform_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PPCP Demo.app/PPCP Demo";
 			};
 			name = Release;
 		};
@@ -905,7 +905,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PayPalCommercePlatform_Example.app/PayPalCommercePlatform_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PPCP Demo.app/PPCP Demo";
 			};
 			name = Debug;
 		};
@@ -936,7 +936,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PayPalCommercePlatform_Example.app/PayPalCommercePlatform_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PPCP Demo.app/PPCP Demo";
 			};
 			name = Release;
 		};

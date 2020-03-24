@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.compiler_flags = "-Wall -Werror -Wextra"
 
   s.source_files  = "PayPalCommercePlatform/Classes/**/*"
-  s.public_header_files = "PayPalCommercePlatform/Classes/Public/**/*"
+#  s.public_header_files = "PayPalCommercePlatform/Classes/Public/**/*"
 
   s.dependency "Braintree"
   s.dependency "Braintree/Apple-Pay"
