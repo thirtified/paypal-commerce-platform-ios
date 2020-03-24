@@ -1,0 +1,26 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'PayPalCommercePlatform_Example' do
+  pod 'PayPalCommercePlatform', :path => '../'
+  pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+  pod 'Braintree/PaymentFlow', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+  pod 'Braintree/Apple-Pay', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+  
+  pod 'InAppSettingsKit'
+#  target 'UnitTests' do
+#    inherit! :search_paths
+#
+#  end
+end
+
+abstract_target 'Tests' do
+  pod 'PayPalCommercePlatform', :path => '../'
+  pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+  pod 'Braintree/PaymentFlow', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+  pod 'Braintree/Apple-Pay', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+
+  target 'UnitTests'
+  target 'IntegrationTests'
+end

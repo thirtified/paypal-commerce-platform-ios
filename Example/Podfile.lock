@@ -1,0 +1,64 @@
+PODS:
+  - Braintree (4.32.1):
+    - Braintree/Card (= 4.32.1)
+    - Braintree/Core (= 4.32.1)
+    - Braintree/PayPal (= 4.32.1)
+    - Braintree/UI (= 4.32.1)
+  - Braintree/Apple-Pay (4.32.1):
+    - Braintree/Core
+  - Braintree/Card (4.32.1):
+    - Braintree/Core
+  - Braintree/Core (4.32.1)
+  - Braintree/PaymentFlow (4.32.1):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.32.1):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.32.1):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.32.1):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.32.1)
+  - Braintree/UI (4.32.1):
+    - Braintree/Card
+    - Braintree/Core
+  - InAppSettingsKit (2.14)
+  - PayPalCommercePlatform (0.1.0):
+    - Braintree
+
+DEPENDENCIES:
+  - Braintree (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/Apple-Pay (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - Braintree/PaymentFlow (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
+  - InAppSettingsKit
+  - PayPalCommercePlatform (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - InAppSettingsKit
+
+EXTERNAL SOURCES:
+  Braintree:
+    :branch: pp-uat-support
+    :git: https://github.com/braintree/braintree_ios.git
+  PayPalCommercePlatform:
+    :path: "../"
+
+CHECKOUT OPTIONS:
+  Braintree:
+    :commit: 7ef2afd77793ef47b9b8d44cd52791dcba25aed6
+    :git: https://github.com/braintree/braintree_ios.git
+
+SPEC CHECKSUMS:
+  Braintree: b06d2b42f0c591e508f7f538a7cc6715af1958b7
+  InAppSettingsKit: 800853da39388780c15191846688c0974c5b13b5
+  PayPalCommercePlatform: 62c2d1f0b0b96315b519327464487fe801849096
+
+PODFILE CHECKSUM: 7b1e7bda05f64834eddcd6eff899fe382d2f3ccb
+
+COCOAPODS: 1.9.1
