@@ -28,8 +28,10 @@ PODS:
     - Braintree/Card
     - Braintree/Core
   - InAppSettingsKit (2.14)
-  - PayPalCommercePlatform (0.1.0):
+  - PayPalCommercePlatform (0.0.1):
     - Braintree
+    - Braintree/Apple-Pay
+    - Braintree/PaymentFlow
 
 DEPENDENCIES:
   - Braintree (from `https://github.com/braintree/braintree_ios.git`, branch `pp-uat-support`)
@@ -57,8 +59,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Braintree: b06d2b42f0c591e508f7f538a7cc6715af1958b7
   InAppSettingsKit: 800853da39388780c15191846688c0974c5b13b5
-  PayPalCommercePlatform: 62c2d1f0b0b96315b519327464487fe801849096
+  PayPalCommercePlatform: cc2f738c13ec971069f2f6c8dace2e66c245cbe8
 
-PODFILE CHECKSUM: 7b1e7bda05f64834eddcd6eff899fe382d2f3ccb
+PODFILE CHECKSUM: c79dc25818147f26e75891e6b54f80d7bd88060a
 
 COCOAPODS: 1.9.1
