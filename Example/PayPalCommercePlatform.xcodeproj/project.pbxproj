@@ -436,7 +436,7 @@
 				CLASSPREFIX = PPC;
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = sestevens;
+				ORGANIZATIONNAME = Braintree;
 				TargetAttributes = {
 					4213E2C124295A0200A07C17 = {
 						CreatedOnToolsVersion = 11.3;
