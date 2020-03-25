@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C0CD87CE751B3F5EC328D12 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD9A54688799BB468251E86 /* Pods_Tests_UnitTests.framework */; };
-		3434A819B09C2FE8975F76B1 /* Pods_Tests_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB09F960FE27B45D8E30170 /* Pods_Tests_IntegrationTests.framework */; };
+		0A420DF2967EA15E0051896E /* Pods_PayPalCommercePlatform_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FA8449330BC8FE59C30259 /* Pods_PayPalCommercePlatform_Example.framework */; };
+		14FCD20AFEB968FF962F5CEF /* Pods_Tests_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB214FF3DDFE46DD1CE829 /* Pods_Tests_IntegrationTests.framework */; };
 		4213E30224295E9800A07C17 /* PPCOrderDetails_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213E30124295E9800A07C17 /* PPCOrderDetails_Tests.swift */; };
 		4213E30424295EE300A07C17 /* PPCValidationResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213E30324295EE300A07C17 /* PPCValidationResult_Tests.swift */; };
 		4213E31124295F1C00A07C17 /* PayPalUATTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213E30624295F1C00A07C17 /* PayPalUATTestHelper.swift */; };
@@ -48,7 +48,7 @@
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
-		65A8374C72E4F4301D768AB3 /* Pods_PayPalCommercePlatform_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF2A357B324343072FAF402 /* Pods_PayPalCommercePlatform_Example.framework */; };
+		896872EEFAEBDF27DD8C7AA2 /* Pods_Tests_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C426553CB061E67232CF2E /* Pods_Tests_UnitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BB09F960FE27B45D8E30170 /* Pods_Tests_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E031CAD051DE1E1568389E3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		32C14193B9D0F35ABBA78A7E /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B51CB4A58ABF18FF8C21136 /* Pods-Tests-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		3F1395F0013064D2328BE169 /* Pods-Tests-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		4213E2C224295A0200A07C17 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4213E2C624295A0200A07C17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4213E2EE24295A9000A07C17 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -125,21 +127,19 @@
 		42476CEC242A651C00C80F20 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		42476CED242A651C00C80F20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42476CEE242A651C00C80F20 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		4BC6141735023EDABE8F4D63 /* Pods-Tests-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5380D4874B503287F583C69D /* PayPalCommercePlatform.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PayPalCommercePlatform.podspec; path = ../PayPalCommercePlatform.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5805B42F36153F89C0D9DCD0 /* Pods-PayPalCommercePlatform_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCommercePlatform_Example.debug.xcconfig"; path = "Target Support Files/Pods-PayPalCommercePlatform_Example/Pods-PayPalCommercePlatform_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* PPCP Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PPCP Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6EEFA4E4E86E0B4CC55D1633 /* Pods-Tests-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7909F6B2D8E1293010A856D5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		96B2EECC625633E877834087 /* Pods-PayPalCommercePlatform_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCommercePlatform_Example.debug.xcconfig"; path = "Target Support Files/Pods-PayPalCommercePlatform_Example/Pods-PayPalCommercePlatform_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		9CD9A54688799BB468251E86 /* Pods_Tests_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF52AEF5E1C331D073FF9EE7 /* Pods-Tests-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B31F1D9E6AE038EE95E0A34C /* Pods-PayPalCommercePlatform_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCommercePlatform_Example.release.xcconfig"; path = "Target Support Files/Pods-PayPalCommercePlatform_Example/Pods-PayPalCommercePlatform_Example.release.xcconfig"; sourceTree = "<group>"; };
-		D6F5D25E80446A05191A333C /* Pods-Tests-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
-		DF67CA4135B547C45BEC6DDC /* Pods-Tests-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
-		FCF2A357B324343072FAF402 /* Pods_PayPalCommercePlatform_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayPalCommercePlatform_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82B4750A3AAE14B790136420 /* Pods-PayPalCommercePlatform_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCommercePlatform_Example.release.xcconfig"; path = "Target Support Files/Pods-PayPalCommercePlatform_Example/Pods-PayPalCommercePlatform_Example.release.xcconfig"; sourceTree = "<group>"; };
+		82BB214FF3DDFE46DD1CE829 /* Pods_Tests_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89C426553CB061E67232CF2E /* Pods_Tests_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89FA8449330BC8FE59C30259 /* Pods_PayPalCommercePlatform_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayPalCommercePlatform_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C0CD87CE751B3F5EC328D12 /* Pods_Tests_UnitTests.framework in Frameworks */,
+				896872EEFAEBDF27DD8C7AA2 /* Pods_Tests_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3434A819B09C2FE8975F76B1 /* Pods_Tests_IntegrationTests.framework in Frameworks */,
+				14FCD20AFEB968FF962F5CEF /* Pods_Tests_IntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +173,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				65A8374C72E4F4301D768AB3 /* Pods_PayPalCommercePlatform_Example.framework in Frameworks */,
+				0A420DF2967EA15E0051896E /* Pods_PayPalCommercePlatform_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,12 +183,12 @@
 		1F4170C79FE78E3E20E0E60B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				96B2EECC625633E877834087 /* Pods-PayPalCommercePlatform_Example.debug.xcconfig */,
-				B31F1D9E6AE038EE95E0A34C /* Pods-PayPalCommercePlatform_Example.release.xcconfig */,
-				6EEFA4E4E86E0B4CC55D1633 /* Pods-Tests-IntegrationTests.debug.xcconfig */,
-				DF67CA4135B547C45BEC6DDC /* Pods-Tests-IntegrationTests.release.xcconfig */,
-				AF52AEF5E1C331D073FF9EE7 /* Pods-Tests-UnitTests.debug.xcconfig */,
-				D6F5D25E80446A05191A333C /* Pods-Tests-UnitTests.release.xcconfig */,
+				5805B42F36153F89C0D9DCD0 /* Pods-PayPalCommercePlatform_Example.debug.xcconfig */,
+				82B4750A3AAE14B790136420 /* Pods-PayPalCommercePlatform_Example.release.xcconfig */,
+				4BC6141735023EDABE8F4D63 /* Pods-Tests-IntegrationTests.debug.xcconfig */,
+				3F1395F0013064D2328BE169 /* Pods-Tests-IntegrationTests.release.xcconfig */,
+				32C14193B9D0F35ABBA78A7E /* Pods-Tests-UnitTests.debug.xcconfig */,
+				3B51CB4A58ABF18FF8C21136 /* Pods-Tests-UnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -311,9 +311,9 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				FCF2A357B324343072FAF402 /* Pods_PayPalCommercePlatform_Example.framework */,
-				0BB09F960FE27B45D8E30170 /* Pods_Tests_IntegrationTests.framework */,
-				9CD9A54688799BB468251E86 /* Pods_Tests_UnitTests.framework */,
+				89FA8449330BC8FE59C30259 /* Pods_PayPalCommercePlatform_Example.framework */,
+				82BB214FF3DDFE46DD1CE829 /* Pods_Tests_IntegrationTests.framework */,
+				89C426553CB061E67232CF2E /* Pods_Tests_UnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -354,11 +354,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4213E2C924295A0200A07C17 /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
-				4961589A1BDE1DA3A72F02CE /* [CP] Check Pods Manifest.lock */,
+				D08C9F7C00514ED17A6232D5 /* [CP] Check Pods Manifest.lock */,
 				4213E2BE24295A0200A07C17 /* Sources */,
 				4213E2BF24295A0200A07C17 /* Frameworks */,
 				4213E2C024295A0200A07C17 /* Resources */,
-				1CAE1F28FA2B1FB544BC3479 /* [CP] Embed Pods Frameworks */,
+				7FBB55B94A3A255E735A81F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -392,11 +392,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4213E350242960B300A07C17 /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
 			buildPhases = (
-				E7A5478FF1D79348429B6559 /* [CP] Check Pods Manifest.lock */,
+				BF0C2E3B41132E5D7EFCADB4 /* [CP] Check Pods Manifest.lock */,
 				4213E345242960B300A07C17 /* Sources */,
 				4213E346242960B300A07C17 /* Frameworks */,
 				4213E347242960B300A07C17 /* Resources */,
-				6BF0EE8D041BB36ACC249B59 /* [CP] Embed Pods Frameworks */,
+				D39B9E785F0F40FEDD9AA2F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -412,11 +412,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "PayPalCommercePlatform_Example" */;
 			buildPhases = (
-				09D3AE253E24CA18C1322CFC /* [CP] Check Pods Manifest.lock */,
+				C397076AB2ADD138517B9D07 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				2CB9567B1B6B6CB010DE3090 /* [CP] Embed Pods Frameworks */,
+				27F2CF278EFCE609BFA4C7C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -525,51 +525,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09D3AE253E24CA18C1322CFC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PayPalCommercePlatform_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1CAE1F28FA2B1FB544BC3479 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
-				"${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework",
-				"${BUILT_PRODUCTS_DIR}/PayPalCommercePlatform/PayPalCommercePlatform.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CardinalMobile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalCommercePlatform.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2CB9567B1B6B6CB010DE3090 /* [CP] Embed Pods Frameworks */ = {
+		27F2CF278EFCE609BFA4C7C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -593,7 +549,73 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PayPalCommercePlatform_Example/Pods-PayPalCommercePlatform_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4961589A1BDE1DA3A72F02CE /* [CP] Check Pods Manifest.lock */ = {
+		7FBB55B94A3A255E735A81F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
+				"${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework",
+				"${BUILT_PRODUCTS_DIR}/PayPalCommercePlatform/PayPalCommercePlatform.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CardinalMobile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayPalCommercePlatform.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-UnitTests/Pods-Tests-UnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF0C2E3B41132E5D7EFCADB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tests-IntegrationTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C397076AB2ADD138517B9D07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PayPalCommercePlatform_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D08C9F7C00514ED17A6232D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -615,7 +637,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6BF0EE8D041BB36ACC249B59 /* [CP] Embed Pods Frameworks */ = {
+		D39B9E785F0F40FEDD9AA2F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -635,28 +657,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests-IntegrationTests/Pods-Tests-IntegrationTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E7A5478FF1D79348429B6559 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tests-IntegrationTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -750,7 +750,7 @@
 /* Begin XCBuildConfiguration section */
 		4213E2CA24295A0200A07C17 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF52AEF5E1C331D073FF9EE7 /* Pods-Tests-UnitTests.debug.xcconfig */;
+			baseConfigurationReference = 32C14193B9D0F35ABBA78A7E /* Pods-Tests-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -764,6 +764,12 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 43253H4X22;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree/Braintree.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PayPalCommercePlatform/PayPalCommercePlatform.framework/Headers\"",
+					"\"${PODS_ROOT}/../../PayPalCommercePlatform/Classes\"/**",
+				);
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -782,7 +788,7 @@
 		};
 		4213E2CB24295A0200A07C17 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6F5D25E80446A05191A333C /* Pods-Tests-UnitTests.release.xcconfig */;
+			baseConfigurationReference = 3B51CB4A58ABF18FF8C21136 /* Pods-Tests-UnitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -872,7 +878,7 @@
 		};
 		4213E351242960B300A07C17 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EEFA4E4E86E0B4CC55D1633 /* Pods-Tests-IntegrationTests.debug.xcconfig */;
+			baseConfigurationReference = 4BC6141735023EDABE8F4D63 /* Pods-Tests-IntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -903,7 +909,7 @@
 		};
 		4213E352242960B300A07C17 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF67CA4135B547C45BEC6DDC /* Pods-Tests-IntegrationTests.release.xcconfig */;
+			baseConfigurationReference = 3F1395F0013064D2328BE169 /* Pods-Tests-IntegrationTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1035,7 +1041,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96B2EECC625633E877834087 /* Pods-PayPalCommercePlatform_Example.debug.xcconfig */;
+			baseConfigurationReference = 5805B42F36153F89C0D9DCD0 /* Pods-PayPalCommercePlatform_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1055,7 +1061,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B31F1D9E6AE038EE95E0A34C /* Pods-PayPalCommercePlatform_Example.release.xcconfig */;
+			baseConfigurationReference = 82B4750A3AAE14B790136420 /* Pods-PayPalCommercePlatform_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
