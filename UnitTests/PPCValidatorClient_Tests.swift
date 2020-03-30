@@ -469,21 +469,6 @@ class PPCValidatorClient_Tests: XCTestCase {
     
     // MARK: - checkoutWithPayPal
     
-    func testCheckoutWithPayPal_whenFetchApproveURLSucceeds_callsPaymentFlowDriverWithApproveURL() {
-        let expectation = self.expectation(description: "calls startPaymentFlow with request containing approve URL")
-        
-        mockPayPalAPIClient.approveURL = URL(string: "www.approve-url.com")!
-        
-        mockPaymentFlowDriver.onStartPaymentFlow = { request in
-            XCTAssertEqual((request as? PPCPayPalCheckoutRequest)?.checkoutURL.absoluteString, "www.approve-url.com")
-            expectation.fulfill()
-        }
-        
-        validatorClient?.checkoutWithPayPal(orderID: "fake-order-id", completion: { _, _ in })
-        
-        waitForExpectations(timeout: 1.0, handler: nil)
-    }
-    
     func testCheckoutWithPayPal_callsCompletionWithValidatorResult() {
         let expectation = self.expectation(description: "calls completion with validator result")
                 
@@ -511,23 +496,6 @@ class PPCValidatorClient_Tests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 1.0, handler: nil)
-    }
-    
-    func testCheckoutWithPayPal_whenFetchApproveURLFails_callsCompletionWithError() {
-        let expectation = self.expectation(description: "calls completion with error")
-        
-        mockPayPalAPIClient.approveURLError = NSError(domain: "My Error", code: 5, userInfo: [NSLocalizedDescriptionKey: "Fetch approve URL error"])
-        
-        validatorClient?.checkoutWithPayPal(orderID: "my-order-id", completion: { (result, error) in
-            XCTAssertNil(result)
-            XCTAssertEqual(error?.localizedDescription, "Fetch approve URL error")
-            
-            XCTAssert(self.mockBTAPIClient.postedAnalyticsEvents.contains("ios.paypal-commerce-platform.paypal-checkout.failed"))
-            
-            expectation.fulfill()
-        })
-        
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     

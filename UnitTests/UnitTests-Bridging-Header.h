@@ -11,4 +11,3 @@
 #import "PPCCardContingencyRequest.h"
 #import "PPCPayPalCheckoutRequest.h"
 #import "BTAPIClient+Analytics_Internal.h"
-#import "PPCOrderDetails.h"

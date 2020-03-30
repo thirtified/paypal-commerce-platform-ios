@@ -111,31 +111,25 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                 completion:(void (^)(PPCValidatorResult * _Nullable validationResult, NSError * _Nullable error))completion {
     self.orderId = orderId;
     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.started"];
-    [self.payPalAPIClient fetchPayPalApproveURLForOrderId:self.orderId completion:^(NSURL * _Nullable approveURL, NSError * _Nullable error) {
+
+    // TODO: Use hardcode URL (https://api.paypal.com/checkoutnow?token=) with orderId to complete PayPal flow until BT Config returns PwPP approve URL
+
+    PPCPayPalCheckoutRequest *request = [PPCPayPalCheckoutRequest new];
+    request.checkoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.ppcpn.stage.paypal.com/checkoutnow?token=%@", self.orderId]];
+
+    self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
+    [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {
         if (error) {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.failed"];
             completion(nil, error);
             return;
         }
-        
-        PPCPayPalCheckoutRequest *request = [PPCPayPalCheckoutRequest new];
-        request.checkoutURL = approveURL;
-        
-        self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
-        [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {
-            if (error) {
-                [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.failed"];
-                completion(nil, error);
-                return;
-            }
-            
-            PPCValidatorResult *validatorResult = [PPCValidatorResult new];
-            validatorResult.orderID = self.orderId;
-            validatorResult.type = PPCValidatorResultTypePayPal;
+        PPCValidatorResult *validatorResult = [PPCValidatorResult new];
+        validatorResult.orderID = self.orderId;
+        validatorResult.type = PPCValidatorResultTypePayPal;
 
-            [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.succeeded"];
-            completion(validatorResult, nil);
-        }];
+        [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.succeeded"];
+        completion(validatorResult, nil);
     }];
 }
 

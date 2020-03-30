@@ -1,7 +1,6 @@
 #import "BTAPIClient+Analytics_Internal.h"
 #import "PPCAPIClient.h"
 #import "PPCValidatorClient.h"
-#import "PPCOrderDetails.h"
 
 @interface PPCAPIClient()
 
@@ -124,47 +123,6 @@
     //TODO - sweep all logging before test pilot
     NSLog(@"🍏Validate Request Params: %@", validateParameters);
     return (NSDictionary *)validateParameters;
-}
-
-- (void)fetchPayPalApproveURLForOrderId:(NSString *)orderId
-                             completion:(void (^)(NSURL * _Nullable approveURL, NSError * _Nullable error))completion {
-    NSString *urlString = [NSString stringWithFormat:@"%@/v2/checkout/orders/%@", self.payPalUAT.basePayPalURL, orderId];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    if (!url) {
-        NSError *error = [NSError errorWithDomain:PPCValidatorErrorDomain
-                                             code:0
-                                         userInfo:@{NSLocalizedDescriptionKey: @"Checkout with PayPal failed. Unable to fetch approve url."}];
-        completion(nil, error);
-        return;
-    }
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    [request setValue:[NSString stringWithFormat:@"Bearer %@", self.payPalUAT.token] forHTTPHeaderField:@"Authorization"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    [[self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, __unused NSURLResponse *response, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (error) {
-                completion(nil, error);
-                return;
-            }
-            
-            PPCOrderDetails *orderDetails = [[PPCOrderDetails alloc] initWithJSON:[[BTJSON alloc] initWithData:data]];
-            
-            if (!orderDetails) {
-                NSError *error = [NSError errorWithDomain:PPCValidatorErrorDomain
-                                                     code:0
-                                                 userInfo:@{NSLocalizedDescriptionKey: @"Checkout with PayPal failed. Malformed response from /orders/v2 endpoint."}];
-                completion(nil, error);
-                return;
-            }
-            
-            completion(orderDetails.approveURL, nil);
-            return;
-        });
-    }] resume];
 }
 
 @end
