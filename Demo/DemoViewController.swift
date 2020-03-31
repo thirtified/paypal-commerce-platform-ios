@@ -1,6 +1,3 @@
-import PayPalCommercePlatform
-import InAppSettingsKit
-
 class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
 
     // MARK: - Properties

@@ -1,5 +1,4 @@
 #import "PPCPayPalCheckoutResult.h"
-#import "BTURLUtils.h"
 
 @implementation PPCPayPalCheckoutResult
 

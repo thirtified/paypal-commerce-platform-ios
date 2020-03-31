@@ -1,26 +1,18 @@
 platform :ios, '9.0'
 
 workspace 'PayPalCommercePlatform.xcworkspace'
-use_frameworks!
 inhibit_all_warnings!
 
 target 'Demo' do
   pod 'PayPalCommercePlatform', :path => './'
   pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/Core', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/Card', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/Apple-Pay', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/PaymentFlow', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
+  pod 'Braintree/UI', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   pod 'InAppSettingsKit'
 end
 
 abstract_target 'Tests' do
   pod 'PayPalCommercePlatform', :path => './'
   pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/Core', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/Card', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/Apple-Pay', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/PaymentFlow', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
 
   target 'UnitTests'
   target 'IntegrationTests'
