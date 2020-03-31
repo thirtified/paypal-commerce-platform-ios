@@ -31,12 +31,18 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 - (nullable instancetype)initWithAccessToken:(NSString *)accessToken {
     self = [super init];
     if (self) {
-        // NSString *tokenizationKey = @"sandbox_fwvdxncw_rwwnkqg2xg56hm2n";
+        NSError *error;
+        _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:accessToken error:&error];
+        if (error || !_payPalUAT) {
+            NSLog(@"%@", error.localizedDescription ?: @"Error initializing PayPal UAT");
+            return nil;
+        }
 
         _braintreeAPIClient = [[BTAPIClient alloc] initWithAuthorization:accessToken];
         if (!_braintreeAPIClient) {
             return nil;
         }
+
         _applePayClient = [[BTApplePayClient alloc] initWithAPIClient:_braintreeAPIClient];
         _cardClient = [[BTCardClient alloc] initWithAPIClient:_braintreeAPIClient];
         _paymentFlowDriver = [[BTPaymentFlowDriver alloc] initWithAPIClient:_braintreeAPIClient];
@@ -112,10 +118,8 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     self.orderId = orderId;
     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.started"];
 
-    // TODO: Use hardcode URL (https://api.paypal.com/checkoutnow?token=) with orderId to complete PayPal flow until BT Config returns PwPP approve URL
-
     PPCPayPalCheckoutRequest *request = [PPCPayPalCheckoutRequest new];
-    request.checkoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.ppcpn.stage.paypal.com/checkoutnow?token=%@", self.orderId]];
+    request.checkoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/checkoutnow?token=%@", self.payPalUAT.basePayPalURL, self.orderId]];
 
     self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
     [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {

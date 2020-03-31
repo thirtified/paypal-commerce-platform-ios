@@ -61,10 +61,15 @@ class PPCValidatorClient_Tests: XCTestCase {
 
     // MARK: - initWithAccessToken
 
-    func testValidatorClientInitialization_withUAT_initializes() {
+    func testValidatorClientInitialization_withUAT_initializesAllProperties() {
         let validatorClient = PPCValidatorClient(accessToken: uatString)
         XCTAssertNotNil(validatorClient)
         XCTAssertNotNil(validatorClient?.payPalAPIClient)
+        XCTAssertNotNil(validatorClient?.braintreeAPIClient)
+        XCTAssertNotNil(validatorClient?.paymentFlowDriver)
+        XCTAssertNotNil(validatorClient?.cardClient)
+        XCTAssertNotNil(validatorClient?.applePayClient)
+        XCTAssertNotNil(validatorClient?.payPalUAT)
     }
 
     func testValidatorClientInitialization_withInvalidUAT_returnsNil() {
