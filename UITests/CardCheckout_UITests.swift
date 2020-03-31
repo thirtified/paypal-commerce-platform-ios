@@ -1,7 +1,6 @@
 import XCTest
 
-// Note: Tests rely on the PPCP sample merchant server to be running locally.
-//       Tests are VERY flakey due to PP staging environment.
+// NOTE: These tests fetch UAT and orderID from the sample merchant server https://ppcp-sample-merchant-sand.herokuapp.com
 
 class CardCheckout_UITests: XCTestCase {
     var app: XCUIApplication!
@@ -48,7 +47,7 @@ class CardCheckout_UITests: XCTestCase {
 
         // Check for success message
         let resultPredicate = NSPredicate(format: "label LIKE 'Capture Status:*'")
-        sleep(20)
+        sleep(15)
         waitForElementToAppear(app.staticTexts.containing(resultPredicate).element(boundBy: 0))
         XCTAssertTrue(app.staticTexts.containing(resultPredicate).element(boundBy: 0).exists);
     }
@@ -95,11 +94,13 @@ class CardCheckout_UITests: XCTestCase {
 
         // Check for success message
         let resultPredicate = NSPredicate(format: "label LIKE 'Authorize Status:*'")
-        sleep(20)
+        sleep(15)
         waitForElementToAppear(app.staticTexts.containing(resultPredicate).element(boundBy: 0))
         XCTAssertTrue(app.staticTexts.containing(resultPredicate).element(boundBy: 0).exists);
     }
 
+    // TODO: - This test will fail, since the card doesn't trigger a 3DS challenge.
+    // Waiting for PP team to give us new test cards.
     func testCardContingencySuccess() {
         app = XCUIApplication()
         app.launch()
@@ -122,7 +123,7 @@ class CardCheckout_UITests: XCTestCase {
 
         let expiryTextField = app.textFields["MM/YY"]
         expiryTextField.tap()
-        expiryTextField.typeText("01/20")
+        expiryTextField.typeText("01/23")
 
         let cvvTextField = app.textFields["CVV"]
         cvvTextField.tap()

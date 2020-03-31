@@ -31,8 +31,9 @@
 		802C28F32370D1FE00A918C7 /* paypal-validation-response-invalid-token.json in Resources */ = {isa = PBXBuildFile; fileRef = 802C28F22370D1FE00A918C7 /* paypal-validation-response-invalid-token.json */; };
 		803F7C2923E8BC8900F9D70A /* PPCPayPalCheckoutRequest_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F7C2823E8BC8900F9D70A /* PPCPayPalCheckoutRequest_Tests.swift */; };
 		803F7C2B23E8BF5D00F9D70A /* MockBTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F7C2A23E8BF5D00F9D70A /* MockBTAPIClient.swift */; };
+		80455CA12433D3EB00F01EBC /* IntegrationTests_MerchantAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80455CA02433D3EB00F01EBC /* IntegrationTests_MerchantAPI.swift */; };
 		804588DC23848A5700936C3A /* PPCValidatorClient_IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804588DB23848A5700936C3A /* PPCValidatorClient_IntegrationTests.swift */; };
-		805F797923A835C60017FAFC /* PPCIntegrationTestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F797823A835C60017FAFC /* PPCIntegrationTestsConstants.swift */; };
+		805F797923A835C60017FAFC /* IntegrationTestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F797823A835C60017FAFC /* IntegrationTestsConstants.swift */; };
 		8066A056235F506F007ACC28 /* PPCValidatorClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243F2357B3DE005EA84A /* PPCValidatorClient_Tests.swift */; };
 		8066A057235F506F007ACC28 /* PPCCardContingencyResult_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026243D2357A613005EA84A /* PPCCardContingencyResult_Tests.swift */; };
 		8066A058235F506F007ACC28 /* PPCAPIClient_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802624392357A469005EA84A /* PPCAPIClient_Tests.swift */; };
@@ -127,11 +128,12 @@
 		802C28F22370D1FE00A918C7 /* paypal-validation-response-invalid-token.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "paypal-validation-response-invalid-token.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		803F7C2823E8BC8900F9D70A /* PPCPayPalCheckoutRequest_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCPayPalCheckoutRequest_Tests.swift; sourceTree = "<group>"; };
 		803F7C2A23E8BF5D00F9D70A /* MockBTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBTAPIClient.swift; sourceTree = "<group>"; };
+		80455CA02433D3EB00F01EBC /* IntegrationTests_MerchantAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests_MerchantAPI.swift; sourceTree = "<group>"; };
 		804588D0238489F800936C3A /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		804588D4238489F800936C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		804588DA23848A5700936C3A /* IntegrationTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntegrationTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		804588DB23848A5700936C3A /* PPCValidatorClient_IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCValidatorClient_IntegrationTests.swift; sourceTree = "<group>"; };
-		805F797823A835C60017FAFC /* PPCIntegrationTestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCIntegrationTestsConstants.swift; sourceTree = "<group>"; };
+		805F797823A835C60017FAFC /* IntegrationTestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTestsConstants.swift; sourceTree = "<group>"; };
 		8066A04C235F5026007ACC28 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8066A050235F5026007ACC28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8066A05A235F50D7007ACC28 /* UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -301,7 +303,8 @@
 		805F797523A8332E0017FAFC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				805F797823A835C60017FAFC /* PPCIntegrationTestsConstants.swift */,
+				805F797823A835C60017FAFC /* IntegrationTestsConstants.swift */,
+				80455CA02433D3EB00F01EBC /* IntegrationTests_MerchantAPI.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -761,7 +764,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				805F797923A835C60017FAFC /* PPCIntegrationTestsConstants.swift in Sources */,
+				80455CA12433D3EB00F01EBC /* IntegrationTests_MerchantAPI.swift in Sources */,
+				805F797923A835C60017FAFC /* IntegrationTestsConstants.swift in Sources */,
 				804588DC23848A5700936C3A /* PPCValidatorClient_IntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

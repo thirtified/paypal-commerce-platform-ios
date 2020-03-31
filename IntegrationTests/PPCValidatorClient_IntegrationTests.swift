@@ -1,28 +1,55 @@
 import Foundation
 import XCTest
 
+// NOTE: - These integration tests rely on https://ppcp-sample-merchant-sand.herokuapp.com sample server
 class PPCValidatorClient_IntegrationTests: XCTestCase {
 
     // MARK: - Properties
 
-    let payPalAppSwitchSuccessURL = URL(string: PPCIntegrationTestsConstants.sandbox_paypal_app_switch_url)
+    let payPalAppSwitchSuccessURL = URL(string: IntegrationTestsConstants.sandbox_paypal_app_switch_url)
     var validatorClient: PPCValidatorClient!
+    var orderID: String!
 
     override func setUp() {
         super.setUp()
-        self.validatorClient = PPCValidatorClient(accessToken: PPCIntegrationTestsConstants.sandbox_universal_access_token)
+
+        // STEP 1 - Fetch UAT
+        let expectUAT = self.expectation(description: "Fetch Universal Access Token from PPCP sample server")
+        IntegrationTests_MerchantAPI.sharedService.generateUAT { (uat, error) in
+            guard let uat = uat, error == nil else {
+                XCTFail() // without a fresh UAT, integration tests cannot pass
+                return
+            }
+
+            self.validatorClient = PPCValidatorClient(accessToken: uat)
+            expectUAT.fulfill()
+        }
+
+        // STEP 2 - Fetch orderID
+        let expectOrderID = self.expectation(description: "Fetch orderID from PPCP sample server")
+        IntegrationTests_MerchantAPI.sharedService.generateOrderID { (orderID, error) in
+            guard let orderID = orderID, error == nil else {
+                XCTFail() // without a fresh orderID, the integration tests cannot pass
+                return
+            }
+
+            self.orderID = orderID
+            expectOrderID.fulfill()
+        }
+
+        waitForExpectations(timeout: 20.0, handler: nil)
     }
 
     // MARK: - Tests
 
     func testCheckoutWithCard_returnsSuccessResult() {
         let expectation = self.expectation(description: "Checkout with Card Complete")
-        validatorClient.checkoutWithCard(orderID: PPCIntegrationTestsConstants.sandbox_orderId, card: validCard(), completion: { (validatorResult, error) in
+        validatorClient.checkoutWithCard(orderID: self.orderID, card: validCard(), completion: { (validatorResult, error) in
             if ((error) != nil) {
                 XCTFail()
             }
 
-            XCTAssertEqual(validatorResult?.orderID, PPCIntegrationTestsConstants.sandbox_orderId)
+            XCTAssertEqual(validatorResult?.orderID, self.orderID)
             XCTAssertEqual(validatorResult?.type, .card)
             expectation.fulfill()
         })
@@ -34,12 +61,12 @@ class PPCValidatorClient_IntegrationTests: XCTestCase {
         BTAppSwitch.sharedInstance().returnURLScheme = "com.braintreepayments.Demo.payments"
 
         let expectation = self.expectation(description: "Checkout with PayPal Complete")
-        validatorClient.checkoutWithPayPal(orderID: PPCIntegrationTestsConstants.sandbox_orderId, completion: { (validatorResult, error) in
+        validatorClient.checkoutWithPayPal(orderID: self.orderID, completion: { (validatorResult, error) in
             if ((error) != nil) {
                 XCTFail()
             }
 
-            XCTAssertEqual(validatorResult?.orderID, PPCIntegrationTestsConstants.sandbox_orderId)
+            XCTAssertEqual(validatorResult?.orderID, self.orderID)
             XCTAssertEqual(validatorResult?.type, .payPal)
             expectation.fulfill()
         })
@@ -51,12 +78,12 @@ class PPCValidatorClient_IntegrationTests: XCTestCase {
 
     func testCheckoutWithApplePay_returnsSuccessResult() {
         let expectation = self.expectation(description: "Checkout with ApplePay Complete")
-        validatorClient?.checkoutWithApplePay(orderID: PPCIntegrationTestsConstants.sandbox_orderId, paymentRequest: validPKPaymentRequest(), completion: { (validatorResult, error, applePayResultHandler) in
+        validatorClient?.checkoutWithApplePay(orderID: self.orderID, paymentRequest: validPKPaymentRequest(), completion: { (validatorResult, error, applePayResultHandler) in
                 if ((error) != nil) {
                     XCTFail()
                 }
 
-                XCTAssertEqual(validatorResult?.orderID, PPCIntegrationTestsConstants.sandbox_orderId)
+                XCTAssertEqual(validatorResult?.orderID, self.orderID)
                 XCTAssertEqual(validatorResult?.type, .applePay)
                 XCTAssertNotNil(applePayResultHandler)
                 expectation.fulfill()
