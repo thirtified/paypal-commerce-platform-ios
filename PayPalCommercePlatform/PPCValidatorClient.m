@@ -148,20 +148,17 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 
     [self.applePayClient paymentRequest:^(PKPaymentRequest *defaultPaymentRequest, NSError *error) {
         if (defaultPaymentRequest) {
-            paymentRequest.countryCode = defaultPaymentRequest.countryCode;
-            paymentRequest.currencyCode = defaultPaymentRequest.currencyCode;
-            paymentRequest.merchantIdentifier = defaultPaymentRequest.merchantIdentifier;
+            paymentRequest.countryCode = paymentRequest.countryCode ?: defaultPaymentRequest.countryCode;
+            paymentRequest.currencyCode = paymentRequest.currencyCode ?: defaultPaymentRequest.currencyCode;
+            paymentRequest.merchantIdentifier = paymentRequest.merchantIdentifier ?: defaultPaymentRequest.merchantIdentifier;
 
-            // TODO: - revert change after E2E
-            // Disabling Discover and Amex support for MVP. PayPal processor interaction is not coded for those 2 card networks.
-            // paymentRequest.supportedNetworks = defaultPaymentRequest.supportedNetworks;
-            NSMutableArray <PKPaymentNetwork> *supportedNetworks = [NSMutableArray new];
-            for (PKPaymentNetwork network in defaultPaymentRequest.supportedNetworks) {
-                if (![network isEqualToString:@"Discover"] && ![network isEqualToString:@"AmEx"]) {
-                    [supportedNetworks addObject:network];
-                }
-            }
-            paymentRequest.supportedNetworks = supportedNetworks;
+            // TODO: - revert after PP supports additional networks
+            // For MVP, PP processor interaction is only coded for Visa and Mastercard
+            // When fetching default support networks from BT config - only include Visa & MC
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@ || SELF MATCHES %@", @"Visa", @"MasterCard"];
+            NSArray *defaultSupportedNetworks = [defaultPaymentRequest.supportedNetworks filteredArrayUsingPredicate:predicate];
+
+            paymentRequest.supportedNetworks = paymentRequest.supportedNetworks ?: defaultSupportedNetworks;
 
             PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
 
