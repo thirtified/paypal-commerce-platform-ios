@@ -6,7 +6,6 @@ inhibit_all_warnings!
 target 'Demo' do
   pod 'PayPalCommercePlatform', :path => './'
   pod 'Braintree', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
-  pod 'Braintree/UI', :git => 'https://github.com/braintree/braintree_ios.git', :branch => 'pp-uat-support'
   pod 'InAppSettingsKit'
 end
 

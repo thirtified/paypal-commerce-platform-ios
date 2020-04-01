@@ -54,7 +54,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         }
     }
 
-    @IBAction func payPalCheckoutTapped(_ sender: BTUIPayPalButton) {
+    @IBAction func payPalCheckoutTapped(_ sender: UIButton) {
         guard let orderID = orderID else { return }
 
         updateCheckoutLabel(withText: "Checking out with PayPal...")
@@ -71,7 +71,7 @@ class DemoViewController: UIViewController, BTViewControllerPresentingDelegate {
         })
     }
 
-    @IBAction func applePayCheckoutTapped(_ sender: Any) {
+    @IBAction func applePayCheckoutTapped(_ sender: PKPaymentButton) {
         guard let orderID = orderID else { return }
 
         let paymentRequest = PKPaymentRequest()
