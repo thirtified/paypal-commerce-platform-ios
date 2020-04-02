@@ -5,7 +5,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    private let urlScheme = "com.braintreepayments.Demo.payments"
+    private let urlScheme = "com.braintreepayments.Demo.payments" // TODO - change the URL scheme once SDK branding decided
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         BTAppSwitch.setReturnURLScheme(urlScheme)

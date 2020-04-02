@@ -1,6 +1,8 @@
 #import "PPCPayPalCheckoutRequest.h"
 #import "PPCPayPalCheckoutResult.h"
 
+NSString * const PPCPayPalCheckoutRequestErrorDomain = @"com.braintreepayments.PPCPayPalCheckoutRequestErrorDomain";
+
 @interface PPCPayPalCheckoutRequest ()
 
 @property (nonatomic, weak) id<BTPaymentFlowDriverDelegate> paymentFlowDriverDelegate;
@@ -34,7 +36,7 @@
     if (result.payerID && result.token) {
         [self.paymentFlowDriverDelegate onPaymentComplete:result error:nil];
     } else {
-        NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+        NSError *error = [NSError errorWithDomain:PPCPayPalCheckoutRequestErrorDomain
                                              code:0
                                          userInfo:@{NSLocalizedDescriptionKey: @"PayPal redirect URL error."}];
         [self.paymentFlowDriverDelegate onPaymentComplete:nil error:error];

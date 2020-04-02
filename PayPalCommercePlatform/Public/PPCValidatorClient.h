@@ -38,7 +38,6 @@ typedef void (^BTApplePayResultHandler)(BOOL success);
 
 - (nullable instancetype)initWithAccessToken:(NSString *)accessToken;
 
-// TODO: - check Swift names for these methods
 - (void)checkoutWithCard:(NSString *)orderId
                     card:(BTCard *)card
               completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion NS_SWIFT_NAME(checkoutWithCard(orderID:card:completion:));

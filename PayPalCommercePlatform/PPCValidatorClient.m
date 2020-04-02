@@ -4,7 +4,7 @@
 #import "PPCPayPalCheckoutRequest.h"
 #import "PPCValidatorResult.h"
 
-NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorErrorDomain";
+NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorClientErrorDomain";
 
 @interface PPCValidatorClient() <PKPaymentAuthorizationViewControllerDelegate>
 
@@ -34,7 +34,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
         NSError *error;
         _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:accessToken error:&error];
         if (error || !_payPalUAT) {
-            NSLog(@"%@", error.localizedDescription ?: @"Error initializing PayPal UAT");
+            NSLog(@"[PayPalCommercePlatformSDK] %@", error.localizedDescription ?: @"Error initializing PayPal UAT");
             return nil;
         }
 

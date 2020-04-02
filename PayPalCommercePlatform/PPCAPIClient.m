@@ -2,6 +2,8 @@
 #import "PPCAPIClient.h"
 #import "PPCValidatorClient.h"
 
+NSString * const PPCAPIClientErrorDomain = @"com.braintreepayments.PPCAPIClientErrorDomain";
+
 @interface PPCAPIClient()
 
 @property (nonatomic, strong) BTPayPalUAT *payPalUAT;
@@ -18,7 +20,7 @@
         NSError *error;
         _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:accessToken error:&error];
         if (error || !_payPalUAT) {
-            NSLog(@"%@", error.localizedDescription ?: @"Error initializing PayPal UAT");
+            NSLog(@"[PayPalCommercePlatformSDK] %@", error.localizedDescription ?: @"Error initializing PayPal UAT");
             return nil;
         }
     }
@@ -52,7 +54,7 @@
             }
             
             BTJSON *json = [[BTJSON alloc] initWithData:data];
-            NSLog(@"Validate result: %@", json);
+            NSLog(@"Validate result: %@", json); // TODO - remove this logging before pilot
             PPCValidationResult *result = [[PPCValidationResult alloc] initWithJSON:json];
             
             NSInteger statusCode = ((NSHTTPURLResponse *) response).statusCode;
@@ -71,7 +73,7 @@
                         errorDescription = @"Validation Error";
                     }
                     
-                    NSError *validateError = [[NSError alloc] initWithDomain:PPCValidatorErrorDomain
+                    NSError *validateError = [[NSError alloc] initWithDomain:PPCAPIClientErrorDomain
                                                                         code:0
                                                                     userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
                     
@@ -120,8 +122,7 @@
         @"contingencies": (isThreeDSecureRequired ? @[@"3D_SECURE"] : @[])
     };
     
-    //TODO - sweep all logging before test pilot
-    NSLog(@"🍏Validate Request Params: %@", validateParameters);
+    NSLog(@"🍏Validate Request Params: %@", validateParameters);  // TODO - remove this logging before pilot
     return (NSDictionary *)validateParameters;
 }
 
