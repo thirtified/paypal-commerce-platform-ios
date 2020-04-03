@@ -118,8 +118,8 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     self.orderId = orderId;
     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.started"];
 
-    PPCPayPalCheckoutRequest *request = [PPCPayPalCheckoutRequest new];
-    request.checkoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/checkoutnow?token=%@", self.payPalUAT.basePayPalURL, self.orderId]];
+    NSString *payPalCheckoutURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/checkoutnow?token=%@", self.payPalUAT.basePayPalURL, self.orderId]];
+    PPCPayPalCheckoutRequest *request = [[PPCPayPalCheckoutRequest new] initWithCheckoutURL:payPalCheckoutURL];
 
     self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
     [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {

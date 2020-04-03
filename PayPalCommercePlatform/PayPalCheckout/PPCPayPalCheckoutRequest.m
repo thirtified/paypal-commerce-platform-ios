@@ -5,11 +5,21 @@ NSString * const PPCPayPalCheckoutRequestErrorDomain = @"com.braintreepayments.P
 
 @interface PPCPayPalCheckoutRequest ()
 
+@property (strong, nonatomic) NSURL *checkoutURL;
 @property (nonatomic, weak) id<BTPaymentFlowDriverDelegate> paymentFlowDriverDelegate;
 
 @end
 
 @implementation PPCPayPalCheckoutRequest
+
+- (instancetype)initWithCheckoutURL:(NSURL *)checkoutURL {
+    self = [super init];
+    if (self) {
+        _checkoutURL = checkoutURL;
+    }
+
+    return self;
+}
 
 - (void)handleRequest:(BTPaymentFlowRequest *)request client:(__unused BTAPIClient *)apiClient paymentDriverDelegate:(id<BTPaymentFlowDriverDelegate>)delegate {
     self.paymentFlowDriverDelegate = delegate;
@@ -20,8 +30,11 @@ NSString * const PPCPayPalCheckoutRequestErrorDomain = @"com.braintreepayments.P
     NSURLQueryItem *nativeXOQueryItem = [NSURLQueryItem queryItemWithName:@"native_xo" value:@"1"];
 
     NSURLComponents *checkoutURLComponents = [NSURLComponents componentsWithURL:checkoutRequest.checkoutURL resolvingAgainstBaseURL:NO];
-    checkoutURLComponents.queryItems = [checkoutURLComponents.queryItems arrayByAddingObject:redirectQueryItem];
-    checkoutURLComponents.queryItems = [checkoutURLComponents.queryItems arrayByAddingObject:nativeXOQueryItem];
+
+    NSMutableArray<NSURLQueryItem *> *queryItems = [checkoutURLComponents.queryItems mutableCopy] ?: [NSMutableArray new];
+    [queryItems addObject:redirectQueryItem];
+    [queryItems addObject:nativeXOQueryItem];
+    checkoutURLComponents.queryItems = queryItems;
 
     [delegate onPaymentWithURL:checkoutURLComponents.URL error:nil];
 }

@@ -14,11 +14,13 @@ class PPCCardContingencyRequest_Tests: XCTestCase {
     
     // MARK: - handleRequest
     
-    func testHandleRequest_callsOnPaymentWithURL() {
+    func testHandleRequest_callsOnPaymentWithURL_withProperContingencyURL() {
+        BTAppSwitch.setReturnURLScheme("com.fake-return-url.scheme")
+
         let expectation = self.expectation(description: "Calls delegate's onPayment method with url")
         
         mockPaymentFlowDriverDelegate.onPaymentWithURLVerifier = { url, error in
-            XCTAssertEqual(url?.absoluteString, "www.contingency.com?redirect_uri=com.braintreepayments.Demo.payments://x-callback-url/braintree/paypal-validator")
+            XCTAssertEqual(url?.absoluteString, "www.contingency.com?redirect_uri=com.fake-return-url.scheme://x-callback-url/braintree/paypal-validator")
             XCTAssertNil(error)
             expectation.fulfill()
         }

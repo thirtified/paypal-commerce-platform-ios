@@ -10,5 +10,6 @@
 #import "BTPaymentFlowDriver.h"
 #import "PPCCardContingencyRequest.h"
 #import "PPCPayPalCheckoutRequest.h"
+#import "PPCPayPalCheckoutResult.h"
 #import "BTAPIClient+Analytics_Internal.h"
 #import "BraintreePayPal.h"

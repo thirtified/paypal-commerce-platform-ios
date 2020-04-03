@@ -8,7 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PPCPayPalCheckoutRequest : BTPaymentFlowRequest <BTPaymentFlowRequestDelegate>
 
-@property (copy, nonatomic) NSURL *checkoutURL;
+@property (readonly, nonatomic) NSURL *checkoutURL;
+
+- (instancetype)initWithCheckoutURL:(NSURL *)checkoutURL;
 
 @end
 
