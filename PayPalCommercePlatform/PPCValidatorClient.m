@@ -3,6 +3,7 @@
 #import "PPCCardContingencyRequest.h"
 #import "PPCPayPalCheckoutRequest.h"
 #import "PPCValidatorResult.h"
+#import "PPCErrorFormatter.h"
 
 NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorClientErrorDomain";
 
@@ -60,7 +61,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     self.orderId = orderID;
     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.started"];
 
-    [self.cardClient tokenizeCard:card completion:^(BTCardNonce * tokenizedCard, NSError *error) {
+    [self.cardClient tokenizeCard:card completion:^(BTCardNonce * tokenizedCard, NSError *btError) {
         if (tokenizedCard) {
             [self validateTokenizedCard:tokenizedCard completion:^(BOOL success, NSError *error) {
                 if (success) {
@@ -77,6 +78,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
             }];
         } else {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.failed"];
+            NSError *error = [PPCErrorFormatter convertToPPCError:btError withDomain:PPCValidatorErrorDomain];
             completion(nil, error);
         }
     }];
@@ -95,13 +97,14 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                                                 [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.started"];
 
                                                 self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
-                                                [self.paymentFlowDriver startPaymentFlow:contingencyRequest completion:^(BTPaymentFlowResult *result, NSError *error) {
+                                                [self.paymentFlowDriver startPaymentFlow:contingencyRequest completion:^(BTPaymentFlowResult *result, NSError *btError) {
                                                     if (result) {
                                                         [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.succeeded"];
                                                         completion(YES, nil);
                                                     } else {
                                                         [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.failed"];
-                                                        completion(NO, error);
+                                                        NSError *ppcError = [PPCErrorFormatter convertToPPCError:btError withDomain:PPCValidatorErrorDomain];
+                                                        completion(NO, ppcError);
                                                     }
                                                 }];
                                             } else {
@@ -122,9 +125,10 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     PPCPayPalCheckoutRequest *request = [[PPCPayPalCheckoutRequest new] initWithCheckoutURL:payPalCheckoutURL];
 
     self.paymentFlowDriver.viewControllerPresentingDelegate = self.presentingDelegate;
-    [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {
-        if (error) {
+    [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *btError) {
+        if (btError) {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.failed"];
+            NSError *error = [PPCErrorFormatter convertToPPCError:btError withDomain:PPCValidatorErrorDomain];
             completion(nil, error);
             return;
         }
@@ -181,9 +185,10 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 }
 
 - (void)tokenizeAndValidateApplePayPayment:(PKPayment *)payment completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion {
-    [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce *tokenizedApplePayPayment, NSError *error) {
-        if (!tokenizedApplePayPayment || error) {
+    [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce *tokenizedApplePayPayment, NSError *btError) {
+        if (!tokenizedApplePayPayment || btError) {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.failed"];
+            NSError *error = [PPCErrorFormatter convertToPPCError:btError withDomain:PPCValidatorErrorDomain];
             completion(nil, error);
             return;
         }
