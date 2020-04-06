@@ -60,7 +60,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     self.orderId = orderID;
     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.started"];
 
-    [self.cardClient tokenizeCard:card completion:^(BTCardNonce * tokenizedCard, NSError *error) {
+    [self.cardClient tokenizeCard:card completion:^(BTCardNonce * tokenizedCard, NSError *btError) {
         if (tokenizedCard) {
             [self validateTokenizedCard:tokenizedCard completion:^(BOOL success, NSError *error) {
                 if (success) {
@@ -77,6 +77,9 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
             }];
         } else {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-checkout.failed"];
+            NSError *error = [NSError errorWithDomain:PPCValidatorErrorDomain
+                                                 code:PPCValidatorErrorTokenizationFailure
+                                             userInfo:@{NSLocalizedDescriptionKey: @"An internal error occured during checkout. Please contact Support."}];
             completion(nil, error);
         }
     }];
@@ -101,7 +104,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
                                                         completion(YES, nil);
                                                     } else {
                                                         [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.card-contingency.failed"];
-                                                        completion(NO, error);
+                                                        completion(NO, [self convertToPPCPaymentFlowError:error]);
                                                     }
                                                 }];
                                             } else {
@@ -125,7 +128,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
     [self.paymentFlowDriver startPaymentFlow:request completion:^(BTPaymentFlowResult * __unused result, NSError *error) {
         if (error) {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.paypal-checkout.failed"];
-            completion(nil, error);
+            completion(nil, [self convertToPPCPaymentFlowError:error]);
             return;
         }
         PPCValidatorResult *validatorResult = [PPCValidatorResult new];
@@ -181,9 +184,12 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 }
 
 - (void)tokenizeAndValidateApplePayPayment:(PKPayment *)payment completion:(void (^)(PPCValidatorResult * _Nullable result, NSError * _Nullable error))completion {
-    [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce *tokenizedApplePayPayment, NSError *error) {
-        if (!tokenizedApplePayPayment || error) {
+    [self.applePayClient tokenizeApplePayPayment:payment completion:^(BTApplePayCardNonce *tokenizedApplePayPayment, NSError *btError) {
+        if (!tokenizedApplePayPayment || btError) {
             [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.failed"];
+            NSError *error = [NSError errorWithDomain:PPCValidatorErrorDomain
+                                                 code:PPCValidatorErrorTokenizationFailure
+                                             userInfo:@{NSLocalizedDescriptionKey: @"An internal error occured during checkout. Please contact Support."}];
             completion(nil, error);
             return;
         }
@@ -246,6 +252,20 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
             }
         });
     }];
+}
+
+#pragma mark - Helpers
+
+/** Convert BT errors from PaymentFlowDriver failure to be PP merchant friendly. */
+- (NSError *)convertToPPCPaymentFlowError:(NSError *)error {
+    if ([error.domain hasPrefix:@"PPC"]) {
+        return error;
+    } else {
+        NSError *ppcError = [[NSError alloc] initWithDomain:PPCValidatorErrorDomain
+                                                    code:PPCValidatorErrorPaymentFlowDriverFailure
+                                                userInfo:@{NSLocalizedDescriptionKey:error.localizedDescription ?: @"An error occured during checkout."}];
+        return ppcError;
+    }
 }
 
 #pragma mark - Test Helpers

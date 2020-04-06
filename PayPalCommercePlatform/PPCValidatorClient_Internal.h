@@ -17,6 +17,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)setPayPalDataCollectorClass:(nonnull Class)payPalDataCollectorClass;
 
+/**
+ Error codes associated with `PPCValidatorClient`.
+ */
+typedef NS_ENUM(NSInteger, PPCValidatorError) {
+    /// Unknown error
+    PPCValidatorErrorUnknown = 0,
+
+    /// Tokenization via Braintree failed
+    PPCValidatorErrorTokenizationFailure,
+
+    /// BTPaymentFlowDriver.startPaymentFlow returned error
+    PPCValidatorErrorPaymentFlowDriverFailure,
+};
+
 @end
 
 NS_ASSUME_NONNULL_END

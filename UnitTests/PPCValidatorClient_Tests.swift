@@ -160,11 +160,11 @@ class PPCValidatorClient_Tests: XCTestCase {
             let expectation = self.expectation(description: "payment authorization delegate calls completion with error")
             
             mockApplePayClient.applePayCardNonce = nil
-            mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
+            mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "BT tokenization error"])
             
             validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
                 XCTAssertNil(validatorResult)
-                XCTAssertEqual(error?.localizedDescription, "error message")
+                XCTAssertEqual(error?.localizedDescription, "An internal error occured during checkout. Please contact Support.")
 
                 XCTAssert(self.mockBTAPIClient.postedAnalyticsEvents.contains("ios.paypal-commerce-platform.apple-pay-checkout.failed"))
 
@@ -269,11 +269,11 @@ class PPCValidatorClient_Tests: XCTestCase {
         let expectation = self.expectation(description: "payment authorization delegate calls completion with error")
 
         mockApplePayClient.applePayCardNonce = nil
-        mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
+        mockApplePayClient.tokenizeError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "BT tokenization error"])
 
         validatorClient?.checkoutWithApplePay(orderID: "fake-order", paymentRequest: paymentRequest) { (validatorResult, error, handler) in
             XCTAssertNil(validatorResult)
-            XCTAssertEqual(error?.localizedDescription, "error message")
+            XCTAssertEqual(error?.localizedDescription, "An internal error occured during checkout. Please contact Support.")
             expectation.fulfill()
         }
 
@@ -429,12 +429,12 @@ class PPCValidatorClient_Tests: XCTestCase {
     func testCheckoutWithCard_whenCardTokenizationFails_callsCompletionWithError() {
         let expectation = self.expectation(description: "calls completion with error")
         
-        mockCardClient.tokenizeCardError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "error message"])
+        mockCardClient.tokenizeCardError = NSError(domain: "some-domain", code: 1, userInfo: [NSLocalizedDescriptionKey: "BT Tokenization error"])
         mockCardClient.cardNonce = nil
         
         validatorClient?.checkoutWithCard(orderID: "fake-order", card: BTCard()) { (validatorResult, error) in
             XCTAssertNil(validatorResult)
-            XCTAssertEqual(error?.localizedDescription, "error message")
+            XCTAssertEqual(error?.localizedDescription, "An internal error occured during checkout. Please contact Support.")
 
             XCTAssert(self.mockBTAPIClient.postedAnalyticsEvents.contains("ios.paypal-commerce-platform.card-checkout.failed"))
 
