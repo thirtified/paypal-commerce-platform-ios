@@ -9,7 +9,7 @@ NSString * const PPCValidatorErrorDomain = @"com.braintreepayments.PPCValidatorC
 @interface PPCValidatorClient() <PKPaymentAuthorizationViewControllerDelegate>
 
 @property (nonatomic, copy) NSString *orderId;
-@property (nonatomic, copy) void (^applePayCompletionBlock)(PPCValidatorResult * _Nullable validatorResult, NSError * _Nullable, BTApplePayResultHandler successHandler);
+@property (nonatomic, copy) void (^applePayCompletionBlock)(PPCValidatorResult * _Nullable validatorResult, NSError * _Nullable, PPCApplePayResultHandler successHandler);
 
 @end
 
@@ -144,7 +144,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
 
 - (void)checkoutWithApplePay:(NSString * __unused)orderId
               paymentRequest:(PKPaymentRequest *)paymentRequest
-                  completion:(void (^)(PPCValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, BTApplePayResultHandler resultHandler))completion {
+                  completion:(void (^)(PPCValidatorResult * _Nullable tokenizedApplePayPayment, NSError * _Nullable error, PPCApplePayResultHandler resultHandler))completion {
     self.orderId = orderId;
     self.applePayCompletionBlock = completion;
     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.apple-pay-checkout.started"];

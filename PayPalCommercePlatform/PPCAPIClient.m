@@ -74,8 +74,7 @@ NSString * const PPCAPIClientErrorDomain = @"com.braintreepayments.PPCAPIClientE
                     }
                     
                     NSError *validateError = [[NSError alloc] initWithDomain:PPCAPIClientErrorDomain
-                                                                        code:0
-                                                                    userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
+                                                                        code:0 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
                     
                     [self.braintreeAPIClient sendAnalyticsEvent:@"ios.paypal-commerce-platform.validate.failed"];
                     completion(nil, validateError);
