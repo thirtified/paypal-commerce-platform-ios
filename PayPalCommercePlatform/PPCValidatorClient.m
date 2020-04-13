@@ -34,7 +34,7 @@ static NSString *PayPalDataCollectorClassString = @"PPDataCollector";
         NSError *error;
         _payPalUAT = [[BTPayPalUAT alloc] initWithUATString:accessToken error:&error];
         if (error || !_payPalUAT) {
-            NSLog(@"[PayPalCommercePlatformSDK] %@", error.localizedDescription ?: @"Error initializing PayPal UAT");
+            NSLog(@"[PayPalCommercePlatformSDK]: Error initializing PayPal UAT. Error code: %@", error.code);
             return nil;
         }
 
