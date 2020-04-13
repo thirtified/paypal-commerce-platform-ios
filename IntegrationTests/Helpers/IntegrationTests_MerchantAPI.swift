@@ -59,7 +59,7 @@ class IntegrationTests_MerchantAPI {
         components.queryItems = [URLQueryItem(name: "countryCode", value: "US")]
 
         var urlRequest = URLRequest(url: components.url!)
-        urlRequest.httpMethod = "POST"
+        urlRequest.httpMethod = "GET"
 
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data, error == nil else {
