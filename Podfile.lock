@@ -51,11 +51,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Braintree:
-    :commit: 7ef2afd77793ef47b9b8d44cd52791dcba25aed6
+    :commit: 9debce6e542d8da2e7bee4b9fbc260d75dce3239
     :git: https://github.com/braintree/braintree_ios.git
 
 SPEC CHECKSUMS:
-  Braintree: b06d2b42f0c591e508f7f538a7cc6715af1958b7
+  Braintree: d68228f72822bbe4115f356f32f8fb1a64aa2d42
   InAppSettingsKit: 800853da39388780c15191846688c0974c5b13b5
   PayPalCommercePlatform: 1d562d68825c155e393f68412182163ace4a2388
 
